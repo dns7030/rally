@@ -9,7 +9,7 @@
   <block wx:if="{{!currentUser}}">
     <form bindsubmit="onRegister">
       <view class="btn-area">
-        <button class="buy-btn" open-type="getUserInfo" type="primary" bindgetuserinfo="userInfoHandler">微信 Login</button>
+        <button class="buy-btn" open-type="getUserInfo" type="#FF3232" bindgetuserinfo="userInfoHandler">微信 Login</button>
       </view>
     </form>
   </block>
