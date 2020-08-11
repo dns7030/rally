@@ -1,0 +1,22 @@
+<!--/pages/user/user.wxml-->
+<view class="card-product">
+  <image class="userImage"  src="{{currentUser.avatar}}"></image>
+  <view style="padding-left: 120px">
+    <view>{{currentUser.nickname}}</view>
+  </view>
+</view>
+
+<view class="login-button">
+  <block wx:if="{{!currentUser}}">
+    <form bindsubmit="onRegister">
+      <view class="btn-area">
+        <button class="buy-btn" open-type="getUserInfo" type="primary" bindgetuserinfo="userInfoHandler">微信 Login</button>
+      </view>
+    </form>
+  </block>
+  <block wx:if="{{currentUser}}">
+     <view class="btn-area" id="logout">
+      <button class="buy-btn" bindtap="bindLogout">Log Out</button>
+    </view>
+  </block>
+</view>
