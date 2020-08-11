@@ -1,1 +1,20 @@
 /* pages/user/user.wxss */
+.card-product {
+  background-color: white; 
+  overflow: hidden;
+  height: 100px;
+  display: flex;
+  padding: 15px;
+  box-shadow: none;
+  align-items: center;
+}
+.userImage {
+  height: 100px;
+  width: 100px;
+  position: absolute;
+  background-color: lavender;
+  border-radius: 50%;
+}
+.h2 {
+  
+}

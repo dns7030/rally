@@ -2,10 +2,9 @@
 <view class="card-product">
   <image class="userImage"  src="{{currentUser.avatar}}"></image>
   <view style="padding-left: 120px">
-    <view>{{currentUser.nickname}}</view>
+    <view class="h2">User: {{currentUser.nickname}}</view>
   </view>
 </view>
-
 <view class="login-button">
   <block wx:if="{{!currentUser}}">
     <form bindsubmit="onRegister">
