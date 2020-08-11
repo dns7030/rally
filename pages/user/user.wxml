@@ -1,21 +1,45 @@
 <!--/pages/user/user.wxml-->
-<view class="card-product">
-  <image class="userImage"  src="{{currentUser.avatar}}"></image>
-  <view style="padding-left: 120px">
-    <view class="h2">User: {{currentUser.nickname}}</view>
-  </view>
-</view>
-<view class="login-button">
-  <block wx:if="{{!currentUser}}">
-    <form bindsubmit="onRegister">
-      <view class="btn-area">
-        <button class="buy-btn" open-type="getUserInfo" type="#FF3232" bindgetuserinfo="userInfoHandler">微信 Login</button>
-      </view>
-    </form>
-  </block>
-  <block wx:if="{{currentUser}}">
-     <view class="btn-area" id="logout">
-      <button class="buy-btn" bindtap="bindLogout">Log Out</button>
+<view style="background-color: #F6F6F6">
+  <view class="card-product">
+    <image class="userImage"  src="{{currentUser.avatar}}"></image>
+    <view style="padding-left: 120px">
+      <view class="h1">User: {{currentUser.nickname}}</view>
     </view>
-  </block>
+  </view>
+  <view class="tabs">
+    <view class="tab-menu">
+      <view class="tab {{active == 0? 'active' : ''}} past p" data-tab="0" bindtap="_switchTab">Past Events</view>
+      <view class="tab {{active == 1? 'active' : ''}} future p" data-tab="1" bindtap="_switchTab">Future Events</view>
+      </view>
+      <view wx:if="{{active==0}}">
+        <view wx:for="{{events}}" wx:item-for="events">
+          <view class="event-card">
+            <view class="date">
+              <view class="month">{{events.month}}
+              <view class="day">{{events.day}}</view>
+              <view class="time">{{week}} {{time}}</view>
+              </view>
+            </view>
+          </view>
+        </view>
+       <!-- this is tabone!!! -->
+      </view>
+      <view wx:if="{{active==1}}">
+       this is tabtwo!!!
+      </view>
+  </view>
+  <view class="login-button">
+    <block wx:if="{{!currentUser}}">
+      <form bindsubmit="onRegister">
+        <view class="btn-area">
+          <button class="buy-btn" open-type="getUserInfo" type="#FF3232" bindgetuserinfo="userInfoHandler">微信 Login</button>
+        </view>
+      </form>
+    </block>
+    <block wx:if="{{currentUser}}">
+       <view class="btn-area" id="logout">
+        <button class="buy-btn" bindtap="bindLogout">Log Out</button>
+      </view>
+    </block>
+  </view>
 </view>
