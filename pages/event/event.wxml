@@ -1,2 +1,15 @@
 <!--pages/event/event.wxml-->
-<text>pages/event/event.wxml</text>
+<view class="container">
+  <view class="h1">Let's Make Plans</view>
+  <view class="create-event">
+    <view class="input-card">
+        <input class="input-text" placeholder="Title" >Title</input>
+    </view>
+    <view class="input-card">
+      <input class="input-text" placeholder="Description">Description</input>
+    </view>
+    <picker mode="date" value="{{date}}" start="2015-09-01" end="2030-09-01" bindchange="bindDateChange">
+      <button class="date-button" style=" background-color: white; width: 100vh; color: grey; height: 3em">Choose your date</button>
+    </picker>
+  </view>
+</view>
