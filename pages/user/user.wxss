@@ -22,10 +22,8 @@
   border-radius: 3px;
 }
 .tabs {
-  height: 300px;
-  width: 100%;
-  background-color: #eee;
-  
+  width: 100%;  
+  justify-items: center;
 }
 .tab-menu {
   display: flex;
@@ -44,6 +42,11 @@
   font-size: 20px;
   font-weight: bold;
 }
+.h2 {
+  font-size: 18px;
+  font-weight: bold;
+  font-family: sans-serif;
+}
 .past {
   width: 50%;
   text-align: center;
@@ -51,4 +54,23 @@
 .future {
   width: 50%;
   text-align: center;
+}
+.userAvatar {
+  height: 50px;
+  width: 50px;
+  position: absolute;
+  background-color: #FF3232;
+  border-radius: 50%;
+}
+.card {
+  padding: 15px 0 15px 15px;
+  display: row;
+}
+.event-card {
+  box-shadow: 0 0 8px 0 #c5d9e8;
+  display: flex;
+  padding: 10px;
+  width: 90%;
+  margin-bottom: 10px;
+  color: ;
 }

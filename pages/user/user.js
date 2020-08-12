@@ -6,22 +6,31 @@ Page({
    */
   data: {
     currentUser: null,
-    events: {}
+    events: {},
+    restaurants:{}
   },
 
   /**
    * Lifecycle function--Called when page load
    */
   onLoad: function (options) {
+
     const app = getApp();
-    event = new wx.BaaS.TableObject('events');
     console.log(app.globalData.userInfo);
-    this.setData({currentUser: app.globalData.userInfo})
-   
-    event.find().then((res) => {
+    this.setData({currentUser: app.globalData.userInfo});
+
+    const events = new wx.BaaS.TableObject('events');
+    const restaurants = new wx.BaaS.TableObject('restaurants');
+    events.find().then((res) => {
       console.log('res',res)
       this.setData ({
         events: res.data.objects
+      })
+    }); 
+    restaurants.find().then((res) => {
+      console.log('res',res)
+      this.setData ({
+        restaurants: res.data.objects
       })
     });  
   },
@@ -36,7 +45,17 @@ Page({
           currentUser: user,
         })
       }, err => {
-        // **err 有两种情况**：用户拒绝授权，HError 对象上会包含基本用户信息：id、openid、unionid；其他类型的错误，如网络断开、请求超时等，将返回 HError 对象（详情见下方注解）
+    })
+  },
+
+  bindLogout: function (event) {
+    wx.BaaS.auth.logout().then(() => {
+      wx.setStorageSync('userInfo', null);
+      this.setData({currentUser: null});
+      app.globalData.userInfo = null;
+      wx.reLaunch({
+        url: '/pages/user/user',
+      })
     })
   },
 
@@ -45,16 +64,6 @@ Page({
     let activeTab =  e.currentTarget.dataset.tab
     this.setData({
       active: activeTab
-    })
-  },
-  bindLogout: function (event) {
-    wx.BaaS.auth.logout().then(() => {
-      wx.setStorageSync('userInfo', null);
-      this.setData({currentUser: null});
-      app.globalData.userInfo = null;
-      wx.reLaunch({
-        url: '/pages/me/me',
-      })
     })
   },
   /**

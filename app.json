@@ -19,12 +19,12 @@
       {
         "pagePath": "pages/user/user",
         "iconPath": "/pages/images/icon-02.png",
-        "selectedIconPath": "/pages/images/icon-02.png"
+        "selectedIconPath": "/pages/images/icon-04.png"
       },
       {
         "pagePath": "pages/event/event",
         "iconPath": "/pages/images/icon-01.png",
-        "selectedIconPath": "/pages/images/icon-01.png"
+        "selectedIconPath": "/pages/images/icon-03.png"
       }
     ]
   },
