@@ -1,10 +1,40 @@
 <!--/pages/user/user.wxml-->
 <view class="card-product">
-  <image class="userImage"  src="{{currentUser.avatar}}"></image>
-  <view style="padding-left: 120px">
-    <view class="h2">User: {{currentUser.nickname}}</view>
-  </view>
+    <image class="userImage"  src="{{currentUser.avatar}}"></image>
+    <view style="padding-left: 120px">
+      <view class="h1">User: {{currentUser.nickname}}</view>
+      <view class="p">Points: {{currentUser.points}}</view>
+    </view>
 </view>
+
+<view class="tabs">
+    <view class="tab-menu">
+      <view class="tab {{active == 1? 'active' : ''}} future p" data-tab="1" bindtap="_switchTab">Future Events</view>
+      <view class="tab {{active == 0? 'active' : ''}} past p" data-tab="0" bindtap="_switchTab">Past Events</view>
+    </view>
+    <view wx:if="{{active==0}}" class="card">
+      <view wx:for="{{events}}" wx:key="" wx:for-item="events" class="event-card">
+          <view class="event-info">
+            <view class="h2">{{events.name}}</view>
+            <view class="p">{{events.description}}</view>
+            <view class="month" style="color: grey">{{events.date}}
+              </view>
+          </view>
+      </view>
+       <!-- this is tabone!!! -->
+    </view>
+    <view wx:if="{{active==1}}" class="card">
+      <view wx:for="{{events}}" wx:key="" wx:for-item="events" class="event-card">
+        <view class="event-info">
+          <view class="h2">{{events.name}}</view>
+          <view class="p">{{events.description}}</view>
+          <view class="month" style="color: grey">{{events.date}}
+            </view>
+        </view>
+    </view>
+    </view>
+</view>
+
 <view class="login-button">
   <block wx:if="{{!currentUser}}">
     <form bindsubmit="onRegister">
@@ -14,8 +44,9 @@
     </form>
   </block>
   <block wx:if="{{currentUser}}">
-     <view class="btn-area" id="logout">
+      <view class="btn-area" id="logout">
       <button class="buy-btn" bindtap="bindLogout">Log Out</button>
     </view>
   </block>
 </view>
+
