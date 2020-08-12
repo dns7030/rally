@@ -5,26 +5,21 @@ Page({
    * Page initial data
    */
   data: {
-
+    date: '2020-09-01'
   },
 
-  /**
-   * Lifecycle function--Called when page load
-   */
   onLoad: function (options) {
 
   },
-
-  /**
-   * Lifecycle function--Called when page is initially rendered
-   */
+  bindDateChange: function(e) {
+    this.setData({
+        date: e.detail.value
+    })
+},
   onReady: function () {
 
   },
 
-  /**
-   * Lifecycle function--Called when page show
-   */
   onShow: function () {
 
   },
@@ -36,23 +31,15 @@ Page({
 
   },
 
-  /**
-   * Lifecycle function--Called when page unload
-   */
   onUnload: function () {
 
   },
 
-  /**
-   * Page event handler function--Called when user drop down
-   */
   onPullDownRefresh: function () {
 
   },
 
-  /**
-   * Called when page reach bottom
-   */
+
   onReachBottom: function () {
 
   },

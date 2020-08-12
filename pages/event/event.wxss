@@ -1,1 +1,27 @@
-/* pages/event/event.wxss */
+.h1 {
+font-family: 'didot';
+font-weight: bold;
+font-size: 22px;
+padding-top: 30px;
+}
+.create-event {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 20px;
+
+}
+
+.input-card{
+width: 100%;
+background-color: white;
+margin-bottom: 20px;
+height: 3em;
+
+}
+.input-text {
+  padding-left: 15px;
+  font-size: 18px;
+  display: block;
+}
