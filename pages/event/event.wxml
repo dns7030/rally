@@ -8,8 +8,25 @@
     <view class="input-card">
       <input class="input-text" placeholder="Description">Description</input>
     </view>
-    <picker mode="date" value="{{date}}" start="2015-09-01" end="2030-09-01" bindchange="bindDateChange">
-      <button class="date-button" style=" background-color: white; width: 100vh; color: grey; height: 3em">Choose your date</button>
-    </picker>
+    <view class="h1">When?</view>
+    <view class="p">More than one option if you can’t decide</view>
+    <view class="input-card date">
+      <view class="date-picker-card">
+        <view>
+          <view>Date</view>
+        </view>
+        <view class="picker-date">
+          <picker mode="date" value="{{date}}" start="2020-09-01" end="2030-09-01" bindchange="bindDateChange">
+            <view>{{date}}</view>
+          </picker>
+        </view>
+        <view class="picker-date">
+          <picker mode="time" value="{{time}}" start="09:01" end="21:01" bindchange="bindTimeChange">
+            <view class="weui-input">{{time}}</view>
+          </picker>
+        </view>
+      </view>
+    </view>
+ 
   </view>
 </view>
