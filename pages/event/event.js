@@ -5,7 +5,8 @@ Page({
    * Page initial data
    */
   data: {
-    date: '2020-09-01'
+    date: '2020-09-01',
+    time: '12:01'
   },
 
   onLoad: function (options) {
@@ -16,6 +17,11 @@ Page({
         date: e.detail.value
     })
 },
+  bindTimeChange(e) {
+    this.setData({
+      time: e.detail.value
+    })
+  },
   onReady: function () {
 
   },

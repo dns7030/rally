@@ -17,7 +17,9 @@
           <view class="event-info">
             <view class="h2">{{events.name}}</view>
             <view class="p">{{events.description}}</view>
-            <view class="month" style="color: grey">{{events.date}}
+            <view wx:for="{{events.date}}" wx:for-item="date">
+              <view class="month" style="color: grey">{{date}}
+            </view>
               </view>
           </view>
       </view>
