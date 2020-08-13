@@ -1,0 +1,29 @@
+.event-name-header {
+  margin: 20% 0 10% 0;
+  width: 206px;
+  height: 42px;
+  left: 103px;
+  top: 74px;
+  background: #FF3232;
+  border-radius: 2px;
+  font-family: Playfair Display;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 24px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #FFFFFF;
+}
+
+.event-details {
+  
+  width: 336px;
+  height: 101px;
+  left: 39px;
+  top: 144px;
+  background: #FFFFFF;
+  box-shadow: 0px 4px 12px rgba(243, 212, 212, 0.12);
+  border-radius: 2px;
+}

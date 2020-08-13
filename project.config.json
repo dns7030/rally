@@ -76,6 +76,14 @@
 					"id": -1,
 					"name": "event",
 					"pathName": "pages/event/event",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "description",
+					"pathName": "pages/description/description",
+
 					"scene": null
 				}
 			]
