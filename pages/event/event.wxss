@@ -1,27 +1,44 @@
 .h1 {
-font-family: 'didot';
-font-weight: bold;
-font-size: 22px;
-padding-top: 30px;
-}
-.create-event {
+  font-family: 'didot';
+  font-weight: bold;
+  font-size: 22px;
+  padding-top: 5px;
+  }
+  .p {
+    font-family: sans-serif;
+    font-size: 16px;
+  }
+  .create-event {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+  
+  }
+  
+  .input-card{
   width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding-top: 20px;
-
-}
-
-.input-card{
-width: 100%;
-background-color: white;
-margin-bottom: 20px;
-height: 3em;
-
-}
-.input-text {
-  padding-left: 15px;
-  font-size: 18px;
-  display: block;
-}
+  background-color: white;
+  margin-bottom: 20px;
+  height: 3em;
+  }
+  .input-text {
+    padding-left: 15px;
+    font-size: 18px;
+    display: block;
+  }
+  .date-picker-card {
+    display: flex;
+    padding-left: 15px;
+    font-size: 18px;
+    font-family: sans-serif;
+    color: grey;
+  }
+  .picker-date {
+    padding-left: 20px;
+  }
+  .date {
+    margin-top: 10px;
+  }
+  
