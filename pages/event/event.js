@@ -5,9 +5,11 @@ Page({
    * Page initial data
    */
   data: {
+
     date: '2020-09-01', 
     event: {},
     events: []
+    time: '12:01'
   },
 
   onLoad: function (options) {
@@ -17,12 +19,16 @@ Page({
     this.setData({
         date: e.detail.value
     })
+
   },
+
+
   bindTimeChange(e) {
     this.setData({
       time: e.detail.value
     })
   },
+
   formSubmit: function (event) {
     console.log('formSubmit', event);
     console.log(event.detail.value.title)

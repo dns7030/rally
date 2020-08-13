@@ -1,4 +1,5 @@
 // pages/user/user.js
+const util = require("../../utils/util")
 Page({
 
   /**
@@ -12,19 +13,31 @@ Page({
 
   /**
    * Lifecycle function--Called when page load
-   */
+  //  */
   onLoad: function (options) {
 
     const app = getApp();
     console.log(app.globalData.userInfo);
     this.setData({currentUser: app.globalData.userInfo});
-
     const events = new wx.BaaS.TableObject('events');
     const restaurants = new wx.BaaS.TableObject('restaurants');
     events.find().then((res) => {
       console.log('res',res)
+      //pull event data
+      let events = res.data.objects
+      //define event
+      let formatedEvents = []
+      //store event with time
+      events.forEach((event)=>{
+        console.log('event.date', event)
+        event.date = event.date.map(date => {
+          return util.formatTime(new Date(date));
+        });
+        // event.date = util.formatTime(new Date(event.date))
+        formatedEvents.push(event)
+      })
       this.setData ({
-        events: res.data.objects
+        events: formatedEvents
       })
     }); 
     restaurants.find().then((res) => {
@@ -76,9 +89,35 @@ Page({
   /**
    * Lifecycle function--Called when page show
    */
-  onShow: function () {
+  // onShow: function () {
 
-  },
+  //     const app = getApp();
+  //     console.log(app.globalData.userInfo);
+  //     this.setData({currentUser: app.globalData.userInfo});
+  //     const events = new wx.BaaS.TableObject('events');
+  //     const restaurants = new wx.BaaS.TableObject('restaurants');
+  //     events.find().then((res) => {
+  //       console.log('res',res)
+  //       //pull event data
+  //       let events = res.data.objects
+  //       //define event
+  //       let formatedEvents = []
+  //       //store event with time
+  //       events.forEach((event)=>{
+  //         event.date = util.formatTime(new Date(event.date))
+  //         formatedEvents.push(event)
+  //       })
+  //       this.setData ({
+  //         events: formatedEvents
+  //       })
+  //     }); 
+  //     restaurants.find().then((res) => {
+  //       console.log('res',res)
+  //       this.setData ({
+  //         restaurants: res.data.objects
+  //       })
+  //     });  
+  // },
 
   onHide: function () {
 

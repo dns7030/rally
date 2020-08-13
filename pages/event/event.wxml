@@ -18,6 +18,7 @@
           <view>Date</view>
         </view>
         <view class="picker-date">
+
           <picker name="date1" mode="date" value="{{date}}" start="2020-09-01" end="2030-09-01" bindchange="bindDateChange">
             <view>{{date}}</view>
           </picker>
@@ -39,11 +40,12 @@
       </view>
     </view>
       
-      <view class="card">
+     <view class="card">
         <button formType="submit" class="mini-btn">Post</button> 
         
     </view>    
     
   </form>  
+
   </view>
 </view>
