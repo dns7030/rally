@@ -1,12 +1,14 @@
 <!--pages/event/event.wxml-->
 <view class="container">
+
   <view class="h1">Let's Make Plans</view>
   <view class="create-event">
+  <form bindsubmit="formSubmit"> <!-- wx:if="{{currentUser}}"-->
     <view class="input-card">
-        <input class="input-text" placeholder="Title" >Title</input>
+        <input name="title" class="input-text" placeholder="Title" >Title</input>
     </view>
     <view class="input-card">
-      <input class="input-text" placeholder="Description">Description</input>
+      <input name="description" class="input-text" placeholder="Description">Description</input>
     </view>
     <view class="h1">When?</view>
     <view class="p">More than one option if you can’t decide</view>
@@ -16,7 +18,17 @@
           <view>Date</view>
         </view>
         <view class="picker-date">
-          <picker mode="date" value="{{date}}" start="2020-09-01" end="2030-09-01" bindchange="bindDateChange">
+
+          <picker name="date1" mode="date" value="{{date}}" start="2020-09-01" end="2030-09-01" bindchange="bindDateChange">
+            <view>{{date}}</view>
+          </picker>
+        </view>
+                <view class="picker-date">
+          <picker name="date2" mode="date" value="{{date}}" start="2020-09-01" end="2030-09-01" bindchange="bindDateChange">
+            <view>{{date}}</view>
+          </picker>
+        </view>        <view class="picker-date">
+          <picker name="date3" mode="date" value="{{date}}" start="2020-09-01" end="2030-09-01" bindchange="bindDateChange">
             <view>{{date}}</view>
           </picker>
         </view>
@@ -27,6 +39,13 @@
         </view>
       </view>
     </view>
- 
+      
+     <view class="card">
+        <button formType="submit" class="mini-btn">Post</button> 
+        
+    </view>    
+    
+  </form>  
+
   </view>
 </view>
