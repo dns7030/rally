@@ -9,19 +9,18 @@ Page({
   data: {
     currentUser: null,
     events: {},
-    restaurants:{},
     active: 1,
     futureEvents: [],
     pastEvents: []
   },
 
   showEvents: function(event) {
-    // let data = event.currentTarget.dataset;
-    // let id = data.id;
+    let data = event.currentTarget.dataset;
+    let id = data.id;
     console.log('checking id', id)
-    // wx.navigateTo({
-    //   url: `/pages/description/description?id=${id}`
-    // });
+    wx.navigateTo({
+      url: `/pages/description/description?id=${id}`
+    });
   },
 
   onLoad: function (options) {

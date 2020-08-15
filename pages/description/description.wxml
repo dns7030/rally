@@ -1,7 +1,10 @@
 
 <view class="container">
-  <view class="event-name-header">Bday Dinner</view>
-  <view class="event-details">Date and time</view>
-  <view class="event-details">Map</view>
-  <view class="event-details">Description</view>
+
+  <view class="card">
+    <view class="h2">Title: {{events.title}}</view>
+    <view class="month" style="color: grey">Date: {{events.date}}</view>
+    <view class="p">Description: {{events.description}}</view>
+  </view>
+
 </view>
