@@ -27,7 +27,7 @@
 			"outputPath": ""
 		},
 		"useIsolateContext": true,
-		"useCompilerModule": false,
+		"useCompilerModule": true,
 		"userConfirmedUseCompilerModuleSwitch": false
 	},
 	"compileType": "miniprogram",
@@ -83,7 +83,6 @@
 					"id": -1,
 					"name": "description",
 					"pathName": "pages/description/description",
-
 					"scene": null
 				}
 			]
