@@ -7,6 +7,11 @@ Page({
    * Page initial data
    */
   data: {
+    restaurant: {},
+    events: [],
+    reviews: [],
+    currentUser: null,
+    review: []
     events: [],
     iconSize: [40, 40, 40, 40],
     iconColor: ['red'],
@@ -26,36 +31,27 @@ Page({
   },
 
   onLoad: function (options) {
-    console.log('get events', options)
-    const app = getApp();
+    console.log('userInfo!', getApp().globalData.userInfo);
+    this.setData({
+      currentUser: getApp().globalData.userInfo,
+    });
+    const Events = new wx.BaaS.TableObject('events');
 
-    console.log(app.globalData.userInfo);
-    this.setData({currentUser: app.globalData.userInfo});
+    console.log({ options })
 
-    const events = new wx.BaaS.TableObject('events');
-
-    events.get(options.id).then((res) => {
-      console.log('res',res)
-      //pull event data
-      let events = res.data.objects
-      //define event
-      let formatedEvents = []
-      //store event with time
-
-      events.forEach((event)=>{
-        console.log('event.date', event)
-        event.date = event.date.map(date => {
-          return util.formatTime(new Date(date));
-        });
-        // event.date = util.formatTime(new Date(event.date))
-        formatedEvents.push(event)
+    Events.get(options.id).then((res) => {
+      this.setData({
+        events: res.data,
       })
-      this.setData ({
-        events: formatedEvents
-      })
-    }); 
+    });
+
+    let query = new wx.BaaS.Query();
+
+    query.compare('events_id', '=', options.id);
+
   },
 
+  
   onReady: function () {
 
   },
