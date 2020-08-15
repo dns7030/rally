@@ -1,10 +1,9 @@
-
-<view class="container">
+<view wx:if="{{events.date.length == 1}}" class="container">
   <view class="event-name-header">Event: {{events.title}}</view>
   <view class="event-details">Date and time: {{events.date}}</view>
   <view class="event-details">Description: {{events.description}}</view>
     <button class="map-btn" loading="{{loading}}" bindtap="default" hover-class="other-button-hover"> map </button>
-  </view>
+  
   <view class="event-name-header">Attendees</view>
    <view class="event-details">We're all going...
     <view class="attendees-icons">
@@ -16,9 +15,33 @@
   </view>
   <view class="event-details">Can you make it?
     <view class="rsvp">
-      <button class="rsvp-btn" loading="{{loading}}" bindtap="default" hover-class="other-button-hover"> Yes! </button>
-      <button class="rsvp-btn" loading="{{loading}}" bindtap="default" hover-class="other-button-hover"> No. </button>
-      <button class="rsvp-btn" loading="{{loading}}" bindtap="default" hover-class="other-button-hover"> Maybe </button>
+      <button catchtap="voteDate" class="rsvp-btn" loading="{{loading}}" bindtap="default" hover-class="other-button-hover"> Yes! </button>
+      <button catchtap="voteDate" class="rsvp-btn" loading="{{loading}}" bindtap="default" hover-class="other-button-hover"> No. </button>
+      <button catchtap="voteDate" class="rsvp-btn" loading="{{loading}}" bindtap="default" hover-class="other-button-hover"> Maybe </button>
+    </view>
+  </view>
+</view>
+
+<view wx:else class="container">
+  <view class="event-name-header">Event: {{events.title}}</view>
+  <view class="event-details">Date and time: {{events.date}}</view>
+  <view class="event-details">Description: {{events.description}}</view>
+    <button class="map-btn" loading="{{loading}}" bindtap="default" hover-class="other-button-hover"> map </button>
+  <!-- voting with radio buttons -->
+  <view class="event-name-header">Attendees</view>
+   <view class="event-details">We're all going...
+    <view class="attendees-icons">
+       <block wx:for="{{iconSize}}">
+        <icon type="warn" size="{{item}}" color="#FF3232"/>
+      </block>
+    </view>
+      <button class="map-btn" loading="{{loading}}" bindtap="default" hover-class="other-button-hover"> more </button>
+  </view>
+  <view class="event-details">Please choose the right time
+    <view class="rsvp">
+      <button class="rsvp-btn" loading="{{loading}}" bindtap="default" hover-class="other-button-hover"> Radio button 1 </button>
+      <button class="rsvp-btn" loading="{{loading}}" bindtap="default" hover-class="other-button-hover"> Radio button 2 </button>
+      <button class="rsvp-btn" loading="{{loading}}" bindtap="default" hover-class="other-button-hover"> Radio button 3 </button>
     </view>
   </view>
 </view>

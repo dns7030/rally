@@ -11,7 +11,7 @@ Page({
     events: [],
     reviews: [],
     currentUser: null,
-    review: []
+    review: [],
     events: [],
     iconSize: [40, 40, 40, 40],
     iconColor: ['red'],
@@ -49,6 +49,40 @@ Page({
 
     query.compare('events_id', '=', options.id);
 
+  },
+
+  voteDate(event) {
+    const data = event.currentTarget.dataset;
+    console.log('data', data)
+
+    const id = data.id
+    let clickedDate = this.data.stories.find(story => story._id == id) 
+
+    if (clickedDate.currentUserAlreadyClicked && clickedDate.currentUserAlreadyClicked == true) {
+      return 
+    }
+    
+    const votes = data.votes;
+    const page = this
+
+    let tableName = 'events'
+    let eventID = id // 数据行 id
+
+    let Story = new wx.BaaS.TableObject(tableName)
+    let story = Story.getWithoutData(eventID)
+
+    story.set('likes', likes + 1) //if clicked - disable
+    story.update().then(res => {
+      console.log(res)
+      const new_story = res.data
+      let stories = page.data.stories
+      let story = stories.find(story => story._id == new_story.id) 
+      story.likes = new_story.likes
+      story.currentUserAlreadyClicked = true
+      console.log(stories)
+      page.setData({ stories: stories })
+
+    })
   },
 
   

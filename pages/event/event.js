@@ -23,12 +23,7 @@ Page({
     
   },
 
-  // toEvent: function(e) {
-  //   const id = e.currentTarget.dataset.id;
-  //   wx.navigateTo({
-  //     url: `/pages/description/description?id=${id}`,
-  //   })
-  // },
+
 
   bindTimeChange(e) {
     this.setData({
@@ -54,7 +49,6 @@ Page({
     let events = new wx.BaaS.TableObject('events');
     let newEvent = events.create();
     const data = {
-      // restaurants_id: this.data.restaurants.id,
       title: title,
       description: description,
       date: [date1, date2, date3]   
@@ -69,9 +63,7 @@ Page({
       this.setData({
         event: newEvents,
       })
-      // wx.switchTab({
-      //   url: `/pages/description/description?id=${newEvents[0]._id}`,
-      // })
+
        
       
       wx.navigateTo({
