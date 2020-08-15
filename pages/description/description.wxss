@@ -1,3 +1,6 @@
+.h1 {
+  size: 30px;
+}
 .event-name-header {
   margin: 18% 0 7% 0;
   width: 206px;
@@ -16,18 +19,22 @@
 
 .event-details {
   width: 336px;
-  background: #FFFFFF;
-  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.15);
+  background: white;
+  box-shadow: 4px 4px 5px rgba(120, 120, 120, 0.15);
   border-radius: 2px;
   margin: 10px 0 0 0;
 }
 
 .map-btn {
-  width: 50px !important;
-  height: 30px;
+  width: 35px;
   display: block;
-  padding: 0 0 0 0;
-  font-size: 14px;
+  margin: 10px 0 5px 40px;
+  font-size: 11px;
+  background:white;
+  border: rgba(218, 218, 218, 0.3) solid 1px;
+  border-radius: 50px;
+  text-align: center;
+  
 }
 
 .rsvp-btn {
