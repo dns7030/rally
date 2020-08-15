@@ -5,15 +5,38 @@ Page({
    * Page initial data
    */
   data: {
-
+    restaurant: {},
+    events: [],
+    reviews: [],
+    currentUser: null,
+    review: []
   },
 
   /**
    * Lifecycle function--Called when page load
    */
   onLoad: function (options) {
+    console.log('userInfo!', getApp().globalData.userInfo);
+    this.setData({
+      currentUser: getApp().globalData.userInfo,
+    });
+    const Events = new wx.BaaS.TableObject('events');
+
+    console.log({ options })
+
+    Events.get(options.id).then((res) => {
+      this.setData({
+        events: res.data,
+      })
+    });
+
+    let query = new wx.BaaS.Query();
+
+    query.compare('events_id', '=', options.id);
 
   },
+
+  
 
   /**
    * Lifecycle function--Called when page is initially rendered

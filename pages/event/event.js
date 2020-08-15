@@ -23,6 +23,13 @@ Page({
     
   },
 
+  // toEvent: function(e) {
+  //   const id = e.currentTarget.dataset.id;
+  //   wx.navigateTo({
+  //     url: `/pages/description/description?id=${id}`,
+  //   })
+  // },
+
   bindTimeChange(e) {
     this.setData({
       time: e.detail.value
@@ -37,14 +44,12 @@ Page({
     let title = event.detail.value.title;
     let description = event.detail.value.description;
 
-    let date = event.detail.value.date;
-    console.log('date', date)
-
-    // let date1 = event.detail.value.date1;
-    // console.log('date1', date1)
-
-    // let date3 = event.detail.value.date3;
-    // console.log('date3', date3)
+    let date1 = event.detail.value.date1;
+    console.log('date', date1)
+    let date2 = event.detail.value.date2;
+    let date3 = event.detail.value.date3;
+    console.log('date1', date1)
+    console.log('date3', date3)
 
     let events = new wx.BaaS.TableObject('events');
     let newEvent = events.create();
@@ -52,8 +57,7 @@ Page({
       // restaurants_id: this.data.restaurants.id,
       title: title,
       description: description,
-      // date: [date1, date2, date3]
-      date: [date]
+      date: [date1, date2, date3]   
     }
 
     newEvent.set(data);
@@ -65,7 +69,24 @@ Page({
       this.setData({
         event: newEvents,
       })
+      // wx.switchTab({
+      //   url: `/pages/description/description?id=${newEvents[0]._id}`,
+      // })
+       
+      
+      wx.navigateTo({
+        url: `/pages/description/description?id=${newEvents[0]._id}`,
+      })
+
+      console.log('new events', newEvents[0]._id)
     })
+
+    wx.showToast({
+      title: 'Your event was created. To share it with your friends find it in your future events page',
+      icon: 'success',
+      duration: 2000,
+      mask: true,
+    });
   },
 
 
