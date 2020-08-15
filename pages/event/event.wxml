@@ -39,7 +39,7 @@
     <view class="input-date">
       <view class="date-picker">
         <view class="picker-date">
-          <picker name="date1" mode="date" value="{{date}}" start="2020-09-01" end="2030-09-01" bindchange="bindDateChange">
+          <picker name="date2" mode="date" value="{{date}}" start="2020-09-01" end="2030-09-01" bindchange="bindDateChange">
             <view wx:if="date">
               <view>{{date}}</view>
             </view>
@@ -57,7 +57,7 @@
     <view class="input-date">
       <view class="date-picker">
         <view class="picker-date">
-          <picker name="date1" mode="date" value="{{date}}" start="2020-09-01" end="2030-09-01" bindchange="bindDateChange">
+          <picker name="date3" mode="date" value="{{date}}" start="2020-09-01" end="2030-09-01" bindchange="bindDateChange">
             <view wx:if="date">
               <view>{{date}}</view>
             </view>
