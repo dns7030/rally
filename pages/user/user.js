@@ -73,7 +73,6 @@ Page({
     }); 
 
   },
-
   userInfoHandler(data) {
     const app = getApp();
     wx.BaaS.auth.loginWithWechat(data).then(user => {

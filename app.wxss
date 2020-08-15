@@ -17,3 +17,11 @@ page {
   background: rgba(255, 50, 50, 0.85);
   border-radius: 3px;
 }
+.event-card {
+  box-shadow: 4px 4px 5px rgba(120, 120, 120, 0.15);
+  display: flex;
+  padding: 10px;
+  width: 90%;
+  margin: 10px 0;
+  color: black;
+}

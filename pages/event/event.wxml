@@ -1,7 +1,7 @@
 <!--pages/event/event.wxml-->
 <view class="container">
 
-  <view class="h1">Let's Make Plans</view>
+  <view class="h1" style="margin-top: 20px">Let's Make Plans</view>
   <view class="create-event">
   <form bindsubmit="formSubmit"> 
     <view class="input-card">

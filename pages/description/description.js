@@ -33,27 +33,13 @@ Page({
     this.setData({currentUser: app.globalData.userInfo});
 
     const events = new wx.BaaS.TableObject('events');
-
-    events.get(options.id).then((res) => {
-      console.log('res',res)
-      //pull event data
-      let events = res.data.objects
-      //define event
-      let formatedEvents = []
-      //store event with time
-
-      events.forEach((event)=>{
-        console.log('event.date', event)
-        event.date = event.date.map(date => {
-          return util.formatTime(new Date(date));
-        });
-        // event.date = util.formatTime(new Date(event.date))
-        formatedEvents.push(event)
+    events.get(options.id).then((res)=>{
+      console.log('restaurant_detail', res);
+      
+      this.setData({
+        events: res.data
       })
-      this.setData ({
-        events: formatedEvents
-      })
-    }); 
+    });
   },
 
   onReady: function () {
