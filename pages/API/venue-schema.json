@@ -1,0 +1,582 @@
+{
+    "name": "venues",
+    "description": null,
+    "row_read_perm": [
+        "user:anonymous"
+    ],
+    "row_write_perm": [
+        "user:anonymous"
+    ],
+    "write_perm": [
+        "user:anonymous"
+    ],
+    "schema": {
+        "fields": [{
+                "name": "id",
+                "type": "id",
+                "description": "id"
+            },
+            {
+                "acl": {
+                    "clientVisible": true,
+                    "clientReadOnly": false,
+                    "creatorVisible": false
+                },
+                "name": "name_en",
+                "type": "string",
+                "constraints": {
+                    "rules": [],
+                    "required": false
+                },
+                "description": ""
+            },
+            {
+                "acl": {
+                    "clientVisible": true,
+                    "clientReadOnly": false,
+                    "creatorVisible": false
+                },
+                "name": "name_cn",
+                "type": "string",
+                "constraints": {
+                    "rules": [],
+                    "required": false
+                },
+                "description": ""
+            },
+            {
+                "acl": {
+                    "clientVisible": true,
+                    "clientReadOnly": false,
+                    "creatorVisible": false
+                },
+                "name": "description",
+                "type": "string",
+                "constraints": {
+                    "rules": [],
+                    "required": false
+                },
+                "description": ""
+            },
+            {
+                "acl": {
+                    "clientVisible": true,
+                    "clientReadOnly": false,
+                    "creatorVisible": false
+                },
+                "name": "slug",
+                "type": "string",
+                "constraints": {
+                    "rules": [],
+                    "required": false
+                },
+                "description": ""
+            },
+            {
+                "acl": {
+                    "clientVisible": true,
+                    "clientReadOnly": false,
+                    "creatorVisible": false
+                },
+                "name": "address_en",
+                "type": "string",
+                "constraints": {
+                    "rules": [],
+                    "required": false
+                },
+                "description": ""
+            },
+            {
+                "acl": {
+                    "clientVisible": true,
+                    "clientReadOnly": false,
+                    "creatorVisible": false
+                },
+                "name": "address_cn",
+                "type": "string",
+                "constraints": {
+                    "rules": [],
+                    "required": false
+                },
+                "description": ""
+            },
+            {
+                "acl": {
+                    "clientVisible": true,
+                    "clientReadOnly": false,
+                    "creatorVisible": false
+                },
+                "name": "premium_type",
+                "type": "integer",
+                "constraints": {
+                    "rules": [],
+                    "required": false
+                },
+                "description": ""
+            },
+            {
+                "acl": {
+                    "clientVisible": true,
+                    "clientReadOnly": false,
+                    "creatorVisible": false
+                },
+                "name": "phone",
+                "type": "string",
+                "constraints": {
+                    "rules": [],
+                    "required": false
+                },
+                "description": ""
+            },
+            {
+                "acl": {
+                    "clientVisible": true,
+                    "clientReadOnly": false,
+                    "creatorVisible": false
+                },
+                "name": "website_url",
+                "type": "string",
+                "constraints": {
+                    "rules": [],
+                    "required": false
+                },
+                "description": ""
+            },
+            {
+                "acl": {
+                    "clientVisible": true,
+                    "clientReadOnly": false,
+                    "creatorVisible": false
+                },
+                "name": "hours",
+                "type": "string",
+                "constraints": {
+                    "rules": [],
+                    "required": false
+                },
+                "description": ""
+            },
+            {
+                "acl": {
+                    "clientVisible": true,
+                    "clientReadOnly": false,
+                    "creatorVisible": false
+                },
+                "name": "latitude",
+                "type": "number",
+                "constraints": {
+                    "rules": [],
+                    "required": false
+                },
+                "description": ""
+            },
+            {
+                "acl": {
+                    "clientVisible": true,
+                    "clientReadOnly": false,
+                    "creatorVisible": false
+                },
+                "name": "longitude",
+                "type": "number",
+                "constraints": {
+                    "rules": [],
+                    "required": false
+                },
+                "description": ""
+            },
+            {
+                "acl": {
+                    "clientVisible": true,
+                    "clientReadOnly": false,
+                    "creatorVisible": false
+                },
+                "name": "price",
+                "type": "integer",
+                "constraints": {
+                    "rules": [],
+                    "required": false
+                },
+                "description": ""
+            },
+            {
+                "acl": {
+                    "clientVisible": true,
+                    "clientReadOnly": false,
+                    "creatorVisible": false
+                },
+                "name": "cards",
+                "type": "string",
+                "constraints": {
+                    "rules": [],
+                    "required": false
+                },
+                "description": ""
+            },
+            {
+                "acl": {
+                    "clientVisible": true,
+                    "clientReadOnly": false,
+                    "creatorVisible": false
+                },
+                "name": "closed",
+                "type": "integer",
+                "constraints": {
+                    "rules": [],
+                    "required": false
+                },
+                "description": ""
+            },
+            {
+                "acl": {
+                    "clientVisible": true,
+                    "clientReadOnly": false,
+                    "creatorVisible": false
+                },
+                "name": "closed_description",
+                "type": "string",
+                "constraints": {
+                    "rules": [],
+                    "required": false
+                },
+                "description": ""
+            },
+            {
+                "acl": {
+                    "clientVisible": true,
+                    "clientReadOnly": false,
+                    "creatorVisible": false
+                },
+                "name": "chope_widget_url",
+                "type": "string",
+                "constraints": {
+                    "rules": [],
+                    "required": false
+                },
+                "description": ""
+            },
+            {
+                "acl": {
+                    "clientVisible": true,
+                    "clientReadOnly": false,
+                    "creatorVisible": false
+                },
+                "name": "sherpas_widget_url",
+                "type": "string",
+                "constraints": {
+                    "rules": [],
+                    "required": false
+                },
+                "description": ""
+            },
+            {
+                "acl": {
+                    "clientVisible": true,
+                    "clientReadOnly": false,
+                    "creatorVisible": false
+                },
+                "name": "thumbnail_url",
+                "type": "string",
+                "constraints": {
+                    "rules": [],
+                    "required": false
+                },
+                "description": ""
+            },
+            {
+                "acl": {
+                    "clientVisible": true,
+                    "clientReadOnly": false,
+                    "creatorVisible": false
+                },
+                "name": "first_venue_picture_url",
+                "type": "string",
+                "constraints": {
+                    "rules": [],
+                    "required": false
+                },
+                "description": ""
+            },
+            {
+                "acl": {
+                    "clientVisible": true,
+                    "clientReadOnly": false,
+                    "creatorVisible": false
+                },
+                "name": "metro_station_id",
+                "type": "integer",
+                "constraints": {
+                    "rules": [],
+                    "required": false
+                },
+                "description": ""
+            },
+            {
+                "acl": {
+                    "clientVisible": true,
+                    "clientReadOnly": false,
+                    "creatorVisible": false
+                },
+                "name": "metro_station_name",
+                "type": "string",
+                "constraints": {
+                    "rules": [],
+                    "required": false
+                },
+                "description": ""
+            },
+            {
+                "acl": {
+                    "clientVisible": true,
+                    "clientReadOnly": false,
+                    "creatorVisible": false
+                },
+                "name": "metro_distance_in_minutes",
+                "type": "integer",
+                "constraints": {
+                    "rules": [],
+                    "required": false
+                },
+                "description": ""
+            },
+            {
+                "acl": {
+                    "clientVisible": true,
+                    "clientReadOnly": false,
+                    "creatorVisible": false
+                },
+                "name": "listing_url",
+                "type": "string",
+                "constraints": {
+                    "rules": [],
+                    "required": false
+                },
+                "description": ""
+            },
+            {
+                "acl": {
+                    "clientVisible": true,
+                    "clientReadOnly": false,
+                    "creatorVisible": false
+                },
+                "name": "popularity_index",
+                "type": "integer",
+                "constraints": {
+                    "rules": [],
+                    "required": false
+                },
+                "description": ""
+            },
+            {
+                "acl": {
+                    "clientVisible": true,
+                    "clientReadOnly": false,
+                    "creatorVisible": false
+                },
+                "name": "has_location",
+                "type": "integer",
+                "constraints": {
+                    "rules": [],
+                    "required": false
+                },
+                "description": ""
+            },
+            {
+                "acl": {
+                    "clientVisible": true,
+                    "clientReadOnly": false,
+                    "creatorVisible": false
+                },
+                "name": "education_dir_listing_id",
+                "type": "integer",
+                "constraints": {
+                    "rules": [],
+                    "required": false
+                },
+                "description": ""
+            },
+            {
+                "acl": {
+                    "clientVisible": true,
+                    "clientReadOnly": false,
+                    "creatorVisible": false
+                },
+                "name": "health_dir_listing_id",
+                "type": "integer",
+                "constraints": {
+                    "rules": [],
+                    "required": false
+                },
+                "description": ""
+            },
+            {
+                "acl": {
+                    "clientVisible": true,
+                    "clientReadOnly": false,
+                    "creatorVisible": false
+                },
+                "name": "community_dir_listing_id",
+                "type": "integer",
+                "constraints": {
+                    "rules": [],
+                    "required": false
+                },
+                "description": ""
+            },
+            {
+                "acl": {
+                    "clientVisible": true,
+                    "clientReadOnly": false,
+                    "creatorVisible": false
+                },
+                "name": "business_dir_listing_id",
+                "type": "integer",
+                "constraints": {
+                    "rules": [],
+                    "required": false
+                },
+                "description": ""
+            },
+            {
+                "acl": {
+                    "clientVisible": true,
+                    "clientReadOnly": false,
+                    "creatorVisible": false
+                },
+                "name": "wifi_password",
+                "type": "string",
+                "constraints": {
+                    "rules": [],
+                    "required": false
+                },
+                "description": ""
+            },
+            {
+                "acl": {
+                    "clientVisible": true,
+                    "clientReadOnly": false,
+                    "creatorVisible": false
+                },
+                "name": "wifi_name",
+                "type": "string",
+                "constraints": {
+                    "rules": [],
+                    "required": false
+                },
+                "description": ""
+            },
+            {
+                "acl": {
+                    "clientVisible": true,
+                    "clientReadOnly": false,
+                    "creatorVisible": false
+                },
+                "name": "open_since",
+                "type": "string",
+                "constraints": {
+                    "rules": [],
+                    "required": false
+                },
+                "description": ""
+            },
+            {
+                "acl": {
+                    "clientVisible": true,
+                    "clientReadOnly": false,
+                    "creatorVisible": false
+                },
+                "name": "created_on",
+                "type": "string",
+                "constraints": {
+                    "rules": [],
+                    "required": false
+                },
+                "description": ""
+            },
+            {
+                "acl": {
+                    "clientVisible": true,
+                    "clientReadOnly": false,
+                    "creatorVisible": false
+                },
+                "name": "parent_venue_id",
+                "type": "integer",
+                "constraints": {
+                    "rules": [],
+                    "required": false
+                },
+                "description": ""
+            },
+            {
+                "acl": {
+                    "clientVisible": true,
+                    "clientReadOnly": false,
+                    "creatorVisible": false
+                },
+                "name": "parent_venue_name_en",
+                "type": "string",
+                "constraints": {
+                    "rules": [],
+                    "required": false
+                },
+                "description": ""
+            },
+            {
+                "acl": {
+                    "clientVisible": true,
+                    "clientReadOnly": false,
+                    "creatorVisible": false
+                },
+                "name": "parent_venue_name_cn",
+                "type": "string",
+                "constraints": {
+                    "rules": [],
+                    "required": false
+                },
+                "description": ""
+            },
+            {
+                "acl": {
+                    "clientVisible": true,
+                    "clientReadOnly": false,
+                    "creatorVisible": false
+                },
+                "name": "human_readable_tags",
+                "type": "string",
+                "constraints": {
+                    "rules": [],
+                    "required": false
+                },
+                "description": ""
+            },
+            {
+                "acl": {
+                    "clientVisible": true,
+                    "clientReadOnly": false,
+                    "creatorVisible": false
+                },
+                "name": "smartticket_ticketing_url",
+                "type": "string",
+                "constraints": {
+                    "rules": [],
+                    "required": false
+                },
+                "description": ""
+            },
+            {
+                "name": "created_by",
+                "type": "integer",
+                "description": "created_by"
+            },
+            {
+                "name": "created_at",
+                "type": "integer",
+                "description": "created_at"
+            },
+            {
+                "name": "updated_at",
+                "type": "integer",
+                "description": "updated_at"
+            }
+        ]
+    }
+}
