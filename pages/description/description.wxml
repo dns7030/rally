@@ -1,8 +1,8 @@
 
 <view class="container">
   <view class="event-name-header">Bday Dinner</view>
-  <view class="event-details">Date and time
-    <button class="map-btn" loading="{{loading}}" bindtap="default" hover-class="other-button-hover"> map </button>
+  <view class="event-details"><text class="h1">Date and time</text>
+    <view class="map-btn"> map </view>
   </view>
   <view class="event-details">Description</view>
   <view class="event-name-header">Attendees</view>
@@ -11,14 +11,15 @@
        <block wx:for="{{iconSize}}">
         <icon type="warn" size="{{item}}" color="#FF3232"/>
       </block>
+    
+      <view class="map-btn" text align="right"> more </view>
     </view>
-      <button class="map-btn" loading="{{loading}}" bindtap="default" hover-class="other-button-hover"> more </button>
   </view>
   <view class="event-details">Can you make it?
     <view class="rsvp">
-      <button class="rsvp-btn" loading="{{loading}}" bindtap="default" hover-class="other-button-hover"> Yes! </button>
-      <button class="rsvp-btn" loading="{{loading}}" bindtap="default" hover-class="other-button-hover"> No. </button>
-      <button class="rsvp-btn" loading="{{loading}}" bindtap="default" hover-class="other-button-hover"> Maybe </button>
+      <view class="rsvp-btn"> Yes! </view>
+      <view class="rsvp-btn"> No. </view>
+      <view class="rsvp-btn"> Maybe </view>
     </view>
   </view>
 </view>
