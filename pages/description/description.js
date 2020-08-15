@@ -1,4 +1,6 @@
 // pages/description/description.js
+const util = require("../../utils/util")
+let app= getApp()
 Page({
 
   /**
@@ -10,11 +12,24 @@ Page({
     reviews: [],
     currentUser: null,
     review: []
+    events: [],
+    iconSize: [40, 40, 40, 40],
+    iconColor: ['red'],
+    iconType: [
+      'warn'
+    ]
   },
 
-  /**
-   * Lifecycle function--Called when page load
-   */
+  userInfoHandler(data) {
+    wx.BaaS.auth.loginWithWechat(data).then(user => {
+        app.globalData.userInfo = user;
+        this.setData({
+          currentUser: user,
+        })
+      }, err => {
+    })
+  },
+
   onLoad: function (options) {
     console.log('userInfo!', getApp().globalData.userInfo);
     this.setData({
@@ -37,10 +52,6 @@ Page({
   },
 
   
-
-  /**
-   * Lifecycle function--Called when page is initially rendered
-   */
   onReady: function () {
 
   },
@@ -52,37 +63,9 @@ Page({
 
   },
 
-  /**
-   * Lifecycle function--Called when page hide
-   */
-  onHide: function () {
 
-  },
+ 
 
-  /**
-   * Lifecycle function--Called when page unload
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * Page event handler function--Called when user drop down
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * Called when page reach bottom
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * Called when user click on the top right corner to share
-   */
   onShareAppMessage: function () {
 
   }

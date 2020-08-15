@@ -2,6 +2,23 @@
 <view class="container">
   <view class="event-name-header">Event: {{events.title}}</view>
   <view class="event-details">Date and time: {{events.date}}</view>
-  <view class="event-details">Map</view>
   <view class="event-details">Description: {{events.description}}</view>
+    <button class="map-btn" loading="{{loading}}" bindtap="default" hover-class="other-button-hover"> map </button>
+  </view>
+  <view class="event-name-header">Attendees</view>
+   <view class="event-details">We're all going...
+    <view class="attendees-icons">
+       <block wx:for="{{iconSize}}">
+        <icon type="warn" size="{{item}}" color="#FF3232"/>
+      </block>
+    </view>
+      <button class="map-btn" loading="{{loading}}" bindtap="default" hover-class="other-button-hover"> more </button>
+  </view>
+  <view class="event-details">Can you make it?
+    <view class="rsvp">
+      <button class="rsvp-btn" loading="{{loading}}" bindtap="default" hover-class="other-button-hover"> Yes! </button>
+      <button class="rsvp-btn" loading="{{loading}}" bindtap="default" hover-class="other-button-hover"> No. </button>
+      <button class="rsvp-btn" loading="{{loading}}" bindtap="default" hover-class="other-button-hover"> Maybe </button>
+    </view>
+  </view>
 </view>
