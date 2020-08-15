@@ -8,7 +8,7 @@ Page({
     date: "Date",
     event: {},
     events: [],
-    time: '12:01'
+    time: '12:01',
   },
 
   onLoad: function (options) {

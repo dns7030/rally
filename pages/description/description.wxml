@@ -2,12 +2,11 @@
 <view class="container">
 
 
-  <view class="event-name-header">Event: {{events.title}}</view>
-  <view class="event-details">Date and time: {{events.date}}</view>
+  <view class="event-name-header h1">Event: {{events.title}}</view>
+  <view class="event-details" style="color: grey">{{events.date}}</view>
   <view class="event-details">Description: {{events.description}}</view>
     <button class="map-btn" loading="{{loading}}" bindtap="default" hover-class="other-button-hover"> map </button>
   
-
   <view class="event-name-header">Attendees</view>
    <view class="event-details"><text class="h1">We're all going...</text>
     <view class="attendees-icons">

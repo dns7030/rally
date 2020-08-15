@@ -31,19 +31,24 @@ Page({
   },
 
   onLoad: function (options) {
+
     console.log('userInfo!', getApp().globalData.userInfo);
     this.setData({
       currentUser: getApp().globalData.userInfo,
     });
-    const Events = new wx.BaaS.TableObject('events');
+
+    const events = new wx.BaaS.TableObject('events');
 
     console.log({ options })
 
-    Events.get(options.id).then((res) => {
-      this.setData({
-        events: res.data,
+    events.get(options.id).then((res) => {
+      console.log('get one event',res)
+      let event = res.data
+        event.date = util.formatTime(new Date(event.date));
+          this.setData({
+          events: event
+          })
       })
-    });
 
     let query = new wx.BaaS.Query();
 
@@ -62,9 +67,6 @@ Page({
   onShow: function () {
 
   },
-
-
- 
 
   onShareAppMessage: function () {
 
