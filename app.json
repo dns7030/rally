@@ -15,7 +15,7 @@
     "color": "#353535",
     "selectedColor": "#09bb07",
     "borderStyle": "white",
-    "backgroundColor": "#ffffff",
+    "backgroundColor": "white",
     "list": [
       {
         "pagePath": "pages/user/user",
