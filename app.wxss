@@ -1,5 +1,4 @@
 /**app.wxss**/
-
 .container {
   height: 100vh;
   display: flex;
@@ -14,6 +13,11 @@
   color: white;
   background: rgba(255, 50, 50, 0.85);
   border-radius: 3px;
+}
+
+@font-face {
+  font-family: 'Playfair Display';
+  src: url('https://cloud-minapp-36536.cloud.ifanrusercontent.com/1k6qyaM23SNhFZqG.ttf');
 }
 .event-card {
   box-shadow: 4px 4px 5px rgba(120, 120, 120, 0.15);

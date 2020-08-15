@@ -1,20 +1,25 @@
 .h1 {
   size: 30px;
+  font-family: 'Playfair Display';
 }
+
 .event-name-header {
-  margin: 18% 0 7% 0;
+  font-family: 'Playfair Display';
+  margin: 50px 0px 30px 0px;
+  padding: 15px 0px 15px 0px;
   width: 206px;
-  height: 42px;
-  left: 103px;
-  top: 74px;
   background: #FF3232;
   border-radius: 2px;
-  font-family: Playfair Display;
   font-style: normal;
   font-weight: bold;
-  font-size: 18px;
-  line-height: 24px;
+  font-size: 20px;
   color: #FFFFFF;
+  text-align: center;
+}
+
+@font-face {
+  font-family: 'Playfair Display';
+  src: url('https://cloud-minapp-36536.cloud.ifanrusercontent.com/1k6qyaM23SNhFZqG.ttf');
 }
 
 .event-details {
@@ -22,30 +27,35 @@
   background: white;
   box-shadow: 4px 4px 5px rgba(120, 120, 120, 0.15);
   border-radius: 2px;
-  margin: 10px 0 0 0;
+  margin: 10px 0 15px 0;
 }
 
 .map-btn {
   width: 35px;
   display: block;
-  margin: 10px 0 5px 40px;
+  margin: 0px 10px 10px 0px;
   font-size: 11px;
   background:white;
   border: rgba(218, 218, 218, 0.3) solid 1px;
   border-radius: 50px;
   text-align: center;
-  
+}
+
+.map-div {
+  display: flex;
+  justify-content: flex-end;
 }
 
 .rsvp-btn {
-  /* width: 50px !important; */
   display: block;
-  padding: 16px 0px;
+  padding: 6px 0px 6px 0px;
   font-size: 14px;
-  box-sizing: border-box;
-  margin-left:unset;
-  margin-right:unset;
-  margin: 0 16px !important;
+  border: rgba(218, 218, 218, 0.3) solid 1px;
+  border-radius: 50px;
+  width: 80px;
+  height: 20px;
+  text-align: center;
+  margin: 10px 7px 10px 7px;
 }
 
 .attendees-icons {
@@ -55,6 +65,7 @@
 
 .rsvp {
   display: flex;
+  justify-content: center;
 }
 .button-share {
   background-color: white;
