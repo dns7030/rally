@@ -21,21 +21,13 @@
   width: 100%;
   background-color: #f6f6f6;
   margin-bottom: 20px;
-  height: 2em;
-  padding-top: 5px;
   border-radius: 5px;
+  padding: 5px;
 }
 .input-text {
   padding-left: 15px;
   font-size: 18px;
   display: block;
-}
-.date-picker-card {
-  display: flex;
-  padding-left: 15px;
-  font-size: 18px;
-  font-family: sans-serif;
-  color: grey;
 }
 
 .input-date {
@@ -43,17 +35,24 @@
   margin-top: 10px;
   width: 100%;
   justify-content: space-between;
+  font-family: sans-serif;
+  color: grey;
 }
 
-.date-picker-card {
+.date-picker {
+  background-color: #f6f6f6;
+  border-radius: 5px;
+  width: 60%;
+  margin-right: 10px;
+}
+.time-picker {
   background-color: #f6f6f6;
   border-radius: 5px;
   width: 40%;
 }
 
 .picker-date {
-  padding-left: 20px;
-  height: 3em;
+  padding: 5px;
 }
 
 .button {
