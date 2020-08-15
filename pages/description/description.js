@@ -5,7 +5,11 @@ Page({
    * Page initial data
    */
   data: {
-
+    iconSize: [40, 40, 40, 40],
+    iconColor: ['red'],
+    iconType: [
+      'warn'
+    ]
   },
 
   /**

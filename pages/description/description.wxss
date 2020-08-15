@@ -1,5 +1,5 @@
 .event-name-header {
-  margin: 20% 0 10% 0;
+  margin: 18% 0 7% 0;
   width: 206px;
   height: 42px;
   left: 103px;
@@ -11,19 +11,41 @@
   font-weight: bold;
   font-size: 18px;
   line-height: 24px;
-  display: flex;
-  align-items: center;
-  text-align: center;
   color: #FFFFFF;
 }
 
 .event-details {
-
   width: 336px;
-  height: 101px;
-  left: 39px;
-  top: 144px;
   background: #FFFFFF;
-  box-shadow: 0px 4px 12px rgba(243, 212, 212, 0.12);
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.15);
   border-radius: 2px;
+  margin: 10px 0 0 0;
+}
+
+.map-btn {
+  width: 50px !important;
+  height: 30px;
+  display: block;
+  padding: 0 0 0 0;
+  font-size: 14px;
+}
+
+.rsvp-btn {
+  /* width: 50px !important; */
+  display: block;
+  padding: 16px 0px;
+  font-size: 14px;
+  box-sizing: border-box;
+  margin-left:unset;
+  margin-right:unset;
+  margin: 0 16px !important;
+}
+
+.attendees-icons {
+  justify-content: center;
+  padding: 18px 0 0 0;  
+}
+
+.rsvp {
+  display: flex;
 }
