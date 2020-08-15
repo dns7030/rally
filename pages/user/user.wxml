@@ -13,7 +13,7 @@
       <view class="tab {{active == 0? 'active' : ''}} past p" data-tab="0" bindtap="_switchTab">Past Events</view>
     </view>
     <view wx:if="{{active==0}}" class="card">
-      <view wx:for="{{events}}" wx:key="" wx:for-item="events" class="event-card">
+      <view wx:for="{{pastEvents}}" wx:key="" wx:for-item="events" class="event-card" data-id="{{events.id}}" bindtap="showEvents">
           <view class="event-info">
             <view class="h2">{{events.title}}</view>
             <view class="p">{{events.description}}</view>
@@ -26,14 +26,14 @@
        <!-- this is tabone!!! -->
     </view>
     <view wx:if="{{active==1}}" class="card">
-      <view wx:for="{{events}}" wx:key="" wx:for-item="events" class="event-card">
-        <view class="event-info">
-          <view class="h2">{{events.title}}</view>
-          <view class="p">{{events.description}}</view>
-          <view class="month" style="color: grey">{{events.date}}
-            </view>
-        </view>
-    </view>
+      <view wx:for="{{futureEvents}}" wx:key="" wx:for-item="events" class="event-card" bindtap="showEvents">
+          <view class="event-info" data-id="{{events.id}}">
+            <view class="h2">{{events.title}}</view>
+            <view class="p">{{events.description}}</view>
+            <view class="month" style="color: grey">{{events.date}}
+              </view>
+          </view>
+      </view>
     </view>
 </view>
 
