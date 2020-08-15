@@ -4,6 +4,13 @@
   font-size: 22px;
   padding-top: 5px;
   }
+
+  .h2 {
+    font-family: 'Playfair Display';
+    font-weight: bold;
+    font-size: 14px;
+    color: #616161;
+    }
   
 .p {
   font-family: sans-serif;
@@ -18,7 +25,7 @@
   
 }
 .input-card{
-  width: 100%;
+
   background-color: #f6f6f6;
   margin-bottom: 20px;
   border-radius: 5px;
