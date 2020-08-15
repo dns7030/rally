@@ -6,12 +6,16 @@
       <image src="/pages/images/share.png" style="width: 27px; height: 27px"></image>
     </button>
   </view>
-  <view class="event-name-header h1">Event: {{events.title}}</view>
-  <view class="event-details" style="color: grey">{{events.date}}</view>
-  <view class="event-details">Description: {{events.description}}</view>
-    <button class="map-btn" loading="{{loading}}" bindtap="default" hover-class="other-button-hover"> map </button>
   
-  <view class="event-name-header">Attendees</view>
+  <view class="event-name-header h1">Event: {{events.title}}</view>
+  <view class="event-name-header">{{events.title}}</view>
+  <view class="event-details" style="color: grey">{{events.date}}</view>
+  <view class="event-details">{{events.description}}
+    <view class="map-div">
+     <view class="map-btn" loading="{{loading}}" bindtap="default" hover-class="other-button-hover"> map </view>
+    </view>
+  </view>
+  <view class="event-name-header"></view>
    <view class="event-details"><text class="h1">We're all going...</text>
     <view class="attendees-icons">
        <block wx:for="{{iconSize}}">

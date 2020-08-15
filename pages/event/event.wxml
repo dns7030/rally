@@ -4,7 +4,7 @@
   <view class="create-event">
   <form bindsubmit="formSubmit"> 
     <view class="input-card">
-        <input name="title" class="input-text" placeholder="Title" >Title</input>
+        <input name="title" class="input-text" placeholder="Title">Title</input>
     </view>
     <view class="input-card">
       <input name="description" auto-focus="true" class="input-text" placeholder="Description">Description</input>
@@ -14,7 +14,7 @@
     </view> -->
 
     <view class="h1">When?</view>
-    <view class="p">More than one option if you can’t decide</view>
+    <view class="h2">More than one option if you can’t decide</view>
     <image class="gif-time" src=" /pages/images/time-think.gif"></image>
     <!-- choose date & time -->
     <view class="input-date">
