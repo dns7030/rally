@@ -8,16 +8,17 @@
     <button class="map-btn" loading="{{loading}}" bindtap="default" hover-class="other-button-hover"> map </button>
   
   <view class="event-name-header">Attendees</view>
-   <view class="event-details h1">We're all going...
+   <view class="event-details"><text class="h1">We're all going...</text>
     <view class="attendees-icons">
        <block wx:for="{{iconSize}}">
         <icon type="warn" size="{{item}}" color="#FF3232"/>
       </block>
-    
-      <view class="map-btn" text align="right"> more </view>
+    <view class="map-div">
+      <view class="map-btn"> more </view>
+    </view>
     </view>
   </view>
-  <view class="event-details h1">Can you make it?
+  <view class="event-details"><text class="h1">Can you make it?</text>
     <view class="rsvp">
       <view class="rsvp-btn"> Yes! </view>
       <view class="rsvp-btn"> No. </view>

@@ -12,6 +12,7 @@ Page({
     reviews: [],
     currentUser: null,
     review: [],
+    events: [],
     iconSize: [40, 40, 40, 40],
     iconColor: ['red'],
     iconType: [
