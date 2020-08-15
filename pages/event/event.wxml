@@ -8,7 +8,7 @@
         <input name="title" class="input-text" placeholder="Title" >Title</input>
     </view>
     <view class="input-card">
-      <input name="description" class="input-text" placeholder="Description">Description</input>
+      <input name="description" auto-focus="true" class="input-text" placeholder="Description">Description</input>
     </view>
     <!-- <view class="input-card">
       <input name="Place" class="input-text" placeholder="Place">Place</input>
