@@ -8,7 +8,7 @@ Page({
 
     date: '2020-09-01', 
     event: {},
-    events: []
+    events: [],
     time: '12:01'
   },
 
