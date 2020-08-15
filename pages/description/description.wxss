@@ -56,3 +56,7 @@
 .rsvp {
   display: flex;
 }
+.button-share {
+  background-color: white;
+  margin-left: 80%;
+}

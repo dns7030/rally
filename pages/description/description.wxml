@@ -1,7 +1,11 @@
 
 <view class="container">
 
-
+  <view>
+    <button bindtap="handleTapShareButton" class="button-share" open-type="share" type="share" role="button" aria-disabled="false" style="margin-left: 80%">
+      <image src="/pages/images/share.png" style="width: 27px; height: 27px"></image>
+    </button>
+  </view>
   <view class="event-name-header h1">Event: {{events.title}}</view>
   <view class="event-details" style="color: grey">{{events.date}}</view>
   <view class="event-details">Description: {{events.description}}</view>
