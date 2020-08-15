@@ -1,10 +1,11 @@
 
 <view class="container">
-  <view class="event-name-header">Bday Dinner {{events.title}}</view>
-  <view class="event-details">Date and time: {{events.date}}
+  <view class="event-name-header">Event: {{events.title}}</view>
+  <view class="event-details">Date and time: {{events.date}}</view>
+  <view class="event-details">Description: {{events.description}}</view>
     <button class="map-btn" loading="{{loading}}" bindtap="default" hover-class="other-button-hover"> map </button>
   </view>
-  <view class="event-details">Description: {{events.description}}</view>
+
   <view class="event-name-header">Attendees</view>
    <view class="event-details">We're all going...
     <view class="attendees-icons">
@@ -21,4 +22,3 @@
       <button class="rsvp-btn" loading="{{loading}}" bindtap="default" hover-class="other-button-hover"> Maybe </button>
     </view>
   </view>
-</view>

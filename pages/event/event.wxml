@@ -113,7 +113,7 @@
     <!-- button -->
 
     <view class="button">
-        <button formType="submit" class="buy-btn">Post</button> 
+        <button bindtap="toEvent" formType="submit" class="buy-btn">Post</button> 
     </view>    
   </form>
   </view>

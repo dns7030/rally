@@ -7,6 +7,11 @@ Page({
    * Page initial data
    */
   data: {
+    restaurant: {},
+    events: [],
+    reviews: [],
+    currentUser: null,
+    review: [],
     events: [],
     iconSize: [40, 40, 40, 40],
     iconColor: ['red'],
@@ -26,22 +31,28 @@ Page({
   },
 
   onLoad: function (options) {
-    console.log('get events', options)
-    const app = getApp();
 
-    console.log(app.globalData.userInfo);
-    this.setData({currentUser: app.globalData.userInfo});
+    console.log('userInfo!', getApp().globalData.userInfo);
+    this.setData({
+      currentUser: getApp().globalData.userInfo,
+    });
+    const Events = new wx.BaaS.TableObject('events');
 
-    const events = new wx.BaaS.TableObject('events');
-    events.get(options.id).then((res)=>{
-      console.log('restaurant_detail', res);
-      
+    console.log({ options })
+
+    Events.get(options.id).then((res) => {
       this.setData({
-        events: res.data
+        events: res.data,
       })
     });
+
+    let query = new wx.BaaS.Query();
+
+    query.compare('events_id', '=', options.id);
+
   },
 
+  
   onReady: function () {
 
   },
@@ -52,9 +63,6 @@ Page({
   onShow: function () {
 
   },
-
-
- 
 
   onShareAppMessage: function () {
 
