@@ -29,6 +29,7 @@ Page({
     console.log(app.globalData.userInfo);
     this.setData({currentUser: app.globalData.userInfo});
     const events = new wx.BaaS.TableObject('events');
+    
     events.find().then((res) => {
       console.log('res',res)
       //pull event data
@@ -73,7 +74,6 @@ Page({
     }); 
 
   },
-
   userInfoHandler(data) {
     const app = getApp();
     wx.BaaS.auth.loginWithWechat(data).then(user => {
@@ -117,6 +117,33 @@ Page({
    */
   // onShow: function () {
 
+  //     const app = getApp();
+  //     console.log(app.globalData.userInfo);
+  //     this.setData({currentUser: app.globalData.userInfo});
+  //     const events = new wx.BaaS.TableObject('events');
+  //     const restaurants = new wx.BaaS.TableObject('restaurants');
+  //     events.find().then((res) => {
+  //       console.log('res',res)
+  //       //pull event data
+  //       let events = res.data.objects
+  //       //define event
+  //       let formatedEvents = []
+  //       //store event with time
+  //       events.forEach((event)=>{
+  //         event.date = util.formatTime(new Date(event.date))
+  //         formatedEvents.push(event)
+  //       })
+  //       this.setData ({
+  //         events: formatedEvents
+  //       })
+  //     }); 
+  //     restaurants.find().then((res) => {
+  //       console.log('res',res)
+  //       this.setData ({
+  //         restaurants: res.data.objects
+  //       })
+  //     });  
+  // },
 
   onHide: function () {
 
