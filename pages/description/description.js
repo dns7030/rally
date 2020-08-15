@@ -7,7 +7,12 @@ Page({
    * Page initial data
    */
   data: {
-    events: []
+    events: [],
+    iconSize: [40, 40, 40, 40],
+    iconColor: ['red'],
+    iconType: [
+      'warn'
+    ]
   },
 
   userInfoHandler(data) {
