@@ -16,34 +16,38 @@
   color: #FFFFFF;
   text-align: center;
 }
-
-@font-face {
-  font-family: 'Playfair Display';
-  src: url('https://cloud-minapp-36536.cloud.ifanrusercontent.com/1k6qyaM23SNhFZqG.ttf');
+.event-intro {
+  display: flex;
+  flex-direction: column;
+  margin-top: 55px;
+  text-align: center;
 }
-
+.description {
+  width: 50vh;
+  text-align: center;
+}
 .event-details {
-  width: 336px;
+  width: 100%;
   background: white;
-  box-shadow: 4px 4px 5px rgba(120, 120, 120, 0.15);
-  border-radius: 2px;
   margin: 10px 0 15px 0;
 }
-
+.map-div {
+  display: flex;
+  justify-content: space-between;
+  width: 75%;
+  margin-top: 15px;
+}
 .map-btn {
-  width: 35px;
   display: block;
-  margin: 0px 10px 10px 0px;
-  font-size: 11px;
-  background:white;
-  border: rgba(218, 218, 218, 0.3) solid 1px;
+  font-size: 14px;
+  padding: 3px 12px;
+  background: #f6f6f6;
   border-radius: 50px;
   text-align: center;
 }
-
-.map-div {
-  display: flex;
-  justify-content: flex-end;
+.more-btn {
+  margin-left: 116%;
+  margin-top: 0; 
 }
 
 .rsvp-btn {
@@ -69,5 +73,8 @@
 }
 .button-share {
   background-color: white;
-  margin-left: 80%;
+}
+
+.button {
+  background-color: white;
 }

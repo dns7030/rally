@@ -2,12 +2,12 @@
 .card-product {
   /* background-color: white;  */
   overflow: hidden;
-  height: 100px;
+  height: inherit;
   display: flex;
   padding: 15px;
   box-shadow: none;
   align-items: center;
-  margin-bottom: 20px;
+  flex-direction: column;
 }
 .userImage {
   height: 100px;
@@ -15,6 +15,9 @@
   position: absolute;
   background-color: lavender;
   border-radius: 50%;
+}
+.UserName{
+  padding-top: 110px;
 }
 .tabs {
   width: 100%;  
@@ -60,4 +63,56 @@
 .card {
   padding: 15px 0 15px 15px;
   display: row;
+}
+.month {
+  width: 60px;
+  position: relative;
+}
+.description {
+  color: grey;
+}
+/* Scroll week calendar */
+.TimeOrder{
+  width:1036rpx;
+  height:106rpx;
+  border-top:1px solid #eee;
+  border-bottom:1px solid #eee;
+  overflow-x: auto;
+}
+.coloBack{
+  color:#003a70;
+  border-bottom:2px solid #003a70
+}
+.scroll-header{
+  display: flex;
+  white-space: nowrap;
+  margin: 20px 0;
+}
+.scroll-header .TimeOrderBox{
+  height:120rpx;
+  width:160rpx;
+  display: inline-block;
+  background:#fff;
+}
+.TimeOrderText{
+  width:100%;
+  display: block;
+  font-size:14px;
+  text-align: center;
+  flex-direction: column;
+  font-family: sans-serif;
+}
+.weekText {
+  font-weight: bold;
+  font-variant-caps: all-petite-caps;
+}
+.weekend-calendar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.button {
+  width: 30px;
+  background-color: white;
 }

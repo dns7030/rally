@@ -3,15 +3,13 @@ const util = require("../../utils/util")
 let app= getApp()
 Page({
 
-  /**
-   * Page initial data
-   */
   data: {
     currentUser: null,
     events: {},
     active: 1,
     futureEvents: [],
-    pastEvents: []
+    pastEvents: [],
+    dayList: []
   },
 
   showEvents: function(event) {
@@ -29,13 +27,13 @@ Page({
     console.log(app.globalData.userInfo);
     this.setData({currentUser: app.globalData.userInfo});
     const events = new wx.BaaS.TableObject('events');
+
     
     events.find().then((res) => {
       console.log('res',res)
       //pull event data
       let events = res.data.objects
       const now = new Date().getTime();
-
       console.log('date now', now);
 
       const pastEvents = events.filter(event => {
@@ -61,19 +59,25 @@ Page({
       events.forEach((event)=>{
         // console.log('event.date', event)
         event.date = event.date.map(date => {
-          return util.formatTime(new Date(date));
+          return util.formatDate(new Date(date));
         });
-        // event.date = util.formatTime(new Date(event.date))
+
+        event.time = event.date.map(time => {
+          return util.formatTime(new Date(time));
+        });
         formatedEvents.push(event)
       })
+
       this.setData ({
         events: formatedEvents,
         futureEvents,
         pastEvents
+        
       })
-    }); 
 
+    }); 
   },
+
   userInfoHandler(data) {
     const app = getApp();
     wx.BaaS.auth.loginWithWechat(data).then(user => {
@@ -112,38 +116,52 @@ Page({
     })
   },
 
-  /**
-   * Lifecycle function--Called when page show
-   */
-  // onShow: function () {
+  onShow: function () {
 
-  //     const app = getApp();
-  //     console.log(app.globalData.userInfo);
-  //     this.setData({currentUser: app.globalData.userInfo});
-  //     const events = new wx.BaaS.TableObject('events');
-  //     const restaurants = new wx.BaaS.TableObject('restaurants');
-  //     events.find().then((res) => {
-  //       console.log('res',res)
-  //       //pull event data
-  //       let events = res.data.objects
-  //       //define event
-  //       let formatedEvents = []
-  //       //store event with time
-  //       events.forEach((event)=>{
-  //         event.date = util.formatTime(new Date(event.date))
-  //         formatedEvents.push(event)
-  //       })
-  //       this.setData ({
-  //         events: formatedEvents
-  //       })
-  //     }); 
-  //     restaurants.find().then((res) => {
-  //       console.log('res',res)
-  //       this.setData ({
-  //         restaurants: res.data.objects
-  //       })
-  //     });  
-  // },
+    var myDate = new Date();// hehe
+    myDate.toLocaleDateString();
+    var month = myDate.getMonth() + 1;
+    var time = myDate.getFullYear() + '年' + month + '月' + myDate.getDate() + '日';
+
+    var total = 1;// 个数
+    var dayList = [];
+    const date = [];
+    
+    dayList.push({
+        'day': myDate.getDate(),
+        'month': myDate.getMonth() + total,
+        'week': toWeekDay(myDate.getDay()),
+        'year': myDate.getFullYear()
+    });
+    for (var i = 0; i < 6; i++) {
+        myDate.setDate(myDate.getDate() + total);
+     
+        dayList.push({
+            'day': myDate.getDate(),
+            'month': myDate.getMonth() + total,
+            'week': toWeekDay(myDate.getDay()),
+            'year': myDate.getFullYear()
+        });
+    }
+    
+    this.setData({
+        dayList: dayList
+    });
+    function toWeekDay(weekDay) {
+      switch (weekDay) {
+          case 1: return 'Mon'; break;
+          case 2: return 'Tue'; break;
+          case 3: return 'Wed'; break;
+          case 4: return 'Thu'; break;
+          case 5: return 'Fri'; break;
+          case 6: return 'Sat'; break;
+          case 0: return 'Sun'; break;
+          default: break;
+      }
+      return 'seven days';
+  
+  }
+},
 
   onHide: function () {
 
@@ -152,23 +170,6 @@ Page({
 
   },
 
-  /**
-   * Page event handler function--Called when user drop down
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * Called when page reach bottom
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * Called when user click on the top right corner to share
-   */
   onShareAppMessage: function () {
 
   }
