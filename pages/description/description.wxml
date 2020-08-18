@@ -1,15 +1,12 @@
 <view class="container">
-  <view class="event-intro">
-    <view class="h1 title">Event: {{events.title}}</view>
-    <view class="p description ">Description: {{events.description}}</view>
-    <view class="h3" style="padding-top: 20px">Date: {{events.date}}</view>
+  <view class="event-name-header">{{events.title}}</view>
+  <view class="event-details">{{events.description}}
+    <view class="map-div">
+     <view class="map-btn" loading="{{loading}}" bindtap="default" hover-class="other-button-hover"> map </view>
+    </view>
   </view>
-  <view class="map-div" style="display: flex">
-    <view class="address">Here will be address{{address}}</view>
-    <view class="map-btn" loading="{{loading}}" bindtap="map" hover-class="other-button-hover"> map </view>
-  </view>
-   <view class="event-details">
-     <text class="h1">{{usernumber}} friends are going...</text>
+  <view class="event-date" style="color: grey">{{events.date}}</view>
+   <view class="event-details"><text class="h1">We're all going...</text>
     <view class="attendees-icons">
        <block wx:for="{{iconSize}}">
         <icon type="warn" size="{{item}}" color="#FF3232"/>
@@ -22,8 +19,8 @@
   <view class="event-details">
     <text class="h1">Can you make it?</text>
     <view class="rsvp">
-      <view class="rsvp-btn" bindtap="yesButton"> Yes! </view>
-      <view class="rsvp-btn" bindtap="noButton"> No. </view>
+      <view class="rsvp-btn" hover-class="rsvp-btn-hover" bindtap="yesButton"> Yes! </view>
+      <view class="rsvp-btn" hover-class="rsvp-btn-hover" bindtap="noButton"> No. </view>
     </view>
   </view>
 <view class="creator-button">
