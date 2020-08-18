@@ -7,7 +7,7 @@
     </view>
   </view>
   <view class="event-date" style="color: grey">{{events.date}}</view>
-   <view class="event-details"><text class="h1">We're all going...</text>
+   <view class="event-details"><text class="h1">0 friends confirmed</text>
     <view class="attendees-icons">
        <block wx:for="{{iconSize}}">
         <icon type="warn" size="{{item}}" color="#FF3232"/>
@@ -17,11 +17,11 @@
     </view>
     </view>
   </view>
-  <view class="event-details"><text class="h1">Can you make it?</text>
+  <view class="event-details" >
     <view class="rsvp">
-      <view class="rsvp-btn" hover-class="rsvp-btn-hover" bindtap="yesButton"> Yes </view>
-      <view class="rsvp-btn" hover-class="rsvp-btn-hover" bindtap="noButton"> No </view>
-      
+      <view class="rsvp-btn" hover-class="rsvp-btn-hover"><image class="show-icon" src="/pages/images/edit-01.png"></image><text class="button-text">Edit</text> </view>
+      <view class="rsvp-btn" hover-class="rsvp-btn-hover"><image class="cancel" src="/pages/images/cancel.png"></image><text class="button-text">Cancel</text></view>
+      <view class="rsvp-btn" hover-class="rsvp-btn-hover"><image class="show-icon" src="/pages/images/share.png"></image><text class="button-text">Share</text></view>
     </view>
   </view>
 </view>
