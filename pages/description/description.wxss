@@ -16,28 +16,37 @@
   color:black;
   text-align: center;
 }
-
-@font-face {
-  font-family: 'Playfair Display';
-  src: url('https://cloud-minapp-36536.cloud.ifanrusercontent.com/1k6qyaM23SNhFZqG.ttf');
+.event-intro {
+  display: flex;
+  flex-direction: column;
+  margin-top: 55px;
+  text-align: center;
 }
-
+.description {
+  width: 50vh;
+  text-align: center;
+}
 .event-details {
-  width: 336px;
+  width: 100%;
   background: white;
   box-shadow: 4px 4px 5px rgba(172, 172, 172, 0.15);
   border-radius: 2px;
   margin: 10px 0 15px 0;
   padding: 15px 5px 0 5px;
 }
-
+.map-div {
+  display: flex;
+  justify-content: space-between;
+  width: 75%;
+  margin-top: 15px;
+}
 .event-date {
   width: 336px;
   background: white;
   margin: 10px 0 15px 0;
 }
+
 .map-btn {
-  width: 35px;
   display: block;
   margin: 8px 10px 10px 0px;
   font-size: 11px;
@@ -46,10 +55,9 @@
   border-radius: 50px;
   text-align: center;
 }
-
-.map-div {
-  display: flex;
-  justify-content: flex-end;
+.more-btn {
+  margin-left: 116%;
+  margin-top: 0; 
 }
 
 .rsvp-btn {
@@ -86,4 +94,11 @@
 .rsvp {
   display: flex;
   justify-content: center;
+}
+.button-share {
+  background-color: white;
+}
+
+.button {
+  background-color: white;
 }

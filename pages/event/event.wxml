@@ -1,74 +1,77 @@
 <!--pages/event/event.wxml-->
 <view class="container">
-
   <view class="h1" style="margin-top: 20px">Let's Make Plans</view>
   <view class="create-event">
   <form bindsubmit="formSubmit"> 
     <view class="input-card">
         <input name="title" class="input-text" placeholder="Title">Title</input>
     </view>
+
     <view class="input-card">
-      <input name="description" auto-focus="true" class="input-text" placeholder="Description">Description</input>
+      <textarea name="description" class="input-text" placeholder="Description" cursor="auto" style="height: 3em"></textarea>
     </view>
+
     <!-- <view class="input-card">
       <input name="Place" class="input-text" placeholder="Place">Place</input>
     </view> -->
 
     <view class="h1">When?</view>
     <view class="h2">More than one option if you can’t decide</view>
-    <image class="gif-time" src=" /pages/images/time-think.gif"></image>
+    <image class="gif" src=" /pages/images/time-think.gif"></image>
     <!-- choose date & time -->
-    <view class="input-date">
+    
+    <view class="input-date 1">
         <view class="date-picker">
           <view class="picker-date">
-            <picker name="date1" mode="date" value="{{date}}" start="2020-09-01" end="2030-09-01" bindchange="bindDateChange">
+            <picker name="date1" mode="date" value="{{date}}" start="2020-09-01" end="2030-09-01" bindchange="bindDateChange1">
               <view wx:if="date">
-                <view>{{date}}</view>
+                <view>{{date1}}</view>
               </view>
             </picker>
         </view>
       </view>
       <view class="time-picker">
         <view class="picker-date time">
-          <picker mode="time" value="{{time}}" start="09:01" end="21:01" bindchange="bindTimeChange">
-            <view class="weui-input">{{time}}</view>
+          <picker name="time1" mode="time" value="{{time}}" start="09:01" end="21:01" bindchange="bindTimeChange1">
+            <view class="weui-input">{{time1}}</view>
           </picker>
         </view>
       </view>
       
     </view>
-    <view class="input-date">
+    <view class="input-date 2">
       <view class="date-picker">
         <view class="picker-date">
-          <picker name="date1" mode="date" value="{{date}}" start="2020-09-01" end="2030-09-01" bindchange="bindDateChange">
+          <picker name="date2" mode="date" value="{{date}}" start="2020-09-01" end="2030-09-01" bindchange="bindDateChange2">
             <view wx:if="date">
-              <view>{{date}}</view>
+              <view>{{date2}}</view>
             </view>
           </picker>
       </view>
     </view>
     <view class="time-picker">
       <view class="picker-date time">
-        <picker mode="time" value="{{time}}" start="09:01" end="21:01" bindchange="bindTimeChange">
-          <view class="weui-input">{{time}}</view>
+        <picker name="time2" mode="time" value="{{time}}" start="09:01" end="21:01" bindchange="bindTimeChange2">
+          <view class="weui-input">{{time2}}</view>
         </picker>
       </view>
     </view>
     </view>
-    <view class="input-date">
+
+    <view class="input-date 3">
       <view class="date-picker">
         <view class="picker-date">
-          <picker name="date1" mode="date" value="{{date}}" start="2020-09-01" end="2030-09-01" bindchange="bindDateChange">
+          <picker name="date3" mode="date" value="{{date}}" start="2020-09-01" end="2030-09-01" bindchange="bindDateChange3">
             <view wx:if="date">
-              <view>{{date}}</view>
+              <view>{{date3}}</view>
             </view>
           </picker>
       </view>
     </view>
     <view class="time-picker">
       <view class="picker-date time">
-        <picker mode="time" value="{{time}}" start="09:01" end="21:01" bindchange="bindTimeChange">
-          <view class="weui-input">{{time}}</view>
+        <picker name="time3" mode="time" value="{{time}}" start="09:01" end="21:01" bindchange="bindTimeChange3">
+          <view class="weui-input">{{time3}}</view>
         </picker>
       </view>
     </view>
