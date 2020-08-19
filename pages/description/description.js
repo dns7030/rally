@@ -16,15 +16,15 @@ Page({
     ],
   },
 
-  userInfoHandler(data) {
-    wx.BaaS.auth.loginWithWechat(data).then(user => {
-        app.globalData.userInfo = user;
-        this.setData({
-          currentUser: user,
-        })
-      }, err => {
-    })
-  },
+  // userInfoHandler(data) {
+  //   wx.BaaS.auth.loginWithWechat(data).then(user => {
+  //       app.globalData.userInfo = user;
+  //       this.setData({
+  //         currentUser: user,
+  //       })
+  //     }, err => {
+  //   })
+  // },
 
   onLoad: function (options) {
 
@@ -78,24 +78,24 @@ Page({
       })
       const vote = res.data
 
-      // wx.reLaunch({
-      //   url: '/pages/user/user',
-      // })
+      wx.reLaunch({
+        url: '/pages/user/user',
+      })
 
     })
 
   },
 
-  // deleteClick:function(event){
-  //   console.log('deleteEvent', event)
-  //   const page = this;
-  //   let id = event.currentTarget.dataset.deleteid;
+  deleteClick:function(event){
+    console.log('deleteEvent', event)
+    const page = this;
+    let id = event.currentTarget.dataset.deleteid;
 
-  //   let events = new wx.BaaS.TableObject('events')
-  //   events.delete(events.id).then(() => {
-  //     page.delete(events.id, null)
-  //   });
-  //  },
+    let events = new wx.BaaS.TableObject('events')
+    events.delete(events.id).then(() => {
+      page.delete(events.id, null)
+    });
+   },
 
   onShow: function () {
 
