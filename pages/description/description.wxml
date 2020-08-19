@@ -19,7 +19,8 @@
   <view class="event-details">
     <text class="h1">Can you make it?</text>
     <view class="rsvp">
-      <view class="rsvp-btn" hover-class="rsvp-btn-hover" bindtap="yesButton"> Yes! </view>
+      <view class="rsvp-btn" hover-class="rsvp-btn-hover" data-id="{{events.id}}" bindtap="yesButton" formType="submit">Yes!</view>
+      
       <view class="rsvp-btn" hover-class="rsvp-btn-hover" bindtap="noButton"> No. </view>
     </view>
   </view>
@@ -31,7 +32,7 @@
       </button>
     </view>
     <view class="cancel-button">
-      <button bindtap="cancelButton" type="cancel" role="button" aria-disabled="false">Cancel</button>
+      <button bindtap="deleteClick" type="delete" role="button" aria-disabled="false">Cancel</button>
       <!-- <view data-deleteid="{{events.id}}" bindtap="deleteClick">Cancel</view> -->
     </view>
     <view class="share-button">
