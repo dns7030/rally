@@ -68,10 +68,19 @@ Page({
     }
 
     vote.set(data);
-    console.log('checking data', event)
 
     vote.set(data).save().then((res) => {
-      console.log('save vote data', res);
+      wx.showToast({
+        title: 'See you soon!',
+        duration: 3000,
+        icon: 'success',
+        mask: true,
+      })
+      const vote = res.data
+
+      // wx.reLaunch({
+      //   url: '/pages/user/user',
+      // })
 
     })
 
