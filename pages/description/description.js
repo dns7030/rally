@@ -56,51 +56,46 @@ Page({
 
   yesButton: function (event) {
     console.log('yes button checking', event)
-    const data = event.currentTarget.dataset;
-    let eventID = this.data.events.id
-    let userID = this.data.currentUser.id
+    // const data = event.currentTarget.dataset;
 
+    let tableName = 'votes'
     let votes = new wx.BaaS.TableObject('votes');
     let vote = votes.create();
 
-    
+    const data = {
+      event_id: this.data.events.id,
+      user_id: this.data.currentUser.id
+    }
+
+    vote.set(data);
+
+    vote.set(data).save().then((res) => {
+      wx.showToast({
+        title: 'See you soon!',
+        duration: 3000,
+        icon: 'success',
+        mask: true,
+      })
+      const vote = res.data
+
+      // wx.reLaunch({
+      //   url: '/pages/user/user',
+      // })
+
+    })
+
   },
 
-  deleteClick:function(event){
-    console.log('deleteEvent', event)
-    let id = event.currentTarget.dataset.deleteid;
-   
-    wx.request({
-      url: 'https://shop.yunapply.com/home/shipping/delAddress?id='+id,
-     data: {},
-     method: 'GET',
-     success: function(res){
-      if(res.data.status == 0){
+  // deleteClick:function(event){
+  //   console.log('deleteEvent', event)
+  //   const page = this;
+  //   let id = event.currentTarget.dataset.deleteid;
 
-       wx.showToast({
-        title: res.data.info,
-        icon: 'loading',
-        duration: 1500
-       })
-      }else{
-
-       wx.showToast({
-        title: res.data.info,
-        icon: 'success',
-        duration: 1000
-       })
-      }
-     },
-   
-     fail:function(){
-         wx.showToast({
-          title: '服务器网络错误!',
-          icon: 'loading',
-          duration: 1500
-         })
-        }
-    })
-   },
+  //   let events = new wx.BaaS.TableObject('events')
+  //   events.delete(events.id).then(() => {
+  //     page.delete(events.id, null)
+  //   });
+  //  },
 
   onShow: function () {
 
