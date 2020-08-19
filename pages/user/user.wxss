@@ -1,6 +1,10 @@
 /* pages/user/user.wxss */
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 .card-product {
-  /* background-color: white;  */
   overflow: hidden;
   height: inherit;
   display: flex;
@@ -8,6 +12,21 @@
   box-shadow: none;
   align-items: center;
   flex-direction: column;
+}
+.event-card {
+  box-shadow: 0 -1px 0 rgba(120, 120, 120, 0.3);
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  width: 90%;
+  margin: 10px 0;
+  color: black;
+}
+.date-card {
+  margin-left: 67%;
+  position: relative;
+  font-size: 18px;
+  font-family: sans-serif;
 }
 .userImage {
   height: 100px;
@@ -22,6 +41,7 @@
 .tabs {
   width: 100%;  
   justify-items: center;
+  margin-top: 15px;
 }
 .tab-menu {
   display: flex;
@@ -60,17 +80,18 @@
   background-color: #FF3232;
   border-radius: 50%;
 }
-.card {
-  padding: 15px 0 15px 15px;
-  display: row;
+.event-info {
+  display: flex;
+  flex-direction: column;
 }
-.month {
-  width: 60px;
-  position: relative;
-}
+
+
+
 .description {
   color: grey;
 }
+
+
 /* Scroll week calendar */
 .TimeOrder{
   width:1036rpx;

@@ -1,4 +1,6 @@
 // pages/event/event.js
+const app = getApp()
+
 Page({
 
   /**
@@ -16,9 +18,15 @@ Page({
   },
 
   onLoad: function (options) {
-
   },
 
+
+  date: function(e) {
+    console.log(date0, e)
+    this.setData({
+      date: e.detail.value 
+    })
+  },
   bindDateChange1: function(e) {
     console.log('bindDateChange 1', e);
     this.setData({
@@ -37,14 +45,6 @@ Page({
         date3: e.detail.value
     })
   },
-
-  date: function(e) {
-    console.log(date0, e)
-    this.setData({
-      date: e.detail.value 
-    })
-  },
-
   bindTimeChange1(e) {
     this.setData({
       time1: e.detail.value
@@ -61,10 +61,18 @@ Page({
     })
   },
   
-
+  
   formSubmit: function (event) {
     console.log('formSubmit', event);
-  
+
+    let currentUser = this.data.currentUser
+
+    if (!currentUser) {
+      wx.switchTab({
+        url: '/pages/user/user' // logged in
+      });
+    };
+
     console.log(event.detail.value.title)
     console.log(event.detail.value.description)
 
@@ -115,11 +123,4 @@ Page({
   },
 
 
-  onReady: function () {
-
-  },
-
-  onShow: function () {
-
-  },
 })

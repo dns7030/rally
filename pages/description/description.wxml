@@ -1,9 +1,9 @@
 <view class="container">
+  <image class="gif" src="/pages/images/celebration.gif"></image>
   <view class="event-name-header">{{events.title}}</view>
-  <view class="event-details">{{events.description}}
-    <view class="map-div">
-     <view class="map-btn" loading="{{loading}}" bindtap="default" hover-class="other-button-hover"> map </view>
-    </view>
+  <view class="event-details">{{events.description}}</view>
+  <view class="map-div">
+    <view class="map-btn" loading="{{loading}}" bindtap="default" hover-class="other-button-hover"> map </view>
   </view>
   <view class="event-date" style="color: grey">{{events.date}}</view>
    <view class="event-details"><text class="h1">We're all going...</text>
