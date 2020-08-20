@@ -1,9 +1,13 @@
 <view class="container">
   <image class="gif" src="/pages/images/celebration.gif"></image>
   <view class="event-name-header">{{events.title}}</view>
-  <view class="event-details">{{events.description}}</view>
-  <view class="map-div">
-    <view class="map-btn" loading="{{loading}}" bindtap="default" hover-class="other-button-hover"> map </view>
+  <view class="event-details">{{events.description}}
+    <!-- map start -->
+    <view class="map-div">
+    <map id="myMap" show-location />
+     <view class="map-btn" loading="{{loading}}" bindtap="openLocation" hover-class="other-button-hover"> map </view>
+    </view>
+    <!-- map end -->
   </view>
   <view class="event-date" style="color: grey">{{events.date}}</view>
    <view class="event-details"><text class="h1">We're all going...</text>
@@ -19,9 +23,15 @@
   <view class="event-details">
     <text class="h1">Can you make it?</text>
     <view class="rsvp">
+<<<<<<< HEAD
+      <view class="rsvp-btn" hover-class="rsvp-btn-hover" bindtap="yesButton"> Yes </view>
+      <view class="rsvp-btn" hover-class="rsvp-btn-hover" bindtap="noButton"> No </view>
+
+=======
       <view class="rsvp-btn" hover-class="rsvp-btn-hover" data-id="{{events.id}}" bindtap="yesButton" formType="submit">Yes!</view>
-      
+
       <view class="rsvp-btn" hover-class="rsvp-btn-hover" bindtap="noButton"> No. </view>
+>>>>>>> master
     </view>
   </view>
 <view class="creator-button">
