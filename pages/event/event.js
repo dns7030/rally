@@ -71,7 +71,6 @@ Page({
    
   formSubmit: function (event) {
     console.log('formSubmit', event);
-
     let currentUser = this.data.currentUser
 
     if (!currentUser) {
@@ -95,6 +94,7 @@ Page({
 
     let events = new wx.BaaS.TableObject('events');
     let newEvent = events.create();
+  
     const data = {
       // restaurants_id: this.data.restaurants.id,
       title: title,
@@ -108,15 +108,15 @@ Page({
       console.log('save res', res);
       const newEvents = this.data.events;
       newEvents.push(res.data);
+      
       this.setData({
         event: newEvents,
+
       })
 
-       
-      
-      wx.navigateTo({
-        url: `/pages/description/description?id=${newEvents[0]._id}`,
-      })
+      // wx.navigateTo({
+      //   url: `/pages/description/description?id=${newEvents[0]._id}`,
+      // })
 
       console.log('new events', newEvents[0]._id)
     })

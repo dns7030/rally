@@ -44,10 +44,6 @@
         <image style="width: 27px; height: 27px" src="/pages/images/edit-01.png"></image>
       </button>
       
-      <!-- <button bindtap="editClick" open-type="edit" type="mini-btn" role="button" aria-disabled="false" class="creator-btn">
-        <image style="width: 27px; height: 27px" src="/pages/images/edit-01.png"></image>
-      </button> -->
-
       <button wx:if="{{currentUser.id == events.created_by}}" bindtap="deleteClick" type="mini-btn" role="button" aria-disabled="false" class="creator-btn">
         <image style="width: 27px; height: 27px" src="/pages/images/cancel.png"></image>
       </button>
