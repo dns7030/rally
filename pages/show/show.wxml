@@ -1,0 +1,27 @@
+
+<view class="container">
+  <view class="event-name-header">{{events.title}}</view>
+  <view class="event-details">{{events.description}}
+    <view class="map-div">
+     <view class="map-btn" loading="{{loading}}" bindtap="default" hover-class="other-button-hover"> map </view>
+    </view>
+  </view>
+  <view class="event-date" style="color: grey">{{events.date}}</view>
+   <view class="event-details"><text class="h1">0 friends confirmed</text>
+    <view class="attendees-icons">
+       <block wx:for="{{iconSize}}">
+        <icon type="warn" size="{{item}}" color="#FF3232"/>
+      </block>
+    <view class="map-div">
+      <view class="map-btn"> more </view>
+    </view>
+    </view>
+  </view>
+  <view class="event-details" >
+    <view class="rsvp">
+      <view class="rsvp-btn" hover-class="rsvp-btn-hover"><image class="show-icon" src="/pages/images/edit-01.png"></image><text class="button-text">Edit</text> </view>
+      <view class="rsvp-btn" hover-class="rsvp-btn-hover"><image class="cancel" src="/pages/images/cancel.png"></image><text class="button-text">Cancel</text></view>
+      <view class="rsvp-btn" hover-class="rsvp-btn-hover"><image class="show-icon" src="/pages/images/share.png"></image><text class="button-text">Share</text></view>
+    </view>
+  </view>
+</view>

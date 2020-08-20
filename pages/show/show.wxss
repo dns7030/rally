@@ -1,0 +1,110 @@
+.h1 {
+  size: 30px;
+  font-family: 'Playfair Display';
+}
+
+.event-name-header {
+  font-family: 'Playfair Display';
+  margin: 50px 0px 30px 0px;
+  padding: 15px 0px 15px 0px;
+  width: 206px;
+  background:white;
+  border-radius: 2px;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+  color:black;
+  text-align: center;
+}
+
+@font-face {
+  font-family: 'Playfair Display';
+  src: url('https://cloud-minapp-36536.cloud.ifanrusercontent.com/1k6qyaM23SNhFZqG.ttf');
+}
+
+.event-details {
+  width: 336px;
+  background: white;
+  box-shadow: 4px 4px 5px rgba(172, 172, 172, 0.15);
+  border-radius: 2px;
+  margin: 10px 0 15px 0;
+  padding: 15px 5px 0 5px;
+}
+
+.event-date {
+  width: 336px;
+  background: white;
+  margin: 10px 0 15px 0;
+}
+.map-btn {
+  width: 35px;
+  display: block;
+  margin: 8px 10px 10px 0px;
+  font-size: 11px;
+  background:white;
+  border: rgba(218, 218, 218, 0.13) solid 1px;
+  border-radius: 50px;
+  text-align: center;
+}
+
+.map-div {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.rsvp-btn {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 6px 0px 6px 0px;
+  font-size: 14px;
+  background:white;
+  color: black;
+  border-radius: 50px;
+  border-color: black 1px solid;
+  width: 80px;
+  text-align: center;
+  margin: 10px 7px 10px 7px;
+}
+
+.rsvp-btn-hover {
+  display: block;
+  padding: 6px 0px 6px 0px;
+  font-size: 14px;
+  background: rgba(255, 50, 50, 0.44);
+  color: white;
+  border-radius: 50px;
+  width: 80px;
+  height: 20px;
+  text-align: center;
+  margin: 10px 7px 10px 7px;
+}
+
+.attendees-icons {
+  justify-content: center;
+  padding: 18px 0 0 0;  
+}
+
+.rsvp {
+  display: flex;
+  justify-content: center;
+}
+
+.show-icon {
+  display: flex;
+  align-items: center;
+  height: 27px;
+  width: 27px;
+}
+
+.button-text {
+  display: flex;
+  align-items: center;
+  font-size: 11px;
+}
+
+.cancel {
+  display: flex;
+  height: 30px;
+  width: 27px;
+}
