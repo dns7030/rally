@@ -21,6 +21,11 @@ Page({
   onLoad: function (options) {
   },
 
+  placeSearch: function (options) {
+    let place = event.detail.value.place;
+    let query = new wx.BaaS.Query();
+    query.compare('name_en', '=', search.input);
+  },
 
   date: function(e) {
     console.log(date0, e)

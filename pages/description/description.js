@@ -8,7 +8,11 @@ Page({
    */
   data: {
     currentUser: null,
-    events: [],
+    event: {},
+    votes: [],
+    longitude: [],
+    latitude: [],
+    events: {},
     attendees: [],
     iconSize: [40, 40, 40, 40],
     iconColor: ['red'],
@@ -23,13 +27,7 @@ Page({
     // Use wx.createMapContext to obtain the map context
     this.mapCtx = wx.createMapContext('myMap')
   },
-  getCenterLocation: function () {
-    wx.openLocation({
-      longitude,
-      latitude,
-      scale: 18
-    })
-  },
+
 // map function end
 
 
@@ -43,6 +41,19 @@ Page({
     })
   },
 
+  onReady: function (e) {
+    this.mapCtx = wx.createMapContext('myMap')
+  },
+
+  openLocation: function () {  
+    wx.openLocation({ 
+      longitude: this.data.events.venue_id.longitude,
+      latitude: this.data.events.venue_id.latitude,
+      scale: 18
+    })
+  },
+
+
   onLoad: function (options) {
 
     console.log('userInfo!', getApp().globalData.userInfo);
@@ -50,7 +61,8 @@ Page({
    
     const events = new wx.BaaS.TableObject('events');
     console.log({ options })
-    events.get(options.id).then((res) => {
+
+    events.expand(["venue_id"]).get(options.id).then((res) => {
       console.log('get one event',res)
       let event = res.data
   
