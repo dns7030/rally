@@ -3,15 +3,13 @@ const util = require("../../utils/util")
 let app= getApp()
 Page({
 
-  /**
-   * Page initial data
-   */
   data: {
     currentUser: null,
     events: {},
     active: 1,
     futureEvents: [],
-    pastEvents: []
+    pastEvents: [],
+    dayList: []
   },
 
   showEvents: function(event) {
@@ -24,18 +22,19 @@ Page({
   },
 
   onLoad: function (options) {
-
+  
     const app = getApp();
     console.log(app.globalData.userInfo);
     this.setData({currentUser: app.globalData.userInfo});
+
     const events = new wx.BaaS.TableObject('events');
-    
-    events.find().then((res) => {
+    let query = new wx.BaaS.Query()
+
+    events.setQuery(query).find().then((res) => {
       console.log('res',res)
       //pull event data
       let events = res.data.objects
       const now = new Date().getTime();
-
       console.log('date now', now);
 
       const pastEvents = events.filter(event => {
@@ -61,32 +60,37 @@ Page({
       events.forEach((event)=>{
         // console.log('event.date', event)
         event.date = event.date.map(date => {
-          return util.formatTime(new Date(date));
+          return util.formatDate(new Date(date));
         });
-        // event.date = util.formatTime(new Date(event.date))
+
+        event.time = event.date.map(time => {
+          return util.formatTime(new Date(time));
+        });
         formatedEvents.push(event)
       })
+
       this.setData ({
         events: formatedEvents,
         futureEvents,
         pastEvents
+        
       })
-    }); 
 
+    }); 
   },
+
   userInfoHandler(data) {
     const app = getApp();
     wx.BaaS.auth.loginWithWechat(data).then(user => {
       console.log('user', user);
         app.globalData.userInfo = user;
-        wx.setStorageSync('userInfo', user);
+        // wx.setStorageSync('userInfo', user);
         this.setData({
           currentUser: user,
         })
       }, err => {
     })
   },
-
   bindLogout: function (event) {
     wx.BaaS.auth.logout().then(() => {
       wx.setStorageSync('userInfo', null);
@@ -112,38 +116,6 @@ Page({
     })
   },
 
-  /**
-   * Lifecycle function--Called when page show
-   */
-  // onShow: function () {
-
-  //     const app = getApp();
-  //     console.log(app.globalData.userInfo);
-  //     this.setData({currentUser: app.globalData.userInfo});
-  //     const events = new wx.BaaS.TableObject('events');
-  //     const restaurants = new wx.BaaS.TableObject('restaurants');
-  //     events.find().then((res) => {
-  //       console.log('res',res)
-  //       //pull event data
-  //       let events = res.data.objects
-  //       //define event
-  //       let formatedEvents = []
-  //       //store event with time
-  //       events.forEach((event)=>{
-  //         event.date = util.formatTime(new Date(event.date))
-  //         formatedEvents.push(event)
-  //       })
-  //       this.setData ({
-  //         events: formatedEvents
-  //       })
-  //     }); 
-  //     restaurants.find().then((res) => {
-  //       console.log('res',res)
-  //       this.setData ({
-  //         restaurants: res.data.objects
-  //       })
-  //     });  
-  // },
 
   onHide: function () {
 
@@ -152,24 +124,5 @@ Page({
 
   },
 
-  /**
-   * Page event handler function--Called when user drop down
-   */
-  onPullDownRefresh: function () {
 
-  },
-
-  /**
-   * Called when page reach bottom
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * Called when user click on the top right corner to share
-   */
-  onShareAppMessage: function () {
-
-  }
 })

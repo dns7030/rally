@@ -25,11 +25,10 @@
   
 }
 .input-card{
-
   background-color: #f6f6f6;
   margin-bottom: 20px;
   border-radius: 5px;
-  padding: 5px;
+  padding: 15px 0;
 }
 .input-text {
   padding-left: 15px;
@@ -65,4 +64,6 @@
 .button {
   margin-top: 20px;
 }
-
+.textarea {
+  height: 3em;
+}

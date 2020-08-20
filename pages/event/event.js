@@ -1,43 +1,78 @@
 // pages/event/event.js
+const app = getApp()
+
 Page({
 
   /**
    * Page initial data
    */
   data: {
-    date: "Date",
+    date1: "Date",
+    date2: "Other option",
+    date3: "Other option",
     event: {},
     events: [],
-    time: '12:01',
+    time1: "Time",
+    time2: "Other option",
+    time3: "Other option"
   },
 
   onLoad: function (options) {
-
   },
 
-  bindDateChange: function(e) {
-    console.log('bindDateChange', e);
-    this.setData({
-        date: e.detail.value
-    })
-    
-  },
 
-  // toEvent: function(e) {
-  //   const id = e.currentTarget.dataset.id;
-  //   wx.navigateTo({
-  //     url: `/pages/description/description?id=${id}`,
-  //   })
-  // },
-
-  bindTimeChange(e) {
+  date: function(e) {
+    console.log(date0, e)
     this.setData({
-      time: e.detail.value
+      date: e.detail.value 
     })
   },
-
+  bindDateChange1: function(e) {
+    console.log('bindDateChange 1', e);
+    this.setData({
+        date1: e.detail.value
+    })
+  },
+  bindDateChange2: function(e) {
+    console.log('bindDateChange 2', e);
+    this.setData({
+        date2: e.detail.value
+    })
+  },
+  bindDateChange3: function(e) {
+    console.log('bindDateChange 3', e);
+    this.setData({
+        date3: e.detail.value
+    })
+  },
+  bindTimeChange1(e) {
+    this.setData({
+      time1: e.detail.value
+    })
+  },
+  bindTimeChange2(e) {
+    this.setData({
+      time2: e.detail.value
+    })
+  },
+  bindTimeChange3(e) {
+    this.setData({
+      time3: e.detail.value
+    })
+  },
+  
+  
   formSubmit: function (event) {
     console.log('formSubmit', event);
+
+    let currentUser = this.data.currentUser
+
+    if (!currentUser) {
+      wx.switchTab({
+        url: '/pages/user/user' // logged in
+      });
+    };
+
     console.log(event.detail.value.title)
     console.log(event.detail.value.description)
 
@@ -45,10 +80,10 @@ Page({
     let description = event.detail.value.description;
 
     let date1 = event.detail.value.date1;
-    console.log('date', date1)
-    let date2 = event.detail.value.date2;
-    let date3 = event.detail.value.date3;
     console.log('date1', date1)
+    let date2 = event.detail.value.date2;
+    console.log('date2', date2)
+    let date3 = event.detail.value.date3;
     console.log('date3', date3)
 
     let events = new wx.BaaS.TableObject('events');
@@ -69,9 +104,7 @@ Page({
       this.setData({
         event: newEvents,
       })
-      // wx.switchTab({
-      //   url: `/pages/description/description?id=${newEvents[0]._id}`,
-      // })
+
        
       
       wx.navigateTo({
@@ -90,11 +123,4 @@ Page({
   },
 
 
-  onReady: function () {
-
-  },
-
-  onShow: function () {
-
-  },
 })

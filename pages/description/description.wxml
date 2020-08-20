@@ -1,5 +1,5 @@
-
 <view class="container">
+  <image class="gif" src="/pages/images/celebration.gif"></image>
   <view class="event-name-header">{{events.title}}</view>
   <view class="event-details">{{events.description}}
     <!-- map start -->
@@ -15,16 +15,44 @@
        <block wx:for="{{iconSize}}">
         <icon type="warn" size="{{item}}" color="#FF3232"/>
       </block>
-    <view class="map-div">
-      <view class="map-btn"> more </view>
-    </view>
     </view>
   </view>
-  <view class="event-details"><text class="h1">Can you make it?</text>
+  <view class="map-div more-btn">
+    <view class="map-btn"> more </view>
+  </view>
+  <view class="event-details">
+    <text class="h1">Can you make it?</text>
     <view class="rsvp">
+<<<<<<< HEAD
       <view class="rsvp-btn" hover-class="rsvp-btn-hover" bindtap="yesButton"> Yes </view>
       <view class="rsvp-btn" hover-class="rsvp-btn-hover" bindtap="noButton"> No </view>
-      
+
+=======
+      <view class="rsvp-btn" hover-class="rsvp-btn-hover" data-id="{{events.id}}" bindtap="yesButton" formType="submit">Yes!</view>
+
+      <view class="rsvp-btn" hover-class="rsvp-btn-hover" bindtap="noButton"> No. </view>
+>>>>>>> master
     </view>
   </view>
+<view class="creator-button">
+    <view class="edit-button">
+      <button bindtap="edit" class="button" role="button" aria-disabled="false" style="background-color: white">
+        <image src="/pages/images/edit-01.png" style="width: 27px; height: 27px"></image>
+        <view class="p">Edit</view>
+      </button>
+    </view>
+    <view class="cancel-button">
+      <button bindtap="deleteClick" type="delete" role="button" aria-disabled="false">Cancel</button>
+      <!-- <view data-deleteid="{{events.id}}" bindtap="deleteClick">Cancel</view> -->
+    </view>
+    <view class="share-button">
+      <button bindtap="handleTapShareButton" class="button-share" open-type="share" type="share" role="button" aria-disabled="false">
+        <image src="/pages/images/share.png" style="width: 27px; height: 27px"></image>
+        <view class="p">Share</view>
+      </button>
+    </view>
 </view>
+
+</view>
+
+

@@ -1,4 +1,8 @@
 /**app.wxss**/
+@font-face {
+  font-family: 'Playfair Display';
+  src: url('https://cloud-minapp-36536.cloud.ifanrusercontent.com/1k6qyaM23SNhFZqG.ttf');
+}
 .container {
   height: 100vh;
   display: flex;
@@ -15,18 +19,6 @@
   border-radius: 3px;
 }
 
-@font-face {
-  font-family: 'Playfair Display';
-  src: url('https://cloud-minapp-36536.cloud.ifanrusercontent.com/1k6qyaM23SNhFZqG.ttf');
-}
-.event-card {
-  box-shadow: 4px 4px 5px rgba(120, 120, 120, 0.15);
-  display: flex;
-  padding: 10px;
-  width: 90%;
-  margin: 10px 0;
-  color: black;
-}
 .p {
   font-family: sans-serif;
   font-size: 14px;
@@ -42,4 +34,12 @@
   font-size: 16px;
   padding-top: 0px;
   color: #616161;
+  }
+  .h3 {
+    font-family: sans-serif;
+    font-weight: bolder;
+    font-size: 16px;
+  }
+  .gif {
+    align-items: center;
   }

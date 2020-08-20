@@ -1,13 +1,32 @@
 /* pages/user/user.wxss */
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 .card-product {
-  /* background-color: white;  */
   overflow: hidden;
-  height: 100px;
+  height: inherit;
   display: flex;
   padding: 15px;
   box-shadow: none;
   align-items: center;
-  margin-bottom: 20px;
+  flex-direction: column;
+}
+.event-card {
+  box-shadow: 0 -1px 0 rgba(120, 120, 120, 0.3);
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  width: 90%;
+  margin: 10px 0;
+  color: black;
+}
+.date-card {
+  margin-left: 67%;
+  position: relative;
+  font-size: 18px;
+  font-family: sans-serif;
 }
 .userImage {
   height: 100px;
@@ -16,9 +35,13 @@
   background-color: lavender;
   border-radius: 50%;
 }
+.UserName{
+  padding-top: 110px;
+}
 .tabs {
-  width: 100%;  
+  width: 100%;
   justify-items: center;
+  margin-top: 15px;
 }
 .tab-menu {
   display: flex;
@@ -57,7 +80,65 @@
   background-color: #FF3232;
   border-radius: 50%;
 }
+
 .card {
   padding: 15px;
   display: row;
+}
+.event-info {
+  display: flex;
+  flex-direction: column;
+}
+
+
+
+.description {
+  color: grey;
+}
+
+
+/* Scroll week calendar */
+.TimeOrder{
+  width:1036rpx;
+  height:106rpx;
+  border-top:1px solid #eee;
+  border-bottom:1px solid #eee;
+  overflow-x: auto;
+}
+.coloBack{
+  color:#003a70;
+  border-bottom:2px solid #003a70
+}
+.scroll-header{
+  display: flex;
+  white-space: nowrap;
+  margin: 20px 0;
+}
+.scroll-header .TimeOrderBox{
+  height:120rpx;
+  width:160rpx;
+  display: inline-block;
+  background:#fff;
+}
+.TimeOrderText{
+  width:100%;
+  display: block;
+  font-size:14px;
+  text-align: center;
+  flex-direction: column;
+  font-family: sans-serif;
+}
+.weekText {
+  font-weight: bold;
+  font-variant-caps: all-petite-caps;
+}
+.weekend-calendar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.button {
+  width: 30px;
+  background-color: white;
 }
