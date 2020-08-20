@@ -55,35 +55,55 @@ Page({
   },
 
   yesButton: function (event) {
-    console.log('yes button checking', event)
-    // const data = event.currentTarget.dataset;
+    let event_id = this.data.events.id;
+    let user_id = this.data.currentUser.id
+    console.log('event_id', event_id)
 
-    let tableName = 'votes'
-    let votes = new wx.BaaS.TableObject('votes');
-    let vote = votes.create();
-
+    let attending = new wx.BaaS.TableObject('votes');
+    let newAttending = attending.create();
     const data = {
-      event_id: this.data.events.id,
-      user_id: this.data.currentUser.id
+      attending: true,
+      event_id: event_id,
+      user_id: user_id
+    }
+    newAttending.set(data);
+    // Post data to API
+    newAttending.save().then((res) => {
+      console.log('save res', res);
+      const newAttendings = this.data.events;
+      // newAttendings.push(res.data);
+      this.setData({
+        event: newAttendings,
+      })
+    })
+  },
+
+  noButton: function (event) {
+
+    let event_id = this.data.events.id;
+    let user_id = this.data.currentUser.id
+
+    console.log('event_id', event_id)
+
+    let attending = new wx.BaaS.TableObject('votes');
+    let newAttending = attending.create();
+    const data = {
+      attending: false,
+      event_id: event_id,
+      user_id: user_id
     }
 
-    vote.set(data);
-
-    vote.set(data).save().then((res) => {
-      wx.showToast({
-        title: 'See you soon!',
-        duration: 3000,
-        icon: 'success',
-        mask: true,
+    newAttending.set(data);
+    // Post data to API
+    newAttending.save().then((res) => {
+      console.log('save res', res);
+      const newAttendings = this.data.events;
+      console.log('checking push button', res)
+      this.setData({
+        event: newAttendings,
       })
-      const vote = res.data
-
-      wx.reLaunch({
-        url: '/pages/user/user',
-      })
-
+       
     })
-
   },
 
   deleteClick:function(event){
@@ -101,7 +121,5 @@ Page({
 
   },
 
-  onShareAppMessage: function () {
 
-  }
 })
