@@ -20,6 +20,21 @@ Page({
     ]
   },
 
+  // map function start
+  onReady: function (e) {
+    // Use wx.createMapContext to obtain the map context
+    this.mapCtx = wx.createMapContext('myMap')
+  },
+  getCenterLocation: function () {
+    wx.openLocation({
+      longitude,
+      latitude,
+      scale: 18
+    })
+  },
+// map function end
+
+
   userInfoHandler(data) {
     wx.BaaS.auth.loginWithWechat(data).then(user => {
         app.globalData.userInfo = user;
@@ -72,3 +87,4 @@ Page({
 
   }
 })
+  
