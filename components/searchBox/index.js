@@ -56,6 +56,8 @@ Component({
     searchList(e) {
       this.triggerEvent("searchList", e);
       //add keywords that when u click on the search it will use that keyword as setQuery
+      
+
     },
     //查询
     endsearchList(e) {
