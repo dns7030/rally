@@ -1,11 +1,12 @@
 <view class="container">
   <image class="gif" src="/pages/images/celebration.gif"></image>
-  <view class="event-name-header">{{events.title}}</view>
-  <view class="event-details">{{events.description}}</view>
-  <view class="map-div">
-    <view class="map-btn" loading="{{loading}}" bindtap="default" hover-class="other-button-hover"> map </view>
-  </view>
-  <view class="event-date" style="color: grey">{{events.date}}</view>
+  <view class="event-name-header">{{event.title}}</view>
+  <view class="event-details">{{event.description}}</view>
+  <!-- <view class="map-div"> -->
+  <!-- <map id="myMap" show-location /> -->
+    <view class="map-btn" loading="{{loading}}" bindtap="openLocation" hover-class="other-button-hover"> map </view>
+  <!-- </view> -->
+  <view class="event-date" style="color: grey">{{event.date}}</view>
    <view class="event-details"><text class="h1">We're all going...</text>
     <view class="attendees-icons">
        <block wx:for="{{iconSize}}">
@@ -19,7 +20,7 @@
   <view class="event-details">
     <text class="h1">Can you make it?</text>
     <view class="rsvp">
-      <view class="rsvp-btn" hover-class="rsvp-btn-hover" data-id="{{events.id}}" bindtap="yesButton" formType="submit">Yes!</view>
+      <view class="rsvp-btn" hover-class="rsvp-btn-hover" data-id="{{event.id}}" bindtap="yesButton" formType="submit">Yes!</view>
       
       <view class="rsvp-btn" hover-class="rsvp-btn-hover" bindtap="noButton"> No. </view>
     </view>
@@ -33,7 +34,7 @@
     </view>
     <view class="cancel-button">
       <button bindtap="deleteClick" type="delete" role="button" aria-disabled="false">Cancel</button>
-      <!-- <view data-deleteid="{{events.id}}" bindtap="deleteClick">Cancel</view> -->
+      <!-- <view data-deleteid="{{event.id}}" bindtap="deleteClick">Cancel</view> -->
     </view>
     <view class="share-button">
       <button bindtap="handleTapShareButton" class="button-share" open-type="share" type="share" role="button" aria-disabled="false">

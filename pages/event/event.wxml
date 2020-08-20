@@ -11,9 +11,9 @@
       <textarea name="description" class="input-text" placeholder="Description" cursor="auto" style="height: 3em"></textarea>
     </view>
 
-    <!-- <view class="input-card">
-      <input name="Place" class="input-text" placeholder="Place">Place</input>
-    </view> -->
+    <view class="input-card">
+      <input bind="placeSearch" name="Place" class="input-text" placeholder="Place">Place</input>
+    </view>
 
     <view class="h1">When?</view>
     <view class="h2">More than one option if you can’t decide</view>

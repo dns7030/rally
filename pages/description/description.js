@@ -8,7 +8,10 @@ Page({
    */
   data: {
     currentUser: null,
-    events: [],
+    event: {},
+    votes: [],
+    longtitude: [],
+    latitude: [],
     iconSize: [40, 40, 40, 40],
     iconColor: ['red'],
     iconType: [
@@ -26,6 +29,20 @@ Page({
   //   })
   // },
 
+  onReady: function (e) {
+    this.mapCtx = wx.createMapContext('myMap')
+  },
+
+  openLocation: function () {
+    
+    wx.openLocation({ 
+      longitude: this.data.event.venue_id.longitude,
+      latitude: this.data.event.venue_id.latitude,
+      scale: 100
+    })
+  },
+
+
   onLoad: function (options) {
 
     console.log('userInfo!', getApp().globalData.userInfo);
@@ -37,13 +54,13 @@ Page({
 
     console.log({ options })
 
-    events.get(options.id).then((res) => {
+    events.expand(["venue_id"]).get(options.id).then((res) => {
       console.log('get one event',res)
       let event = res.data
     
         event.date = util.formatTime(new Date(event.date));
           this.setData({
-          events: event
+          event: event
           
           })
       })
@@ -55,35 +72,54 @@ Page({
   },
 
   yesButton: function (event) {
-    console.log('yes button checking', event)
-    // const data = event.currentTarget.dataset;
+    let event_id = this.data.events.id;
+    console.log('event_id', event_id)
 
-    let tableName = 'votes'
-    let votes = new wx.BaaS.TableObject('votes');
-    let vote = votes.create();
-
+    let attending = new wx.BaaS.TableObject('votes');
+    let newAttending = attending.create();
     const data = {
-      event_id: this.data.events.id,
-      user_id: this.data.currentUser.id
+      attending: true,
+      event_id: event_id
     }
 
-    vote.set(data);
-
-    vote.set(data).save().then((res) => {
-      wx.showToast({
-        title: 'See you soon!',
-        duration: 3000,
-        icon: 'success',
-        mask: true,
+    newAttending.set(data);
+    // Post data to API
+    newAttending.save().then((res) => {
+      console.log('save res', res);
+      const newAttendings = this.data.events;
+      newAttendings.push(res.data);
+      this.setData({
+        event: newAttendings,
       })
-      const vote = res.data
-
-      wx.reLaunch({
-        url: '/pages/user/user',
-      })
-
+       
     })
+  },
 
+  noButton: function (event) {
+    // let title = event.detail.value.title;
+    // let description = event.detail.value.description;
+
+    let event_id = this.data.events.id;
+    console.log('event_id', event_id)
+
+    let attending = new wx.BaaS.TableObject('votes');
+    let newAttending = attending.create();
+    const data = {
+      attending: false,
+      event_id: event_id
+    }
+
+    newAttending.set(data);
+    // Post data to API
+    newAttending.save().then((res) => {
+      console.log('save res', res);
+      const newAttendings = this.data.events;
+      newAttendings.push(res.data);
+      this.setData({
+        event: newAttendings,
+      })
+       
+    })
   },
 
   deleteClick:function(event){
