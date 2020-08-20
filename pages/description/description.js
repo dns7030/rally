@@ -9,6 +9,7 @@ Page({
   data: {
     currentUser: null,
     events: [],
+    attendees: [],
     iconSize: [40, 40, 40, 40],
     iconColor: ['red'],
     iconType: [
@@ -29,28 +30,37 @@ Page({
   onLoad: function (options) {
 
     console.log('userInfo!', getApp().globalData.userInfo);
-    this.setData({
-      currentUser: getApp().globalData.userInfo,
-    });
-
+    this.setData({currentUser: getApp().globalData.userInfo});
+   
     const events = new wx.BaaS.TableObject('events');
-
     console.log({ options })
-
     events.get(options.id).then((res) => {
       console.log('get one event',res)
       let event = res.data
-    
-        event.date = util.formatTime(new Date(event.date));
+  
+        event.date = util.formatTime(new Date(event.date[0]));
           this.setData({
           events: event
           
           })
       })
-
+//get one event
     let query = new wx.BaaS.Query();
+    query.compare('event_id', '=', options.id);
+//get attendees id
 
-    query.compare('events_id', '=', options.id);
+    const attendees = new wx.BaaS.TableObject('votes')
+    console.log('attendees checking', options)
+    query.compare('event_id', '=', options.id);
+    query.compare('attending', '=', true);
+  
+    attendees.setQuery(query).expand(['event_id', 'user_id']).find().then((res) => {
+      console.log('checking attendees', res)
+      this.setData ({
+        attendees: res.data.objects
+      })
+    })
+
 
   },
 
@@ -74,6 +84,9 @@ Page({
       // newAttendings.push(res.data);
       this.setData({
         event: newAttendings,
+      })
+      wx.reLaunch({
+        url: '/pages/user/user',
       })
     })
   },
@@ -106,16 +119,61 @@ Page({
     })
   },
 
-  deleteClick:function(event){
-    console.log('deleteEvent', event)
-    const page = this;
-    let id = event.currentTarget.dataset.deleteid;
-
-    let events = new wx.BaaS.TableObject('events')
-    events.delete(events.id).then(() => {
-      page.delete(events.id, null)
+  editClick: function (event){
+    const data = event.currentTarget.dataset;
+    const id = data.id;
+ 
+    wx.reLaunch({
+      url: `/pages/event/event?id=${id}`
     });
+  },
+
+  deleteClick:function(event){
+    let event_id = this.data.events.id;
+  
+    let events = new wx.BaaS.TableObject('events')
+    console.log('deleteEvent', event)
+    events.delete(event_id).then(()=>{
+      wx.reLaunch({
+        url: '/pages/user/user'
+      });
+    })
+
    },
+
+  locationClick: function (event) {
+    
+    let thisBlock = this;
+    wx.getLocation({
+      type: "wgs84",
+      success: function (res) {
+        console.log(res);
+ 
+        thisBlock.setData({
+          latitude: res.latitude,
+          longitude: res.longitude,
+ 
+          markers: [{
+            iconPath: "/images/map/address.png",
+            id: 0,
+            latitude: res.latitude,
+            longitude: res.longitude,
+            width: 35,
+            height: 35,
+            title: "当前位置",
+            callout: {
+              padding: 10,
+              content:"当前位置",
+              bgColor:"#DC143C",
+              color:"#FFFF00",
+              display:"ALWAYS"},
+            label: {content:"标题"},
+            anchor: {}
+          }],
+        })
+      },
+    })
+  },
 
   onShow: function () {
 

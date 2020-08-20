@@ -10,9 +10,15 @@
     <view class="input-card">
       <textarea name="description" class="input-text" placeholder="Description" cursor="auto" style="height: 3em"></textarea>
     </view>
-
-    <!-- <view class="input-card">
-      <input name="Place" class="input-text" placeholder="Place">Place</input>
+    <view class="">
+      <SearchBar id="SearchBar" addflag="{{addflag}}" addimg="{{addimg}}" bind:addhandle="addhandle" searchstr="{{searchstr}}" bind:searchList="searchList" bind:endsearchList="endsearchList" bind:cancelsearch="cancelsearch" bind:activity_clear="activity_clear">
+      </SearchBar>
+      <button bindtap="searchClick">Search</button>
+    </view>
+    <!-- <view class="input-card search" style="display: flex">
+      <icon type="search"></icon>
+      <input type="text" placeholder="Place" value="{{inputVal}}" bindfocus="inputFocus" bindblur="inputBlur" bindinput="inputTyping" class="input-text"/>
+      <view class="input-text" bindtap="onClickSearchButton">Search</view>
     </view> -->
 
     <view class="h1">When?</view>
@@ -23,7 +29,7 @@
     <view class="input-date 1">
         <view class="date-picker">
           <view class="picker-date">
-            <picker name="date1" mode="date" value="{{date}}" start="2020-09-01" end="2030-09-01" bindchange="bindDateChange1">
+            <picker name="date1" mode="date" value="{{date}}" bindchange="bindDateChange1">
               <view wx:if="date">
                 <view>{{date1}}</view>
               </view>
@@ -32,7 +38,7 @@
       </view>
       <view class="time-picker">
         <view class="picker-date time">
-          <picker name="time1" mode="time" value="{{time}}" start="09:01" end="21:01" bindchange="bindTimeChange1">
+          <picker name="time1" mode="time" value="{{time}}" start="09:00" end="21:00" bindchange="bindTimeChange1">
             <view class="weui-input">{{time1}}</view>
           </picker>
         </view>

@@ -29,8 +29,11 @@ Page({
 
     const myEvent = new wx.BaaS.TableObject('events');
     const events = new wx.BaaS.TableObject('votes')
+
     let user_id = new wx.BaaS.TableObject('votes')
     let query = new wx.BaaS.Query()
+    
+      //  events that user created
     myEvent.setQuery(query).find().then((res) => {
       console.log('checking my event query',res)
       //pull event data
@@ -39,7 +42,6 @@ Page({
       console.log('date now', now);
 
       const pastEvents = events.filter(event => {
-
         const eventDate = new Date(event.date[0]).getTime();
         if(eventDate < now) {
           return true;
@@ -56,6 +58,7 @@ Page({
       });
 
       console.log('past and future', pastEvents, futureEvents);
+
       //define event
       let formatedEvents = []
       //store event with time
@@ -85,42 +88,41 @@ Page({
     // query.compare('attending', '=', true);
 
   // events that user joined
-    // events.setQuery(query).expand(['user_id', 'attending']).find().then((res) => {
+    // events.setQuery(query).expand(['user_id', 'event_id']).find().then((res) => {
     //       console.log('checking my event query',res)
     //       //pull event data
     //       let events = res.data.objects
     //       const now = new Date().getTime();
     //       console.log('date now', now);
 
-    //       const pastEvents = events.filter(event => {
-    //         console.log('past events', event)
-    //         const eventDate = new Date(event.date).getTime();
-    //         if(eventDate < now) {
-    //           return true;
-    //         }
-    //         return false;
-    //       });
+    //       // const pastEvents = events.filter(event => {
+    //       //   console.log('past events', event)
+    //       //   const eventDate = new Date(event.event_id.date).getTime();
+    //       //   if(eventDate < now) {
+    //       //     return true;
+    //       //   }
+    //       //   return false;
+    //       // });
 
-    //       const futureEvents = events.filter(event => {
-    //         console.log('future events', event)
-    //         const eventDate = new Date(event.date).getTime();
-    //         if(eventDate > now) {
-    //           return true;
-    //         }
-    //         return false;
-    //       });
+    //       // const futureEvents = events.filter(event => {
+    //       //   console.log('future events', event)
+    //       //   const eventDate = new Date(event.event_id.date).getTime();
+    //       //   if(eventDate > now) {
+    //       //     return true;
+    //       //   }
+    //       //   return false;
+    //       // });
 
-    //       console.log('past and future', pastEvents, futureEvents );
+    //       // console.log('past and future', pastEvents, futureEvents );
 
     //       this.setData ({
     //         events: res.data.objects,
-    //         pastEvents,
-    //         futureEvents,
+    //         // pastEvents,
+    //         // futureEvents,
     //       })
 
     //     }); 
 
-  //  events that user created
 
   },
 
