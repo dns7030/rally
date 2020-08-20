@@ -6,10 +6,10 @@ Page({
   data: {
     currentUser: null,
     events: {},
+    myEvent: {},
     active: 1,
     futureEvents: [],
     pastEvents: [],
-    dayList: []
   },
 
   showEvents: function(event) {
@@ -22,16 +22,20 @@ Page({
   },
 
   onLoad: function (options) {
-  
-    const app = getApp();
     console.log(app.globalData.userInfo);
-    this.setData({currentUser: app.globalData.userInfo});
+    this.setData({
+      currentUser: app.globalData.userInfo
+    });
 
-    const events = new wx.BaaS.TableObject('events');
+    const myEvent = new wx.BaaS.TableObject('events');
+    const events = new wx.BaaS.TableObject('votes')
+
+    let user_id = new wx.BaaS.TableObject('votes')
     let query = new wx.BaaS.Query()
-
-    events.setQuery(query).find().then((res) => {
-      console.log('res',res)
+    
+      //  events that user created
+    myEvent.setQuery(query).find().then((res) => {
+      console.log('checking my event query',res)
       //pull event data
       let events = res.data.objects
       const now = new Date().getTime();
@@ -53,7 +57,8 @@ Page({
         return false;
       });
 
-      console.log(pastEvents, futureEvents);
+      console.log('past and future', pastEvents, futureEvents);
+
       //define event
       let formatedEvents = []
       //store event with time
@@ -70,13 +75,55 @@ Page({
       })
 
       this.setData ({
-        events: formatedEvents,
+        myEvent: formatedEvents,
         futureEvents,
         pastEvents
-        
       })
 
     }); 
+
+    // let currentUser = this.data.currentUser;
+
+    // query.compare('user_id', '=', currentUser.id);
+    // query.compare('attending', '=', true);
+
+  // events that user joined
+    // events.setQuery(query).expand(['user_id', 'event_id']).find().then((res) => {
+    //       console.log('checking my event query',res)
+    //       //pull event data
+    //       let events = res.data.objects
+    //       const now = new Date().getTime();
+    //       console.log('date now', now);
+
+    //       // const pastEvents = events.filter(event => {
+    //       //   console.log('past events', event)
+    //       //   const eventDate = new Date(event.event_id.date).getTime();
+    //       //   if(eventDate < now) {
+    //       //     return true;
+    //       //   }
+    //       //   return false;
+    //       // });
+
+    //       // const futureEvents = events.filter(event => {
+    //       //   console.log('future events', event)
+    //       //   const eventDate = new Date(event.event_id.date).getTime();
+    //       //   if(eventDate > now) {
+    //       //     return true;
+    //       //   }
+    //       //   return false;
+    //       // });
+
+    //       // console.log('past and future', pastEvents, futureEvents );
+
+    //       this.setData ({
+    //         events: res.data.objects,
+    //         // pastEvents,
+    //         // futureEvents,
+    //       })
+
+    //     }); 
+
+
   },
 
   userInfoHandler(data) {

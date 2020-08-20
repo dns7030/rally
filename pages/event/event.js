@@ -14,7 +14,8 @@ Page({
     events: [],
     time1: "Time",
     time2: "Other option",
-    time3: "Other option"
+    time3: "Other option",
+    
   },
 
   onLoad: function (options) {
@@ -27,6 +28,8 @@ Page({
       date: e.detail.value 
     })
   },
+
+
   bindDateChange1: function(e) {
     console.log('bindDateChange 1', e);
     this.setData({
@@ -60,8 +63,7 @@ Page({
       time3: e.detail.value
     })
   },
-  
-  
+   
   formSubmit: function (event) {
     console.log('formSubmit', event);
 
@@ -122,5 +124,7 @@ Page({
     });
   },
 
-
+  onClickSearchButton: function (event) {
+    console.log('checking search', event)
+  },
 })

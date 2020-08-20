@@ -9,6 +9,7 @@ Page({
   data: {
     currentUser: null,
     events: [],
+    attendees: [],
     iconSize: [40, 40, 40, 40],
     iconColor: ['red'],
     iconType: [
@@ -45,79 +46,155 @@ Page({
   onLoad: function (options) {
 
     console.log('userInfo!', getApp().globalData.userInfo);
-    this.setData({
-      currentUser: getApp().globalData.userInfo,
-    });
-
+    this.setData({currentUser: getApp().globalData.userInfo});
+   
     const events = new wx.BaaS.TableObject('events');
-
     console.log({ options })
-
     events.get(options.id).then((res) => {
       console.log('get one event',res)
       let event = res.data
+  
+        event.date = util.formatTime(new Date(event.date[0]));
 
-        event.date = util.formatTime(new Date(event.date));
           this.setData({
           events: event
 
           })
       })
-
+//get one event
     let query = new wx.BaaS.Query();
+    query.compare('event_id', '=', options.id);
+//get attendees id
 
-    query.compare('events_id', '=', options.id);
+    const attendees = new wx.BaaS.TableObject('votes')
+    console.log('attendees checking', options)
+    query.compare('event_id', '=', options.id);
+    query.compare('attending', '=', true);
+  
+    attendees.setQuery(query).expand(['event_id', 'user_id']).find().then((res) => {
+      console.log('checking attendees', res)
+      this.setData ({
+        attendees: res.data.objects
+      })
+    })
+
 
   },
 
   yesButton: function (event) {
-    console.log('yes button checking', event)
-    // const data = event.currentTarget.dataset;
+    let event_id = this.data.events.id;
+    let user_id = this.data.currentUser.id
+    console.log('event_id', event_id)
 
-    let tableName = 'votes'
-    let votes = new wx.BaaS.TableObject('votes');
-    let vote = votes.create();
-
+    let attending = new wx.BaaS.TableObject('votes');
+    let newAttending = attending.create();
     const data = {
-      event_id: this.data.events.id,
-      user_id: this.data.currentUser.id
+      attending: true,
+      event_id: event_id,
+      user_id: user_id
     }
-
-    vote.set(data);
-
-    vote.set(data).save().then((res) => {
-      wx.showToast({
-        title: 'See you soon!',
-        duration: 3000,
-        icon: 'success',
-        mask: true,
+    newAttending.set(data);
+    // Post data to API
+    newAttending.save().then((res) => {
+      console.log('save res', res);
+      const newAttendings = this.data.events;
+      // newAttendings.push(res.data);
+      this.setData({
+        event: newAttendings,
       })
-      const vote = res.data
-
       wx.reLaunch({
         url: '/pages/user/user',
       })
-
     })
+  },
 
+  noButton: function (event) {
+
+    let event_id = this.data.events.id;
+    let user_id = this.data.currentUser.id
+
+    console.log('event_id', event_id)
+
+    let attending = new wx.BaaS.TableObject('votes');
+    let newAttending = attending.create();
+    const data = {
+      attending: false,
+      event_id: event_id,
+      user_id: user_id
+    }
+
+    newAttending.set(data);
+    // Post data to API
+    newAttending.save().then((res) => {
+      console.log('save res', res);
+      const newAttendings = this.data.events;
+      console.log('checking push button', res)
+      this.setData({
+        event: newAttendings,
+      })
+       
+    })
+  },
+
+  editClick: function (event){
+    const data = event.currentTarget.dataset;
+    const id = data.id;
+ 
+    wx.reLaunch({
+      url: `/pages/event/event?id=${id}`
+    });
   },
 
   deleteClick:function(event){
-    console.log('deleteEvent', event)
-    const page = this;
-    let id = event.currentTarget.dataset.deleteid;
-
+    let event_id = this.data.events.id;
+  
     let events = new wx.BaaS.TableObject('events')
-    events.delete(events.id).then(() => {
-      page.delete(events.id, null)
-    });
+    console.log('deleteEvent', event)
+    events.delete(event_id).then(()=>{
+      wx.reLaunch({
+        url: '/pages/user/user'
+      });
+    })
+
    },
+
+  locationClick: function (event) {
+    
+    let thisBlock = this;
+    wx.getLocation({
+      type: "wgs84",
+      success: function (res) {
+        console.log(res);
+ 
+        thisBlock.setData({
+          latitude: res.latitude,
+          longitude: res.longitude,
+ 
+          markers: [{
+            iconPath: "/images/map/address.png",
+            id: 0,
+            latitude: res.latitude,
+            longitude: res.longitude,
+            width: 35,
+            height: 35,
+            title: "当前位置",
+            callout: {
+              padding: 10,
+              content:"当前位置",
+              bgColor:"#DC143C",
+              color:"#FFFF00",
+              display:"ALWAYS"},
+            label: {content:"标题"},
+            anchor: {}
+          }],
+        })
+      },
+    })
+  },
 
   onShow: function () {
 
   },
 
-  onShareAppMessage: function () {
 
-  }
 })
