@@ -15,10 +15,13 @@ Page({
     time1: "Time",
     time2: "Other option",
     time3: "Other option",
+    langitude: '',
+    latitude: '',
     
   },
 
   onLoad: function (options) {
+
   },
 
   placeSearch: function (options) {
@@ -34,6 +37,17 @@ Page({
     })
   },
 
+  locationPicker: function(e) {
+    wx.chooseLocation()
+  },
+
+  // locationPicker((res) => {
+  //   wx.chooseLocation()
+  //   this.setData ({
+  //     longitude: res.data.longitude,
+  //     latitude: res.data.longitude
+  //   })
+  // }),
 
   bindDateChange1: function(e) {
     console.log('bindDateChange 1', e);
