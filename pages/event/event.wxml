@@ -10,6 +10,7 @@
     <view class="input-card">
       <textarea name="description" class="input-text" placeholder="Description" cursor="auto" style="height: 3em"></textarea>
     </view>
+        <button bindtap="locationPicker">Location</button>
     <!-- <view class="inpud card searchbar">
       <SearchBar id="SearchBar" addflag="{{addflag}}" addimg="{{addimg}}" bind:addhandle="addhandle" searchstr="{{searchstr}}" bind:searchList="searchList" bind:endsearchList="endsearchList" bind:cancelsearch="cancelsearch" bind:activity_clear="activity_clear">
       </SearchBar>
