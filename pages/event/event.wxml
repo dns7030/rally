@@ -10,11 +10,11 @@
     <view class="input-card">
       <textarea name="description" class="input-text" placeholder="Description" cursor="auto" style="height: 3em"></textarea>
     </view>
-    <view class="inpud card searchbar">
+    <!-- <view class="inpud card searchbar">
       <SearchBar id="SearchBar" addflag="{{addflag}}" addimg="{{addimg}}" bind:addhandle="addhandle" searchstr="{{searchstr}}" bind:searchList="searchList" bind:endsearchList="endsearchList" bind:cancelsearch="cancelsearch" bind:activity_clear="activity_clear">
       </SearchBar>
       <button bindtap="searchClick">Search</button>
-    </view>
+    </view> -->
     <!-- <view class="input-card search" style="display: flex">
       <icon type="search"></icon>
       <input type="text" placeholder="Place" value="{{inputVal}}" bindfocus="inputFocus" bindblur="inputBlur" bindinput="inputTyping" class="input-text"/>

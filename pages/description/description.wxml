@@ -30,14 +30,13 @@
     <button class="map-btn" bindtap="locationClick"> more </button>
   </view>
 
- 
+
     <view class="event-details">
       <text class="h1">Can you make it?</text>
       <view class="rsvp">
         <view class="rsvp-btn" wx:if="{{currentUser.id !== 'events.created_by'}}" hover-class="rsvp-btn-hover" data-id="{{events.id}}" bindtap="yesButton" formType="submit">Yes!</view>
         <view class="rsvp-btn" wx:if="{{currentUser.id !== 'events.created_by'}}" hover-class="rsvp-btn-hover" bindtap="noButton"> No. </view>
       </view>
-    </view>
 
     <view class="map-div">
       <button wx:if="{{currentUser.id == events.created_by}}" open-type="edit" type="mini-btn" role="button" aria-disabled="false" bindtap="edit" class="creator-btn">
@@ -57,7 +56,8 @@
       </button>
 
     </view>
-</view> 
+  </view>
+</view>
 
 
 

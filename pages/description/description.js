@@ -17,15 +17,31 @@ Page({
     ],
   },
 
-  // userInfoHandler(data) {
-  //   wx.BaaS.auth.loginWithWechat(data).then(user => {
-  //       app.globalData.userInfo = user;
-  //       this.setData({
-  //         currentUser: user,
-  //       })
-  //     }, err => {
-  //   })
-  // },
+
+  // map function start
+  onReady: function (e) {
+    // Use wx.createMapContext to obtain the map context
+    this.mapCtx = wx.createMapContext('myMap')
+  },
+  getCenterLocation: function () {
+    wx.openLocation({
+      longitude,
+      latitude,
+      scale: 18
+    })
+  },
+// map function end
+
+
+  userInfoHandler(data) {
+    wx.BaaS.auth.loginWithWechat(data).then(user => {
+        app.globalData.userInfo = user;
+        this.setData({
+          currentUser: user,
+        })
+      }, err => {
+    })
+  },
 
   onLoad: function (options) {
 
@@ -39,9 +55,10 @@ Page({
       let event = res.data
   
         event.date = util.formatTime(new Date(event.date[0]));
+
           this.setData({
           events: event
-          
+
           })
       })
 //get one event
