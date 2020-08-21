@@ -21,12 +21,7 @@
       <image class="userImage" src="{{attendee.user_id.avatar}}"></image>
       <view class="p">{{attendee.user_id.nickname}}</view>
     </view>
-       <!-- <block wx:for="{{iconSize}}">
-        <view class="attendees-icons" wx:for="{{attendees}}" wx:for-item="{{votes}}">
-          <icon type="warn" size="{{item}}" color="#FF3232"/>
-          <view class="user-avatar">{{user_id.avatar}}</view>
-        </view>
-      </block> -->
+
   </view>
   <view class="map-div more-btn">
     <button class="map-btn" bindtap="locationClick"> more </button>
@@ -44,10 +39,6 @@
         <image style="width: 27px; height: 27px" src="/pages/images/edit-01.png"></image>
       </button>
       
-      <!-- <button bindtap="editClick" open-type="edit" type="mini-btn" role="button" aria-disabled="false" class="creator-btn">
-        <image style="width: 27px; height: 27px" src="/pages/images/edit-01.png"></image>
-      </button> -->
-
       <button wx:if="{{currentUser.id == events.created_by}}" bindtap="deleteClick" type="mini-btn" role="button" aria-disabled="false" class="creator-btn">
         <image style="width: 27px; height: 27px" src="/pages/images/cancel.png"></image>
       </button>
