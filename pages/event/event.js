@@ -19,7 +19,9 @@ Page({
     index: 0,//选择的下拉列表下标
     searchInput: [],
     selectData: [],
-    item: ''
+    item: '',
+    langitude: '',
+    latitude: '',
   },
 
   selectTap() {
@@ -53,9 +55,6 @@ Page({
   // },
 
   onLoad: function (options) {
-        // this.setData({
-        //     searchInput: res.data.objects
-        // })
   },
 
   searchSubmitFn: function (e) {
@@ -93,6 +92,17 @@ Page({
     })
   },
 
+  locationPicker: function(e) {
+    wx.chooseLocation()
+  },
+
+  // locationPicker((res) => {
+  //   wx.chooseLocation()
+  //   this.setData ({
+  //     longitude: res.data.longitude,
+  //     latitude: res.data.longitude
+  //   })
+  // }),
 
   bindDateChange1: function(e) {
     console.log('bindDateChange 1', e);
