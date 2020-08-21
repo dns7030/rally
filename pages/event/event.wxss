@@ -2,7 +2,8 @@
   font-family: 'Playfair Display';
   font-weight: bold;
   font-size: 22px;
-  padding-top: 5px;
+  margin: 60px 0 0 0;
+
   }
 
   .h2 {
@@ -31,8 +32,8 @@
   padding: 15px 0;
 }
 .input-text {
-  padding-left: 15px;
-  font-size: 18px;
+
+  font-size: 14px;
   display: block;
 }
 
@@ -45,16 +46,25 @@
   color: grey;
 }
 
+.date-title {
+  margin: 20px 0 0 0;
+  font-family:'Playfair Display';
+  font-size: 16px;
+}
 .date-picker {
   background-color: #f6f6f6;
   border-radius: 5px;
   width: 60%;
   margin-right: 10px;
+  font-size: 14px;
+
 }
 .time-picker {
   background-color: #f6f6f6;
   border-radius: 5px;
   width: 40%;
+  font-size: 14px;
+
 }
 
 .picker-date {
@@ -62,8 +72,9 @@
 }
 
 .button {
-  margin-top: 20px;
+  margin: 50px 0 50px 0;
 }
 .textarea {
   height: 3em;
 }
+

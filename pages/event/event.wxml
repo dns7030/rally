@@ -2,7 +2,7 @@
 <view class="container">
   <view class="h1" style="margin-top: 20px">Let's Make Plans</view>
   <view class="create-event">
-  <form bindsubmit="formSubmit"> 
+  <form bindsubmit="formSubmit">
     <view class="input-card">
         <input name="title" class="input-text" placeholder="Title">Title</input>
     </view>
@@ -29,12 +29,14 @@
         </view>
 
     <view class="h1">When?</view>
-    <view class="h2">More than one option if you can’t decide</view>
 
-    <image class="gif" src=" /pages/images/time-think.gif"></image> 
-
+    <view class="h2">more than one option if you can’t decide</view>
+    <image class="gif" src=" /pages/images/time-think.gif"></image>
     <!-- choose date & time -->
-     
+
+    <view class="date-time">
+      <view class="date-title">Pick at least one date + time</view>
+
     <view class="input-date 1">
         <view class="date-picker">
           <view class="picker-date">
@@ -51,9 +53,12 @@
             <view class="weui-input">{{time1}}</view>
           </picker>
         </view>
-      </view>
+
+       </view>
+
+
     </view>
-    
+
     <view class="input-date 2">
       <view class="date-picker">
         <view class="picker-date">
@@ -90,13 +95,18 @@
         </picker>
       </view>
     </view>
-    </view> 
- 
+    </view>
+<<<<<<< HEAD
+ </view>
+    <!-- button -->
+=======
+
    <!-- button -->
+>>>>>>> master
 
     <view class="button">
-        <button bindtap="toEvent" formType="submit" class="buy-btn">Post</button> 
-    </view>    
+        <button bindtap="toEvent" formType="submit" class="buy-btn">Post</button>
+    </view>
   </form>
   </view>
 </view>

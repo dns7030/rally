@@ -8,11 +8,12 @@ Page({
    */
   data: {
     date1: "Date",
-    date2: "Other option",
-    date3: "Other option",
+    date2: "optional",
+    date3: "optional",
     event: {},
     events: [],
     time1: "Time",
+
     time2: "Other option",
     time3: "Other option",
     show: false,
@@ -22,7 +23,8 @@ Page({
     item: '',
     langitude: '',
     latitude: '',
- 
+
+
   },
 
   selectTap() {
@@ -41,7 +43,7 @@ Page({
       console.log('checking search query',res)
       // store data and display data
       this.setData({
-        selectData: res.data.objects, 
+        selectData: res.data.objects,
       })
     })
 
@@ -59,19 +61,19 @@ Page({
   },
 
   searchSubmitFn: function (e) {
-    console.log(e)    
-    var that = this    
-    var searchInput = this.data.searchInput    
-    var searchRecord = this.data.searchRecord    
-    if (searchInput == '') {         
-    }    
+    console.log(e)
+    var that = this
+    var searchInput = this.data.searchInput
+    var searchRecord = this.data.searchRecord
+    if (searchInput == '') {
+    }
     else {
       let arrnum = searchRecord.indexOf(searchInput);
-     
-      if (arrnum==-1){   
-        searchRecord.unshift(searchInput)    
-        //将历史记录数组整体储存到缓存中    
-      } 
+
+      if (arrnum==-1){
+        searchRecord.unshift(searchInput)
+        //将历史记录数组整体储存到缓存中
+      }
       else{
         // 删除已存在后重新插入至数组
         searchRecord.splice(arrnum, 1)
@@ -82,14 +84,14 @@ Page({
     }
     this.setData({
       searchRecord: this.data.searchRecord
-    })  
+    })
   },
 
 
   date: function(e) {
     console.log(date0, e)
     this.setData({
-      date: e.detail.value 
+      date: e.detail.value
     })
   },
 
@@ -121,7 +123,7 @@ Page({
     //     latitude: res.data.longitude
     //   })
     // })
-    
+
   bindDateChange1: function(e) {
     console.log('bindDateChange 1', e);
     this.setData({
@@ -157,7 +159,7 @@ Page({
       time3: e.detail.value
     })
   },
-   
+
   formSubmit: function (event) {
     console.log('formSubmit', event);
     let currentUser = this.data.currentUser
@@ -184,7 +186,7 @@ Page({
 
     let events = new wx.BaaS.TableObject('events');
     let newEvent = events.create();
-  
+
     const data = {
       // restaurants_id: this.data.restaurants.id,
       title: title,
@@ -199,7 +201,7 @@ Page({
       console.log('save res', res);
       const newEvents = this.data.events;
       newEvents.push(res.data);
-      
+
       this.setData({
         event: newEvents,
 
@@ -213,10 +215,12 @@ Page({
     })
 
     wx.showToast({
-      title: 'Your event was created. To share it with your friends find it in your future events page',
+      title: "Let's go!",
       icon: 'success',
-      duration: 2000,
+      duration: 4000,
       mask: true,
+
+
     });
   },
 
