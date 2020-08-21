@@ -22,6 +22,7 @@ Page({
     item: '',
     langitude: '',
     latitude: '',
+ 
   },
 
   selectTap() {
@@ -93,21 +94,38 @@ Page({
   },
 
   locationPicker: function(e) {
-    wx.chooseLocation()
-  },
+    console.log('checking loc', e)
+    wx.getLocation({
+      //定位类型 wgs84, gcj02
+      type: 'gcj02',
+      success: function(res) {
+       console.log(res)
+       wx.openLocation({
+        latitude: latitude,
+        longitude: longitude,
+        scale: 28,
+        name: '观合中医',
+        address: '春熙路店铺',
+        success: res => {
+          console.log(res)
+        }
+       })
+      }
 
-  // locationPicker((res) => {
-  //   wx.chooseLocation()
-  //   this.setData ({
-  //     longitude: res.data.longitude,
-  //     latitude: res.data.longitude
-  //   })
-  // }),
-
+    })
+},
+   // locationPicker((res) => {
+    //   wx.chooseLocation()
+    //   this.setData ({
+    //     longitude: res.data.longitude,
+    //     latitude: res.data.longitude
+    //   })
+    // })
+    
   bindDateChange1: function(e) {
     console.log('bindDateChange 1', e);
     this.setData({
-        date1: e.detail.value
+        "date1": e.detail.value,
     })
   },
 
@@ -123,6 +141,7 @@ Page({
         date3: e.detail.value
     })
   },
+
   bindTimeChange1(e) {
     this.setData({
       time1: e.detail.value

@@ -38,7 +38,7 @@
     <view class="input-date 1">
         <view class="date-picker">
           <view class="picker-date">
-            <picker name="date1" mode="date" value="{{date}}" bindchange="bindDateChange1">
+            <picker bindchange="bindDateChange1" name="date1" mode="date" value="{{date}}">
               <view wx:if="date">
                 <view>{{date1}}</view>
               </view>
@@ -47,13 +47,13 @@
       </view>
       <view class="time-picker">
         <view class="picker-date time">
-          <picker name="time1" mode="time" value="{{time}}" start="09:00" end="21:00" bindchange="bindTimeChange1">
+          <picker bindchange="bindTimeChange1" name="time1" mode="time" value="{{time}}" start="09:00" end="21:00">
             <view class="weui-input">{{time1}}</view>
           </picker>
         </view>
       </view>
-      
     </view>
+    
     <view class="input-date 2">
       <view class="date-picker">
         <view class="picker-date">
@@ -92,7 +92,7 @@
     </view>
     </view> 
  
-    <!-- button -->
+   <!-- button -->
 
     <view class="button">
         <button bindtap="toEvent" formType="submit" class="buy-btn">Post</button> 
