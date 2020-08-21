@@ -2,12 +2,14 @@
   <image class="gif" src="/pages/images/celebration.gif"></image>
   <view class="event-details">
     <view class="h1">{{events.title}}</view>
-    <view class="p">{{events.description}}</view>
+    <view class="description">{{events.description}}</view>
   </view>
 
   <view class="date-add">
-    <view class="date">{{events.date}}</view>
+    <view class="date">⏰{{events.date}}</view>
     <view class="date">{{events.date.time}}</view>
+    
+    <text class="h1">Where?</text>
     <view class="map-div">
       <view class="address">Venue Address will show here...</view>
       <view class="map-btn" loading="{{loading}}" bindtap="openLocation" hover-class="other-button-hover"> map </view>
@@ -17,9 +19,12 @@
   </view>
 
    <view class="event-details"><text class="h1">{{attendees.length}} friends are going...</text>
+    
+    <view class="attendees">
     <view class="attendees-icons" wx:for="{{attendees}}" wx:for-item="attendee">     
       <image class="userImage" src="{{attendee.user_id.avatar}}"></image>
-      <view class="p">{{attendee.user_id.nickname}}</view>
+      <!-- <view class="p">{{attendee.user_id.nickname}}</view> -->
+    </view>
     </view>
        <!-- <block wx:for="{{iconSize}}">
         <view class="attendees-icons" wx:for="{{attendees}}" wx:for-item="{{votes}}">
@@ -28,9 +33,9 @@
         </view>
       </block> -->
   </view>
-  <view class="map-div more-btn">
-    <button class="map-btn" bindtap="locationClick"> more </button>
-  </view>
+  <!-- <view class="map-div more-btn"> -->
+    <!-- <button class="map-btn" bindtap="locationClick"> more </button> -->
+  <!-- </view> -->
 
     <view class="event-details">
       <text class="h1">Can you make it?</text>
@@ -39,7 +44,7 @@
         <view class="rsvp-btn" wx:if="{{currentUser.id !== 'events.created_by'}}" hover-class="rsvp-btn-hover" bindtap="noButton"> No. </view>
       </view>
 
-    <view class="map-div">
+   
       <button wx:if="{{currentUser.id == events.created_by}}" open-type="edit" type="mini-btn" role="button" aria-disabled="false" bindtap="edit" class="creator-btn">
         <image style="width: 27px; height: 27px" src="/pages/images/edit-01.png"></image>
       </button>
@@ -58,7 +63,7 @@
 
     </view>
   </view>
-</view>
+
 
 
 

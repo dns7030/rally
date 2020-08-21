@@ -1,5 +1,6 @@
 /* pages/user/user.wxss */
 .card {
+  padding: 5px 0 0 0;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -17,16 +18,17 @@
   box-shadow: 0 -1px 0 rgba(120, 120, 120, 0.3);
   display: flex;
   flex-direction: column;
-  padding: 10px;
-  width: 90%;
-  margin: 10px 0;
+  width: 100%;
+  padding: 10px 0 0 0;
   color: black;
 }
 .date-card {
-  margin-left: 65%;
+
   position: relative;
-  font-size: 18px;
+  font-size: 14px;
   font-family: sans-serif;
+  padding: 0 0 10px 0;
+
 }
 .userImage {
   height: 100px;
@@ -37,11 +39,12 @@
 }
 .UserName{
   padding-top: 110px;
+  font-size: 30px;
 }
 .tabs {
   width: 100%;
   justify-items: center;
-  margin-top: 15px;
+  margin: 40px 0 0 0;
 }
 .tab-menu {
   display: flex;
@@ -90,10 +93,19 @@
   flex-direction: column;
 }
 .description {
-  color: grey;
+  color: rgb(68, 68, 68);
 }
 
 .button {
   width: 30px;
   background-color: white;
+}
+
+image.gif {
+  display: flex;
+  align-items: center;
+}
+
+.login-button {
+  margin: 5px 0 50px 0;
 }

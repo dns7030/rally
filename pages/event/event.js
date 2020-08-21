@@ -8,13 +8,13 @@ Page({
    */
   data: {
     date1: "Date",
-    date2: "Other option",
-    date3: "Other option",
+    date2: "optional",
+    date3: "optional",
     event: {},
     events: [],
     time1: "Time",
-    time2: "Other option",
-    time3: "Other option",
+    time2: "optional",
+    time3: "optional",
     
   },
 
@@ -122,10 +122,12 @@ Page({
     })
 
     wx.showToast({
-      title: 'Your event was created. To share it with your friends find it in your future events page',
+      title: "Let's go!",
       icon: 'success',
-      duration: 2000,
+      duration: 4000,
       mask: true,
+     
+
     });
   },
 

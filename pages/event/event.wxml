@@ -22,10 +22,12 @@
     </view> -->
 
     <view class="h1">When?</view>
-    <view class="h2">More than one option if you can’t decide</view>
+    <view class="h2">more than one option if you can’t decide</view>
     <image class="gif" src=" /pages/images/time-think.gif"></image>
     <!-- choose date & time -->
-    
+
+    <view class="date-time">
+      <view class="date-title">Pick at least one date + time</view>
     <view class="input-date 1">
         <view class="date-picker">
           <view class="picker-date">
@@ -42,7 +44,7 @@
             <view class="weui-input">{{time1}}</view>
           </picker>
         </view>
-      </view>
+       </view>
       
     </view>
     <view class="input-date 2">
@@ -82,7 +84,7 @@
       </view>
     </view>
     </view> 
- 
+ </view>
     <!-- button -->
 
     <view class="button">
