@@ -10,16 +10,27 @@
     <view class="input-card">
       <textarea name="description" class="input-text" placeholder="Description" cursor="auto" style="height: 3em"></textarea>
     </view>
-    <view class="inpud-card searchbar">
+    <!-- <view class="inpud-card searchbar">
       <SearchBar id="SearchBar" addflag="{{addflag}}" addimg="{{addimg}}" bind:addhandle="addhandle" searchstr="{{searchstr}}" bind:searchList="searchList" bind:endsearchList="endsearchList" bind:cancelsearch="cancelsearch" bind:activity_clear="activity_clear">
       </SearchBar>
-      <!-- <button bindtap="searchClick">Search</button> -->
-    </view> 
+      <button bindtap="searchClick">Search</button>
+    </view>  -->
     
-    <!-- <view class="input-card search" style="display: flex">
-      <input type="text" placeholder="Place" value="{{inputVal}}" bindfocus="inputFocus" bindblur="inputBlur" bindinput="inputTyping" class="input-text"/>
-      <view class="input-text" bindtap="onClickSearchButton">Search</view>
-    </view> -->
+    <view class="input-card search">
+      <view class="searchTop">
+        <view class="inputSelect">
+          <view class="selectBox">
+            <text wx:for="{{selectData}}" wx:key="this" wx:for-item="result" data-id="{{venues.id}}" bindtap="selectResult" bindselectresult="selectResult" search="{{venues}}">{{result.name_en}}</text>
+          </view>
+
+          <input placeholder="Search venue..." bindinput="getSearchInput" value="{{searchInput}}"/>
+        </view>
+
+        <!-- <view class="returnPage" wx:if="{{!searchInput}}" bindtap="returnLastPage">Clear</view>
+
+        <view class="toSearch" wx:if="{{searchInput}}" bindtap="searchSubmitFn">Searching</view> -->
+      </view>
+    </view>
 
     <view class="h1">When?</view>
     <view class="h2">More than one option if you can’t decide</view>
