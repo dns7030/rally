@@ -15,6 +15,7 @@ Page({
   showEvents: function(event) {
     let data = event.currentTarget.dataset;
     let id = data.id;
+
     console.log('checking id', id)
     wx.navigateTo({
       url: `/pages/description/description?id=${id}`
@@ -38,6 +39,7 @@ Page({
       console.log('checking my event query',res)
       //pull event data
       let events = res.data.objects
+      
       const now = new Date().getTime();
       console.log('date now', now);
 
@@ -82,48 +84,6 @@ Page({
 
     }); 
 
-    // let currentUser = this.data.currentUser;
-
-    // query.compare('user_id', '=', currentUser.id);
-    // query.compare('attending', '=', true);
-
-  // events that user joined
-    // events.setQuery(query).expand(['user_id', 'event_id']).find().then((res) => {
-    //       console.log('checking my event query',res)
-    //       //pull event data
-    //       let events = res.data.objects
-    //       const now = new Date().getTime();
-    //       console.log('date now', now);
-
-    //       // const pastEvents = events.filter(event => {
-    //       //   console.log('past events', event)
-    //       //   const eventDate = new Date(event.event_id.date).getTime();
-    //       //   if(eventDate < now) {
-    //       //     return true;
-    //       //   }
-    //       //   return false;
-    //       // });
-
-    //       // const futureEvents = events.filter(event => {
-    //       //   console.log('future events', event)
-    //       //   const eventDate = new Date(event.event_id.date).getTime();
-    //       //   if(eventDate > now) {
-    //       //     return true;
-    //       //   }
-    //       //   return false;
-    //       // });
-
-    //       // console.log('past and future', pastEvents, futureEvents );
-
-    //       this.setData ({
-    //         events: res.data.objects,
-    //         // pastEvents,
-    //         // futureEvents,
-    //       })
-
-    //     }); 
-
-
   },
 
   userInfoHandler(data) {
@@ -138,6 +98,7 @@ Page({
       }, err => {
     })
   },
+  
   bindLogout: function (event) {
     wx.BaaS.auth.logout().then(() => {
       wx.setStorageSync('userInfo', null);

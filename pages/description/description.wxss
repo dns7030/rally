@@ -133,3 +133,8 @@
   background-color: lavender;
   border-radius: 50%;
 }
+.radio {
+  display: flex;
+  flex-direction: column;
+  
+}

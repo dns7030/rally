@@ -61,23 +61,37 @@ Page({
    
     const events = new wx.BaaS.TableObject('events');
     console.log({ options })
+    // Get specific one event
 
     events.expand(["venue_id"]).get(options.id).then((res) => {
       console.log('get one event',res)
       let event = res.data
-  
-        event.date = util.formatTime(new Date(event.date[0]));
 
-          this.setData({
-          events: event
+      
+      // event.date = util.formatTime(new Date(event.date[0]));
+      
+      event.date = event.date.map(date => {
+        return util.formatDate(new Date(date));
+      });
 
-          })
+        // event.time = event.date.map(time => {
+        //   return util.formatTime(new Date([time]))});
+    
+      this.setData ({
+        events: event,
       })
+
+      //fortmat one date
+      // event.date = util.formatTime(new Date(event.date[0]));
+      // this.setData({
+      // events: event
+      // })
+
 //get one event
     let query = new wx.BaaS.Query();
     query.compare('event_id', '=', options.id);
-//get attendees id
 
+//get attendees id
     const attendees = new wx.BaaS.TableObject('votes')
     console.log('attendees checking', options)
     query.compare('event_id', '=', options.id);
@@ -91,7 +105,8 @@ Page({
     })
 
 
-  },
+ })
+},
 
   yesButton: function (event) {
     let event_id = this.data.events.id;

@@ -2,7 +2,7 @@
 <view class="container">
   <view class="h1" style="margin-top: 20px">Let's Make Plans</view>
   <view class="create-event">
-  <form bindsubmit="formSubmit"> 
+  <form bindsubmit="formSubmit">
     <view class="input-card">
         <input name="title" class="input-text" placeholder="Title">Title</input>
     </view>
@@ -10,28 +10,37 @@
     <view class="input-card">
       <textarea name="description" class="input-text" placeholder="Description" cursor="auto" style="height: 3em"></textarea>
     </view>
-    <!-- <view class="inpud card searchbar">
-      <SearchBar id="SearchBar" addflag="{{addflag}}" addimg="{{addimg}}" bind:addhandle="addhandle" searchstr="{{searchstr}}" bind:searchList="searchList" bind:endsearchList="endsearchList" bind:cancelsearch="cancelsearch" bind:activity_clear="activity_clear">
-      </SearchBar>
-      <button bindtap="searchClick">Search</button>
-    </view> -->
-    <!-- <view class="input-card search" style="display: flex">
-      <icon type="search"></icon>
-      <input type="text" placeholder="Place" value="{{inputVal}}" bindfocus="inputFocus" bindblur="inputBlur" bindinput="inputTyping" class="input-text"/>
-      <view class="input-text" bindtap="onClickSearchButton">Search</view>
-    </view> -->
+        <button bindtap="locationPicker">Location</button>
+
+        <view class="input-card search">
+          <view class="searchTop">
+            <view class="inputSelect">
+              <view class="selectBox">
+                <text wx:for="{{selectData}}" wx:key="this" wx:for-item="result" data-id="{{venues.id}}" bindtap="selectResult" bindselectresult="selectResult" search="{{venues}}">{{result.name_en}}</text>
+              </view>
+
+              <input placeholder="Search venue..." bindinput="getSearchInput" value="{{searchInput}}"/>
+            </view>
+
+            <!-- <view class="returnPage" wx:if="{{!searchInput}}" bindtap="returnLastPage">Clear</view>
+
+            <view class="toSearch" wx:if="{{searchInput}}" bindtap="searchSubmitFn">Searching</view> -->
+          </view>
+        </view>
 
     <view class="h1">When?</view>
+
     <view class="h2">more than one option if you can’t decide</view>
     <image class="gif" src=" /pages/images/time-think.gif"></image>
     <!-- choose date & time -->
 
     <view class="date-time">
       <view class="date-title">Pick at least one date + time</view>
+
     <view class="input-date 1">
         <view class="date-picker">
           <view class="picker-date">
-            <picker name="date1" mode="date" value="{{date}}" bindchange="bindDateChange1">
+            <picker bindchange="bindDateChange1" name="date1" mode="date" value="{{date}}">
               <view wx:if="date">
                 <view>{{date1}}</view>
               </view>
@@ -40,13 +49,16 @@
       </view>
       <view class="time-picker">
         <view class="picker-date time">
-          <picker name="time1" mode="time" value="{{time}}" start="09:00" end="21:00" bindchange="bindTimeChange1">
+          <picker bindchange="bindTimeChange1" name="time1" mode="time" value="{{time}}" start="09:00" end="21:00">
             <view class="weui-input">{{time1}}</view>
           </picker>
         </view>
+
        </view>
-      
+
+
     </view>
+
     <view class="input-date 2">
       <view class="date-picker">
         <view class="picker-date">
@@ -83,13 +95,18 @@
         </picker>
       </view>
     </view>
-    </view> 
+    </view>
+<<<<<<< HEAD
  </view>
     <!-- button -->
+=======
+
+   <!-- button -->
+>>>>>>> master
 
     <view class="button">
-        <button bindtap="toEvent" formType="submit" class="buy-btn">Post</button> 
-    </view>    
+        <button bindtap="toEvent" formType="submit" class="buy-btn">Post</button>
+    </view>
   </form>
   </view>
 </view>

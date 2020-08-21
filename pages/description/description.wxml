@@ -6,32 +6,35 @@
   </view>
 
   <view class="date-add">
-    <view class="date">⏰{{events.date}}</view>
-    <view class="date">{{events.date.time}}</view>
-    
-    <text class="h1">Where?</text>
+
+    <radio-group class="radio-group" bindchange="radioChange">
+      <label class="radio">
+        <radio value="{{events.date}}" checked="{{events.checked}}"/>{{events.date[0]}}
+        <radio value="{{events.date}}" checked="{{events.checked}}"/>{{events.date[1]}}
+        <radio value="{{events.date}}" checked="{{events.checked}}"/>{{events.date[2]}}
+      </label>
+    </radio-group>
+    <!-- <view class="date">{{events.date}}</view>
+    <view class="date">{{events.date.time}}</view> -->
+
     <view class="map-div">
       <view class="address">Venue Address will show here...</view>
       <view class="map-btn" loading="{{loading}}" bindtap="openLocation" hover-class="other-button-hover"> map </view>
-  
-   
+
+
     </view>
   </view>
 
    <view class="event-details"><text class="h1">{{attendees.length}} friends are going...</text>
-    
+
     <view class="attendees">
-    <view class="attendees-icons" wx:for="{{attendees}}" wx:for-item="attendee">     
+
+    <view class="attendees-icons" wx:for="{{attendees}}" wx:for-item="attendee">
       <image class="userImage" src="{{attendee.user_id.avatar}}"></image>
       <!-- <view class="p">{{attendee.user_id.nickname}}</view> -->
     </view>
     </view>
-       <!-- <block wx:for="{{iconSize}}">
-        <view class="attendees-icons" wx:for="{{attendees}}" wx:for-item="{{votes}}">
-          <icon type="warn" size="{{item}}" color="#FF3232"/>
-          <view class="user-avatar">{{user_id.avatar}}</view>
-        </view>
-      </block> -->
+
   </view>
   <!-- <view class="map-div more-btn"> -->
     <!-- <button class="map-btn" bindtap="locationClick"> more </button> -->
@@ -44,14 +47,10 @@
         <view class="rsvp-btn" wx:if="{{currentUser.id !== 'events.created_by'}}" hover-class="rsvp-btn-hover" bindtap="noButton"> No. </view>
       </view>
 
-   
+
       <button wx:if="{{currentUser.id == events.created_by}}" open-type="edit" type="mini-btn" role="button" aria-disabled="false" bindtap="edit" class="creator-btn">
         <image style="width: 27px; height: 27px" src="/pages/images/edit-01.png"></image>
       </button>
-      
-      <!-- <button bindtap="editClick" open-type="edit" type="mini-btn" role="button" aria-disabled="false" class="creator-btn">
-        <image style="width: 27px; height: 27px" src="/pages/images/edit-01.png"></image>
-      </button> -->
 
       <button wx:if="{{currentUser.id == events.created_by}}" bindtap="deleteClick" type="mini-btn" role="button" aria-disabled="false" class="creator-btn">
         <image style="width: 27px; height: 27px" src="/pages/images/cancel.png"></image>
