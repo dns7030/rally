@@ -32,7 +32,6 @@
   padding: 15px 0;
 }
 .input-text {
-
   font-size: 14px;
   display: block;
 }
@@ -76,5 +75,15 @@
 }
 .textarea {
   height: 3em;
+}
+
+.radio {
+  display: flex;
+  flex-direction: column;
+}
+
+.radio-group {
+  display: flex;
+  flex-direction: column;
 }
 

@@ -15,12 +15,12 @@
   margin-top: 55px;
   text-align: center;
 }
-.description {
-  
-  text-align: center;
-  padding: 30px 0 10px 0;
 
+.description {  
+  text-align: center;
+  padding: 30px 0 60px 0;
 }
+
 .event-details {
   width: 90%;
   background: white;
@@ -71,6 +71,9 @@
   width: 95%;
   align-items: center;
   justify-content: space-between;
+  font-size: 15px;
+  margin: 10px 0 10px 0;
+
 }
 
 .attendees {
@@ -84,9 +87,22 @@
 
 .rsvp-btn {
   display: block;
-  padding: 6px 0px 6px 0px;
+  padding: 10px 15px 10px 15px;
   font-size: 14px;
-  background:#C1CAD1;
+  background: #FF3232;
+  color: white;
+  border-radius: 50px;
+  width: 80px;
+  height: 20px;
+  text-align: center;
+  margin: 10px 7px 10px 7px;
+}
+
+.no-btn {
+  display: block;
+  padding: 10px 15px 10px 15px;
+  font-size: 14px;
+  background: #C1CAD1;
   color: white;
   border-radius: 50px;
   width: 80px;
@@ -97,9 +113,9 @@
 
 .rsvp-btn-hover {
   display: block;
-  padding: 6px 0px 6px 0px;
-  font-size: 14px;
-  background: rgba(255, 50, 50, 0.44);
+  padding: 10px 15px 10px 15px;
+  font-size: 18px;
+  background: #FF3232;
   color: white;
   border-radius: 50px;
   width: 80px;
@@ -133,8 +149,8 @@
   background-color: lavender;
   border-radius: 50%;
 }
-.radio {
+.radio-group {
   display: flex;
-  flex-direction: column;
+  flex-direction: column
   
 }

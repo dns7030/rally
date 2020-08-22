@@ -27,9 +27,11 @@
   position: relative;
   font-size: 14px;
   font-family: sans-serif;
-  padding: 0 0 10px 0;
-
-}
+  padding: 12px 0 24px 0;
+  font-weight: bold;
+  
+  }
+  
 .userImage {
   height: 100px;
   width: 100px;
@@ -91,9 +93,11 @@
 .event-info {
   display: flex;
   flex-direction: column;
+  padding: 12px 0 0;
 }
+
 .description {
-  color: rgb(68, 68, 68);
+  color: black;
 }
 
 .button {
@@ -104,6 +108,9 @@
 image.gif {
   display: flex;
   align-items: center;
+  width: 80%;
+  margin: 0 auto;
+
 }
 
 .login-button {
