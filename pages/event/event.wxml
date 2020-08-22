@@ -47,7 +47,7 @@
       </view>
       <view class="time-picker">
         <view class="picker-date time">
-          <picker bindchange="bindTimeChange1" name="time1" mode="time" value="{{time}}" start="09:00" end="21:00">
+          <picker bindchange="bindTimeChange1" name="time1" mode="time" value="{{time}}">
             <view class="weui-input">{{time1}}</view>
           </picker>
         </view>
@@ -60,7 +60,7 @@
     <view class="input-date 2">
       <view class="date-picker">
         <view class="picker-date">
-          <picker name="date2" mode="date" value="{{date}}" start="2020-09-01" end="2030-09-01" bindchange="bindDateChange2">
+          <picker name="date2" mode="date" value="{{date}}" bindchange="bindDateChange2">
             <view wx:if="date">
               <view>{{date2}}</view>
             </view>
@@ -69,7 +69,7 @@
     </view>
     <view class="time-picker">
       <view class="picker-date time">
-        <picker name="time2" mode="time" value="{{time}}" start="09:01" end="21:01" bindchange="bindTimeChange2">
+        <picker name="time2" mode="time" value="{{time}}" bindchange="bindTimeChange2">
           <view class="weui-input">{{time2}}</view>
         </picker>
       </view>
@@ -79,7 +79,7 @@
     <view class="input-date 3">
       <view class="date-picker">
         <view class="picker-date">
-          <picker name="date3" mode="date" value="{{date}}" start="2020-09-01" end="2030-09-01" bindchange="bindDateChange3">
+          <picker name="date3" mode="date" value="{{date}}" bindchange="bindDateChange3">
             <view wx:if="date">
               <view>{{date3}}</view>
             </view>
@@ -88,7 +88,7 @@
     </view>
     <view class="time-picker">
       <view class="picker-date time">
-        <picker name="time3" mode="time" value="{{time}}" start="09:01" end="21:01" bindchange="bindTimeChange3">
+        <picker name="time3" mode="time" value="{{time}}" bindchange="bindTimeChange3">
           <view class="weui-input">{{time3}}</view>
         </picker>
       </view>

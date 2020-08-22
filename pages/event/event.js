@@ -194,9 +194,12 @@ Page({
         event: newEvents,
 
       })
-
+      wx.navigateTo({
+        url: `/pages/description/description?id=${newEvents[0]._id}`,
+      })
       console.log('new events', newEvents[0]._id)
     })
+
 
     wx.showToast({
       title: "Let's go!",

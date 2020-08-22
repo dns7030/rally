@@ -58,13 +58,11 @@ Page({
       });
 
       console.log('past and future', pastEvents, futureEvents);
-
       //define event
       let formatedEvents = []
       //store event with time
       events.forEach((event)=>{
         // console.log('event.date', event)
-
         event.date = event.date.map(date => {
           return util.formatTime(new Date(date));
         });
