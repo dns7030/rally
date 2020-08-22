@@ -50,12 +50,17 @@ Page({
     console.log(e.detail.value)
   },
 
-  // selectResult(e) {
-  //   let selectData = new wx.BaaS.TableObject('venues')
-  //   let query = new wx.BaaS.Query()
-  //   console.log('get search data', e.detail);
-  //   query.contains('name_en', e.detail.value)
-  // },
+  selectResult(e) {
+    console.log('get search result', e);
+    let venueID = e.currentTarget.dataset.id;
+    let keyword = e.currentTarget.dataset.name;
+    
+
+    this.setData({
+      selectvenueID: venueID,
+      searchInput: keyword
+    })
+  },
 
   onLoad: function (options) {
   },
@@ -102,19 +107,13 @@ Page({
         console.log('e',e)
         page.setData({
           longitude: e.longitude,
-          latitude: e.longitude
+          latitude: e.latitude
         })
       }
     
     })
 },
-   // locationPicker((res) => {
-    //   wx.chooseLocation()
-    //   this.setData ({
-    //     longitude: res.data.longitude,
-    //     latitude: res.data.longitude
-    //   })
-    // })
+
 
   bindDateChange1: function(e) {
     console.log('bindDateChange 1', e);
@@ -167,7 +166,9 @@ Page({
 
     let title = event.detail.value.title;
     let description = event.detail.value.description;
-    let selectData = event.detail.value.place
+    let selectvenueID = this.data.selectvenueID;
+    let longitude = this.data.longitude;
+    let latitude = this.data.latitude
 
     let date1 = event.detail.value.date1;
     console.log('date1', date1)
@@ -183,8 +184,8 @@ Page({
       // restaurants_id: this.data.restaurants.id,
       title: title,
       description: description,
-      place: [selectData],
       date: [date1, date2, date3],
+      venue_id: selectvenueID,
       longitude: this.data.longitude,
       latitude: this.data.latitude
     }
