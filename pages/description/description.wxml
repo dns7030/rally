@@ -8,9 +8,9 @@
   <view class="date-add">
     <radio-group class="radio-group" bindchange="radioChange">
       <label class="radio">
-        <radio value="{{events.date}}" checked="{{events.checked}}"/>{{events.date[0]}}
-        <radio value="{{events.date}}" checked="{{events.checked}}"/>{{events.date[1]}}
-        <radio value="{{events.date}}" checked="{{events.checked}}"/>{{events.date[2]}}
+        <radio value="0" checked="{{events.checked}}"/>{{events.date[0]}}
+        <radio value="1" checked="{{events.checked}}"/>{{events.date[1]}}
+        <radio value="2" checked="{{events.checked}}"/>{{events.date[2]}}
       </label>
     </radio-group>
     <!-- <view class="date">{{events.date}}</view>
