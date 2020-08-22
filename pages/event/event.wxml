@@ -96,13 +96,9 @@
       </view>
     </view>
     </view>
-<<<<<<< HEAD
  </view>
     <!-- button -->
-=======
 
-   <!-- button -->
->>>>>>> master
 
     <view class="button">
         <button bindtap="toEvent" formType="submit" class="buy-btn">Post</button>
