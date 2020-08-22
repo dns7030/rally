@@ -7,7 +7,7 @@
 </view> -->
 
 <view class="weekend-calendar">
-  <image class="gif" src="/pages/images/whatsthisweek.gif"></image>
+  <image class="gif" mode="aspectFit" src="/pages/images/whatsthisweek.gif"></image>
   <view class="h1" style="text-align: center">{{currentUser.nickname}},</view>
   <view class="h1" style="text-align: center">what are we doing this week?</view>
 </view>
@@ -20,26 +20,33 @@
     </view>
     <view wx:if="{{currentUser}}">
       <view wx:if="{{active==0}}" class="card">
+       
+        
+
         <view wx:for="{{pastEvents}}" wx:key="" wx:for-item="events" class="event-card" data-id="{{events.id}}" bindtap="showEvents">
-          <view class="date-card">
-            <view>{{events.date[0]}}</view>
-          </view>
-          <view class="event-info myEvent">
+         
+         <view class="event-info">
             <view class="h3">{{events.title}}</view>
             <view class="p description">{{events.description}}</view>
+          </view>
+
+          <view class="date-card">
+            <view>{{events.date[0]}}</view>
           </view>
         </view>
          <!-- this is tabone!!! -->
       </view>
+
       <view wx:if="{{active==1}}" class="card">
         <view wx:for="{{futureEvents}}" wx:key="" wx:for-item="events" class="event-card" bindtap="showEvents" data-id="{{events.id}}">
           
-          <view class="date-card">
-            <view>{{events.date[0]}}</view>
-          </view>
           <view class="event-info">
             <view class="h3">{{events.title}}</view>
             <view class="p description">{{events.description}}</view>
+          </view>
+
+          <view class="date-card">
+            <view>{{events.date[0]}}</view>
           </view>
 
         </view>
