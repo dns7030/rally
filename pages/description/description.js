@@ -83,7 +83,7 @@ Page({
     let query = new wx.BaaS.Query();
     query.compare('event_id', '=', options.id);
 
-//get attendees id
+    //get attendees id
     const attendees = new wx.BaaS.TableObject('votes')
     console.log('attendees checking', options)
     query.compare('event_id', '=', options.id);
@@ -96,7 +96,21 @@ Page({
       })
     })
 
+    //get number of people voted on each time
+    let votedDate = new wx.BaaS.TableObject('votes')
+    query.compare('event_id', '=', options.id);
+    query.compare('votedDate', '=', 0);
+
+    votedDate.setQuery(query).expand(['event_id', 'votedDate']).find().then((res) => {
+      console.log('checking attendees', res)
+      this.setData ({
+        votedDate: res.data.objects
+      })
+    })
+
  })
+
+    
 },
 
 radioChange: function(e) {
