@@ -91,7 +91,6 @@ Page({
     })
   },
 
-
   date: function(e) {
     console.log(date0, e)
     this.setData({
@@ -106,10 +105,9 @@ Page({
         console.log('e',e)
         page.setData({
           longitude: e.longitude,
-          latitude: e.longitude
+          latitude: e.latitude
         })
       }
-    
     })
 },
 
@@ -169,6 +167,8 @@ Page({
     let title = event.detail.value.title;
     let description = event.detail.value.description;
     let selectvenueID = this.data.selectvenueID;
+    let longitude = this.data.longitude;
+    let latitude = this.data.latitude;
     let date1 = event.detail.value.date1;
     let date2 = event.detail.value.date2;
     let date3 = event.detail.value.date3;
@@ -177,12 +177,10 @@ Page({
     const data = {
       title: title,
       description: description,
-
       date: [date1, date2, date3],
-      venue_id: selectvenueID
+      venue_id: selectvenueID,
       longitude: this.data.longitude,
       latitude: this.data.latitude
-
     }
     console.log('selected venue pass to BaaS', event)
 

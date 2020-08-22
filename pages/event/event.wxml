@@ -21,10 +21,6 @@
 
               <input placeholder="Search venue..." bindinput="getSearchInput" value="{{searchInput}}"/>
             </view>
-
-            <!-- <view class="returnPage" wx:if="{{!searchInput}}" bindtap="returnLastPage">Clear</view>
-
-            <view class="toSearch" wx:if="{{searchInput}}" bindtap="searchSubmitFn">Searching</view> -->
           </view>
         </view>
 
