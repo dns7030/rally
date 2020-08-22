@@ -9,11 +9,21 @@
   <view class="date-add">
 
     <radio-group class="radio-group" bindchange="radioChange">
-      <!-- <label class="radio"> -->
-        <radio value="{{events.date}}" checked="{{events.checked}}"/>{{events.date[0]}}
-        <radio value="{{events.date}}" checked="{{events.checked}}"/>{{events.date[1]}}
-        <radio value="{{events.date}}" checked="{{events.checked}}"/>{{events.date[2]}}
-      <!-- </label> -->
+      <label class="radio">
+        <view class="votingResult">
+          <radio value="0" checked="{{events.checked}}"/>{{events.date[0]}}
+          <text class="p">{{votedDate.length}} friends are chose this.</text>
+        </view>
+        <view class="votingResult">
+          <radio value="1" checked="{{events.checked}}"/>{{events.date[1]}}
+          <text class="p">{{votedDate.length}} friends are chose this.</text>
+        </view>
+        <view class="votingResult">
+          <radio value="2" checked="{{events.checked}}"/>{{events.date[2]}}
+          <text class="p">{{votedDate.length}} friends are chose this.</text>
+        </view>
+       
+      </label>
     </radio-group>
     <!-- <view class="date">{{events.date}}</view>
     <view class="date">{{events.date.time}}</view> -->
@@ -62,7 +72,7 @@
       </button>
 
     </view>
-  </view>
+</view>
 
 
 

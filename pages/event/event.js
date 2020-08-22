@@ -24,7 +24,6 @@ Page({
     longitude: '',
     latitude: '',
 
-
   },
 
   selectTap() {
@@ -92,7 +91,6 @@ Page({
     })
   },
 
-
   date: function(e) {
     console.log(date0, e)
     this.setData({
@@ -110,10 +108,8 @@ Page({
           latitude: e.latitude
         })
       }
-    
     })
 },
-
 
   bindDateChange1: function(e) {
     console.log('bindDateChange 1', e);
@@ -153,7 +149,10 @@ Page({
 
   formSubmit: function (event) {
     console.log('formSubmit', event);
+    
     let currentUser = this.data.currentUser
+    let events = new wx.BaaS.TableObject('events');
+    let newEvent = events.create();
 
     if (!currentUser) {
       wx.switchTab({
@@ -163,25 +162,19 @@ Page({
 
     console.log(event.detail.value.title)
     console.log(event.detail.value.description)
+    console.log(event.detail.value.selectvenueID)
 
     let title = event.detail.value.title;
     let description = event.detail.value.description;
     let selectvenueID = this.data.selectvenueID;
     let longitude = this.data.longitude;
-    let latitude = this.data.latitude
-
+    let latitude = this.data.latitude;
     let date1 = event.detail.value.date1;
-    console.log('date1', date1)
     let date2 = event.detail.value.date2;
-    console.log('date2', date2)
     let date3 = event.detail.value.date3;
-    console.log('date3', date3)
-
-    let events = new wx.BaaS.TableObject('events');
-    let newEvent = events.create();
+    
 
     const data = {
-      // restaurants_id: this.data.restaurants.id,
       title: title,
       description: description,
       date: [date1, date2, date3],
@@ -189,6 +182,7 @@ Page({
       longitude: this.data.longitude,
       latitude: this.data.latitude
     }
+    console.log('selected venue pass to BaaS', event)
 
     newEvent.set(data);
     // Post data to API
@@ -201,10 +195,6 @@ Page({
         event: newEvents,
 
       })
-
-      // wx.navigateTo({
-      //   url: `/pages/description/description?id=${newEvents[0]._id}`,
-      // })
 
       console.log('new events', newEvents[0]._id)
     })
