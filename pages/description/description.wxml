@@ -5,14 +5,15 @@
     <view class="description">{{events.description}}</view>
   </view>
 
+ <text class="h1">What works best?</text>
   <view class="date-add">
 
     <radio-group class="radio-group" bindchange="radioChange">
-      <label class="radio">
+      <!-- <label class="radio"> -->
         <radio value="{{events.date}}" checked="{{events.checked}}"/>{{events.date[0]}}
         <radio value="{{events.date}}" checked="{{events.checked}}"/>{{events.date[1]}}
         <radio value="{{events.date}}" checked="{{events.checked}}"/>{{events.date[2]}}
-      </label>
+      <!-- </label> -->
     </radio-group>
     <!-- <view class="date">{{events.date}}</view>
     <view class="date">{{events.date.time}}</view> -->
@@ -43,8 +44,8 @@
     <view class="event-details">
       <text class="h1">Can you make it?</text>
       <view class="rsvp">
-        <view class="rsvp-btn" wx:if="{{currentUser.id !== 'events.created_by'}}" hover-class="rsvp-btn-hover" data-id="{{events.id}}" bindtap="yesButton" formType="submit">Yes!</view>
-        <view class="rsvp-btn" wx:if="{{currentUser.id !== 'events.created_by'}}" hover-class="rsvp-btn-hover" bindtap="noButton"> No. </view>
+        <view class="rsvp-btn" wx:if="{{currentUser.id !== 'events.created_by'}}" hover-class="rsvp-btn-hover" data-id="{{events.id}}" bindtap="yesButton" formType="submit">Yaaaassss</view>
+        <view class="no-btn" wx:if="{{currentUser.id !== 'events.created_by'}}" hover-class="rsvp-btn-hover" bindtap="noButton"> No </view>
       </view>
 
 
