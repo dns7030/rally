@@ -1,6 +1,6 @@
 <!--pages/event/event.wxml-->
 <view class="container">
-  <view class="h1" style="margin-top: 20px">Let's Make Plans</view>
+  <view class="h1" style="margin-top: 30px">Let's make plans</view>
   <view class="create-event">
   <form bindsubmit="formSubmit">
     <view class="input-card">
@@ -10,7 +10,7 @@
     <view class="input-card">
       <textarea name="description" class="input-text" placeholder="Description" cursor="auto" style="height: 3em"></textarea>
     </view>
-        <button bindtap="locationPicker">Location</button>
+      
 
         <view class="input-card search">
           <view class="searchTop">
@@ -27,6 +27,8 @@
             <view class="toSearch" wx:if="{{searchInput}}" bindtap="searchSubmitFn">Searching</view> -->
           </view>
         </view>
+
+        <button class="buy-btn" bindtap="locationPicker">Location</button>
 
     <view class="h1">When?</view>
 
@@ -99,9 +101,8 @@
  </view>
     <!-- button -->
 
-
     <view class="button">
-        <button bindtap="toEvent" formType="submit" class="buy-btn">Post</button>
+        <button bindtap="toEvent" class="h1" formType="submit" class="buy-btn">Post</button>
     </view>
   </form>
   </view>
