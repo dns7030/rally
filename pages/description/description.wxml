@@ -3,37 +3,31 @@
   <view class="event-details">
     <view class="h1">{{events.title}}</view>
     <view class="description">{{events.description}}</view>
+    <view class="map-div">
+      <view class="address">{{venues.address_en}}</view>
+      <view class="map-btn" loading="{{loading}}" bindtap="openLocation" hover-class="other-button-hover"> map </view>
+    </view>
   </view>
 
  <text class="h1">What works best?</text>
-  <view class="date-add">
-
+  <view class="event-details">
     <radio-group class="radio-group" bindchange="radioChange">
       <label class="radio">
         <view class="votingResult">
           <radio value="0" checked="{{events.checked}}"/>{{events.date[0]}}
-          <text class="p">{{votedDate.length}} friends are chose this.</text>
+          <text class="p">{{votedForOne}} friends are chose this.</text>
         </view>
         <view class="votingResult">
           <radio value="1" checked="{{events.checked}}"/>{{events.date[1]}}
-          <text class="p">{{votedDate.length}} friends are chose this.</text>
+          <text class="p">{{votedForTwo}} friends are chose this.</text>
         </view>
         <view class="votingResult">
           <radio value="2" checked="{{events.checked}}"/>{{events.date[2]}}
-          <text class="p">{{votedDate.length}} friends are chose this.</text>
+          <text class="p">{{votedForThree}} friends are chose this.</text>
         </view>
        
       </label>
     </radio-group>
-    <!-- <view class="date">{{events.date}}</view>
-    <view class="date">{{events.date.time}}</view> -->
-
-    <view class="map-div">
-      <view class="address">Venue Address will show here...</view>
-      <view class="map-btn" loading="{{loading}}" bindtap="openLocation" hover-class="other-button-hover"> map </view>
-
-
-    </view>
   </view>
 
    <view class="event-details"><text class="h1">{{attendees.length}} friends are going...</text>

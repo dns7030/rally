@@ -30,16 +30,14 @@ Page({
 
     const myEvent = new wx.BaaS.TableObject('events');
     const events = new wx.BaaS.TableObject('votes')
-
     let user_id = new wx.BaaS.TableObject('votes')
-    let query = new wx.BaaS.Query()
+    // let query = new wx.BaaS.Query()
     
       //  events that user created
-    myEvent.setQuery(query).find().then((res) => {
+    myEvent.limit(100).find().then((res) => {
       console.log('checking my event query',res)
       //pull event data
       let events = res.data.objects
-      
       const now = new Date().getTime();
       console.log('date now', now);
 
@@ -66,13 +64,13 @@ Page({
       //store event with time
       events.forEach((event)=>{
         // console.log('event.date', event)
-        event.date = event.date.map(date => {
-          return util.formatDate(new Date(date));
-        });
 
-        event.time = event.date.map(time => {
-          return util.formatTime(new Date(time));
+        event.date = event.date.map(date => {
+          return util.formatTime(new Date(date));
         });
+        // event.time = event.date.map(time => {
+        //   return util.formatTime(new Date(time));
+        // });
         formatedEvents.push(event)
       })
 
