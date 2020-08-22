@@ -24,7 +24,6 @@ Page({
     longitude: '',
     latitude: '',
 
-
   },
 
   selectTap() {
@@ -50,12 +49,17 @@ Page({
     console.log(e.detail.value)
   },
 
-  // selectResult(e) {
-  //   let selectData = new wx.BaaS.TableObject('venues')
-  //   let query = new wx.BaaS.Query()
-  //   console.log('get search data', e.detail);
-  //   query.contains('name_en', e.detail.value)
-  // },
+  selectResult(e) {
+    console.log('get search result', e);
+    let venueID = e.currentTarget.dataset.id;
+    let keyword = e.currentTarget.dataset.name;
+    
+
+    this.setData({
+      selectvenueID: venueID,
+      searchInput: keyword
+    })
+  },
 
   onLoad: function (options) {
   },
@@ -108,13 +112,6 @@ Page({
     
     })
 },
-   // locationPicker((res) => {
-    //   wx.chooseLocation()
-    //   this.setData ({
-    //     longitude: res.data.longitude,
-    //     latitude: res.data.longitude
-    //   })
-    // })
 
   bindDateChange1: function(e) {
     console.log('bindDateChange 1', e);
@@ -154,7 +151,10 @@ Page({
 
   formSubmit: function (event) {
     console.log('formSubmit', event);
+    
     let currentUser = this.data.currentUser
+    let events = new wx.BaaS.TableObject('events');
+    let newEvent = events.create();
 
     if (!currentUser) {
       wx.switchTab({
@@ -164,30 +164,27 @@ Page({
 
     console.log(event.detail.value.title)
     console.log(event.detail.value.description)
+    console.log(event.detail.value.selectvenueID)
 
     let title = event.detail.value.title;
     let description = event.detail.value.description;
-    let selectData = event.detail.value.place
-
+    let selectvenueID = this.data.selectvenueID;
     let date1 = event.detail.value.date1;
-    console.log('date1', date1)
     let date2 = event.detail.value.date2;
-    console.log('date2', date2)
     let date3 = event.detail.value.date3;
-    console.log('date3', date3)
-
-    let events = new wx.BaaS.TableObject('events');
-    let newEvent = events.create();
+    
 
     const data = {
-      // restaurants_id: this.data.restaurants.id,
       title: title,
       description: description,
-      place: [selectData],
+
       date: [date1, date2, date3],
+      venue_id: selectvenueID
       longitude: this.data.longitude,
       latitude: this.data.latitude
+
     }
+    console.log('selected venue pass to BaaS', event)
 
     newEvent.set(data);
     // Post data to API
@@ -200,10 +197,6 @@ Page({
         event: newEvents,
 
       })
-
-      // wx.navigateTo({
-      //   url: `/pages/description/description?id=${newEvents[0]._id}`,
-      // })
 
       console.log('new events', newEvents[0]._id)
     })

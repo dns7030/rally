@@ -67,31 +67,23 @@ Page({
       console.log('get one event',res)
       let event = res.data
 
-      
-      // event.date = util.formatTime(new Date(event.date[0]));
-      
+      // event.date = event.date.map(date => {
+      //   return util.formatDate(new Date(date));
+      // });
+ 
       event.date = event.date.map(date => {
         return util.formatDate(new Date(date));
       });
 
-        // event.time = event.date.map(time => {
-        //   return util.formatTime(new Date([time]))});
-    
       this.setData ({
         events: event,
       })
-
-      //fortmat one date
-      // event.date = util.formatTime(new Date(event.date[0]));
-      // this.setData({
-      // events: event
-      // })
 
 //get one event
     let query = new wx.BaaS.Query();
     query.compare('event_id', '=', options.id);
 
-//get attendees id
+    //get attendees id
     const attendees = new wx.BaaS.TableObject('votes')
     console.log('attendees checking', options)
     query.compare('event_id', '=', options.id);
@@ -104,10 +96,29 @@ Page({
       })
     })
 
+    //get number of people voted on each time
+    let votedDate = new wx.BaaS.TableObject('votes')
+    query.compare('event_id', '=', options.id);
+    query.compare('votedDate', '=', 0);
+
+    votedDate.setQuery(query).expand(['event_id', 'votedDate']).find().then((res) => {
+      console.log('checking attendees', res)
+      this.setData ({
+        votedDate: res.data.objects
+      })
+    })
 
  })
+
+    
 },
 
+radioChange: function(e) {
+  console.log("radioChange",e.detail.value)
+  this.setData({
+    votedDate: parseInt(e.detail.value)
+  })
+},
   yesButton: function (event) {
     let event_id = this.data.events.id;
     let user_id = this.data.currentUser.id
@@ -118,7 +129,8 @@ Page({
     const data = {
       attending: true,
       event_id: event_id,
-      user_id: user_id
+      user_id: user_id,
+      votedDate:  this.data.votedDate
     }
     newAttending.set(data);
     // Post data to API
@@ -144,6 +156,7 @@ Page({
 
     let attending = new wx.BaaS.TableObject('votes');
     let newAttending = attending.create();
+
     const data = {
       attending: false,
       event_id: event_id,

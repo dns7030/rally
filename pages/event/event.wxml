@@ -16,7 +16,7 @@
           <view class="searchTop">
             <view class="inputSelect">
               <view class="selectBox">
-                <text wx:for="{{selectData}}" wx:key="this" wx:for-item="result" data-id="{{venues.id}}" bindtap="selectResult" bindselectresult="selectResult" search="{{venues}}">{{result.name_en}}</text>
+                <view wx:if="{{!selectvenueID}}" wx:for="{{selectData}}" wx:key="this" wx:for-item="result" data-id="{{result.id}}"  data-name="{{result.name_en}}" bindtap="selectResult">{{result.name_en}}</view>
               </view>
 
               <input placeholder="Search venue..." bindinput="getSearchInput" value="{{searchInput}}"/>
