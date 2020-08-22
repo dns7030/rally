@@ -179,7 +179,7 @@ Page({
       description: description,
 
       date: [date1, date2, date3],
-      venue_id: selectvenueID
+      venue_id: selectvenueID,
       longitude: this.data.longitude,
       latitude: this.data.latitude
 
