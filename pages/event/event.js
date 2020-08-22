@@ -21,8 +21,9 @@ Page({
     searchInput: [],
     selectData: [],
     item: '',
-    langitude: '',
-    latitude: ''
+    longitude: '',
+    latitude: '',
+
   },
 
   selectTap() {
@@ -99,34 +100,18 @@ Page({
   },
 
   locationPicker: function(e) {
-    console.log('checking loc', e)
-    wx.getLocation({
-      //定位类型 wgs84, gcj02
-      type: 'gcj02',
-      success: function(res) {
-       console.log(res)
-       wx.openLocation({
-        latitude: latitude,
-        longitude: longitude,
-        scale: 28,
-        name: '观合中医',
-        address: '春熙路店铺',
-        success: res => {
-          console.log(res)
-        }
-       })
+    const page = this
+    wx.chooseLocation({
+      success: function(e) {
+        console.log('e',e)
+        page.setData({
+          longitude: e.longitude,
+          latitude: e.longitude
+        })
       }
-
+    
     })
 },
-
-   // locationPicker((res) => {
-    //   wx.chooseLocation()
-    //   this.setData ({
-    //     longitude: res.data.longitude,
-    //     latitude: res.data.longitude
-    //   })
-    // })
 
   bindDateChange1: function(e) {
     console.log('bindDateChange 1', e);
@@ -184,19 +169,20 @@ Page({
     let title = event.detail.value.title;
     let description = event.detail.value.description;
     let selectvenueID = this.data.selectvenueID;
-
     let date1 = event.detail.value.date1;
     let date2 = event.detail.value.date2;
     let date3 = event.detail.value.date3;
     
 
     const data = {
-      // restaurants_id: this.data.restaurants.id,
       title: title,
       description: description,
-      // place: [selectData],
+
       date: [date1, date2, date3],
       venue_id: selectvenueID
+      longitude: this.data.longitude,
+      latitude: this.data.latitude
+
     }
     console.log('selected venue pass to BaaS', event)
 
@@ -211,10 +197,6 @@ Page({
         event: newEvents,
 
       })
-
-      // wx.navigateTo({
-      //   url: `/pages/description/description?id=${newEvents[0]._id}`,
-      // })
 
       console.log('new events', newEvents[0]._id)
     })

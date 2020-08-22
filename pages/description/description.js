@@ -47,8 +47,8 @@ Page({
 
   openLocation: function () {  
     wx.openLocation({ 
-      longitude: this.data.events.venue_id.longitude,
-      latitude: this.data.events.venue_id.latitude,
+      longitude: this.data.events.longitude,
+      latitude: this.data.events.latitude,
       scale: 18
     })
   },
