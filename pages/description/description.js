@@ -79,17 +79,19 @@ Page({
         events: event,
       })
 
-//get one event
+  //get one event
     let query = new wx.BaaS.Query();
+    const queryx = new wx.BaaS.Query();
     query.compare('event_id', '=', options.id);
 
     //get attendees id
     const attendees = new wx.BaaS.TableObject('votes')
     console.log('attendees checking', options)
     query.compare('event_id', '=', options.id);
-    query.compare('attending', '=', true);
+    queryx.compare('attending', '=', true);
   
-    attendees.setQuery(query).expand(['event_id', 'user_id']).find().then((res) => {
+    const andQueryx = new wx.BaaS.Query.and(query, queryx);
+    attendees.setQuery(andQueryx).expand(['event_id', 'user_id']).find().then((res) => {
       console.log('checking attendees', res)
       this.setData ({
         attendees: res.data.objects
@@ -98,20 +100,45 @@ Page({
 
     //get number of people voted on each time
     let votedDate = new wx.BaaS.TableObject('votes')
-    query.compare('event_id', '=', options.id);
-    query.compare('votedDate', '=', 0);
+    const query1 = new wx.BaaS.Query();
+    const query2 = new wx.BaaS.Query();
+    const query3 = new wx.BaaS.Query();
+    const query4 = new wx.BaaS.Query();
+    query1.compare('event_id', '=', options.id);
+    query2.compare('votedDate', '=', 0);
+    query3.compare('votedDate', '=', 1);
+    query4.compare('votedDate', '=', 2);
 
-    votedDate.setQuery(query).expand(['event_id', 'votedDate']).find().then((res) => {
+    const andQuery1 = new wx.BaaS.Query.and(query1, query2);
+    const andQuery2 = new wx.BaaS.Query.and(query1, query3);
+    const andQuery3 = new wx.BaaS.Query.and(query1, query4);
+
+    votedDate.setQuery(andQuery1).expand(['event_id', 'votedDate']).find().then((res) => {
       console.log('checking attendees', res)
       this.setData ({
-        votedDate: res.data.objects
+        votedForOne: res.data.objects.length
       })
     })
 
- })
 
-    
-},
+
+    votedDate.setQuery(andQuery2).expand(['event_id', 'votedDate']).find().then((res) => {
+      console.log('checking attendees', res)
+      this.setData ({
+        votedForTwo: res.data.objects.length
+      })
+    })
+
+
+    votedDate.setQuery(andQuery3).expand(['event_id', 'votedDate']).find().then((res) => {
+      console.log('checking attendees', res)
+      this.setData ({
+        votedForThree: res.data.objects.length
+      })
+    })
+      
+    })
+    },
 
 radioChange: function(e) {
   console.log("radioChange",e.detail.value)

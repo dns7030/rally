@@ -54,7 +54,6 @@ Page({
     let venueID = e.currentTarget.dataset.id;
     let keyword = e.currentTarget.dataset.name;
     
-
     this.setData({
       selectvenueID: venueID,
       searchInput: keyword
@@ -99,6 +98,7 @@ Page({
   },
 
   locationPicker: function(e) {
+    console.log('checkin location',e)
     const page = this
     wx.chooseLocation({
       success: function(e) {
@@ -173,7 +173,6 @@ Page({
     let date2 = event.detail.value.date2;
     let date3 = event.detail.value.date3;
     
-
     const data = {
       title: title,
       description: description,
@@ -195,9 +194,12 @@ Page({
         event: newEvents,
 
       })
-
+      wx.navigateTo({
+        url: `/pages/description/description?id=${newEvents[0]._id}`,
+      })
       console.log('new events', newEvents[0]._id)
     })
+
 
     wx.showToast({
       title: "Let's go!",
