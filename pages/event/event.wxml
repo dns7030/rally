@@ -28,7 +28,7 @@
           </view>
         </view>
 
-        <button class="buy-btn" bindtap="locationPicker">Yas</button>
+        <button class="buy-btn" bindtap="locationPicker">Location</button>
 
     <view class="h1">When?</view>
 

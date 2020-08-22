@@ -21,7 +21,7 @@ Page({
     searchInput: [],
     selectData: [],
     item: '',
-    langitude: '',
+    longitude: '',
     latitude: '',
 
 
@@ -96,24 +96,16 @@ Page({
   },
 
   locationPicker: function(e) {
-    console.log('checking loc', e)
-    wx.getLocation({
-      //定位类型 wgs84, gcj02
-      type: 'gcj02',
-      success: function(res) {
-       console.log(res)
-       wx.openLocation({
-        latitude: latitude,
-        longitude: longitude,
-        scale: 28,
-        name: '观合中医',
-        address: '春熙路店铺',
-        success: res => {
-          console.log(res)
-        }
-       })
+    const page = this
+    wx.chooseLocation({
+      success: function(e) {
+        console.log('e',e)
+        page.setData({
+          longitude: e.longitude,
+          latitude: e.longitude
+        })
       }
-
+    
     })
 },
    // locationPicker((res) => {
@@ -175,7 +167,7 @@ Page({
 
     let title = event.detail.value.title;
     let description = event.detail.value.description;
-    let selecData = event.detail.value.place
+    let selectData = event.detail.value.place
 
     let date1 = event.detail.value.date1;
     console.log('date1', date1)
@@ -192,7 +184,9 @@ Page({
       title: title,
       description: description,
       place: [selectData],
-      date: [date1, date2, date3]
+      date: [date1, date2, date3],
+      longitude: this.data.longitude,
+      latitude: this.data.latitude
     }
 
     newEvent.set(data);
