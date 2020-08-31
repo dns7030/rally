@@ -23,7 +23,6 @@
   color: black;
 }
 .date-card {
-
   position: relative;
   font-size: 14px;
   font-family: sans-serif;
