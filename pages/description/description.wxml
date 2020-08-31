@@ -2,68 +2,64 @@
   <image class="gif" src="/pages/images/celebration.gif"></image>
   <view class="event-details">
     <view class="h1">{{events.title}}</view>
-    <view class="description">{{events.description}}</view>
+    <view class="p">{{events.description}}</view>
     <view class="map-div">
-      <view class="address">Venue Address{{venues.address_en}}</view>
+      <view class="address p">{{events.venue_id.address_en}}</view>
       <view class="map-btn" loading="{{loading}}" bindtap="openLocation" hover-class="other-button-hover"> map </view>
     </view>
   </view>
 
- <text class="h1">What works best?</text>
+ <text class="h2" wx:if="{{currentUser.id !== events.created_by}}">What works best for you?</text>
+ <text class="h2" wx:if="{{currentUser.id == events.created_by}}">Here is what your friends chose</text>
   <view class="event-details">
+
     <radio-group class="radio-group" bindchange="radioChange">
-      <label class="radio">
-        <view class="votingResult">
+        <label class="radio {{events.checked==true?'active':''}}">
           <radio value="0" checked="{{events.checked}}"/>{{events.date[0]}}
-          <text class="p">{{votedForOne}} friends want this.</text>
-        </view>
-        <view class="votingResult">
+          <text>{{votedForOne}} friends want this.</text>
+        </label>
+        <label class="radio {{events.checked==true?'active':''}}">
           <radio value="1" checked="{{events.checked}}"/>{{events.date[1]}}
-          <text class="p">{{votedForTwo}} friends want this.</text>
-        </view>
-        <view class="votingResult">
+          <text>{{votedForTwo}} friends want this.</text>
+        </label>
+        <label class="radio {{events.checked==true?'active':''}}">
           <radio value="2" checked="{{events.checked}}"/>{{events.date[2]}}
-          <text class="p">{{votedForThree}} friends want this.</text>
-        </view>
-       
-      </label>
+          <text>{{votedForThree}} friends want this.</text>
+        </label>
+ 
     </radio-group>
   </view>
 
-   <view class="event-details"><text class="h1">{{attendees.length}} friends are going...</text>
-
-    <view class="attendees">
-
-    <view class="attendees-icons" wx:for="{{attendees}}" wx:for-item="attendee">
-      <image class="userImage" src="{{attendee.user_id.avatar}}"></image>
-      <!-- <view class="p">{{attendee.user_id.nickname}}</view> -->
-    </view>
-    </view>
-
+   <view class="event-details"><text class="h2">{{attendees.length}} friends are going...</text>
+    <scroll-view class="scroll-view_H" scroll-x="true" bindscroll="scroll" style="width: 100%">
+        <view class="attendees-icons" wx:for="{{attendees}}" wx:for-item="attendee">
+            <image class="userImage" style="left:{{viewleft}}rpx" src="{{attendee.user_id.avatar}}"></image>
+        </view>
+      </scroll-view>
   </view>
-  <!-- <view class="map-div more-btn"> -->
-    <!-- <button class="map-btn" bindtap="locationClick"> more </button> -->
-  <!-- </view> -->
 
     <view class="event-details">
+    <view class="userButton"  wx:if="{{currentUser.id !== events.created_by}}">
       <text class="h1">Can you make it?</text>
       <view class="rsvp">
-        <view class="rsvp-btn" wx:if="{{currentUser.id !== 'events.created_by'}}" hover-class="rsvp-btn-hover" data-id="{{events.id}}" bindtap="yesButton" formType="submit">Yaaaassss</view>
-        <view class="no-btn" wx:if="{{currentUser.id !== 'events.created_by'}}" hover-class="rsvp-btn-hover" bindtap="noButton"> No </view>
+        <view class="rsvp-btn" hover-class="rsvp-btn-hover" data-id="{{events.id}}" bindtap="yesButton" formType="submit">Yaaaassss</view>
+        <view class="no-btn" hover-class="rsvp-btn-hover" bindtap="noButton"> No </view>
       </view>
-
-
-      <button wx:if="{{currentUser.id == events.created_by}}" open-type="edit" type="mini-btn" role="button" aria-disabled="false" bindtap="edit" class="creator-btn">
+    </view>
+    <view class="creatorButton" wx:if="{{currentUser.id == events.created_by}}">
+      <button open-type="edit" type="mini-btn" role="button" aria-disabled="false" bindtap="edit" class="creator-btn">
         <image style="width: 27px; height: 27px" src="/pages/images/edit-01.png"></image>
       </button>
 
-      <button wx:if="{{currentUser.id == events.created_by}}" bindtap="deleteClick" type="mini-btn" role="button" aria-disabled="false" class="creator-btn">
+      <button bindtap="deleteClick" type="mini-btn" role="button" aria-disabled="false" class="creator-btn">
         <image style="width: 27px; height: 27px" src="/pages/images/cancel.png"></image>
       </button>
 
-      <button wx:if="{{currentUser.id == events.created_by}}" bindtap="handleTapShareButton" open-type="share" type="mini-btn" role="button" aria-disabled="false" class="creator-btn">
+      <button bindtap="handleTapShareButton" open-type="share" type="mini-btn" role="button" aria-disabled="false" class="creator-btn">
         <image style="width: 27px; height: 27px" src="/pages/images/share.png"></image>
       </button>
+    </view>
+
 
     </view>
 </view>

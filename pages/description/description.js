@@ -19,6 +19,7 @@ Page({
     iconType: [
       'warn'
     ],
+    venues: []
   },
 
 
@@ -97,7 +98,9 @@ Page({
         attendees: res.data.objects
       })
     })
-
+    //get venue address
+    let venues = new wx.BaaS.TableObject('venues')
+    
     //get number of people voted on each time
     let votedDate = new wx.BaaS.TableObject('votes')
     const query1 = new wx.BaaS.Query();
@@ -142,67 +145,76 @@ Page({
 
 radioChange: function(e) {
   console.log("radioChange",e.detail.value)
+
   this.setData({
     votedDate: parseInt(e.detail.value)
   })
 },
-  yesButton: function (event) {
-    let event_id = this.data.events.id;
-    let user_id = this.data.currentUser.id
-    console.log('event_id', event_id)
 
-    let attending = new wx.BaaS.TableObject('votes');
-    let newAttending = attending.create();
-    const data = {
-      attending: true,
-      event_id: event_id,
-      user_id: user_id,
-      votedDate:  this.data.votedDate
-    }
-    newAttending.set(data);
-    // Post data to API
-    newAttending.save().then((res) => {
-      console.log('save res', res);
-      const newAttendings = this.data.events;
-      // newAttendings.push(res.data);
-      this.setData({
-        event: newAttendings,
-      })
-      wx.reLaunch({
-        url: '/pages/user/user',
-      })
+yesButton: function (event) {
+  let event_id = this.data.events.id;
+  let user_id = this.data.currentUser.id
+  console.log('event_id', event_id)
+
+  let attending = new wx.BaaS.TableObject('votes');
+  let newAttending = attending.create();
+  const data = {
+    attending: true,
+    event_id: event_id,
+    user_id: user_id,
+    votedDate:  this.data.votedDate
+  }
+  newAttending.set(data);
+  // Post data to API
+  newAttending.save().then((res) => {
+    console.log('save res', res);
+    const newAttendings = this.data.events;
+    // newAttendings.push(res.data);
+    this.setData({
+      event: newAttendings,
     })
-  },
-
-  noButton: function (event) {
-
-    let event_id = this.data.events.id;
-    let user_id = this.data.currentUser.id
-
-    console.log('event_id', event_id)
-
-    let attending = new wx.BaaS.TableObject('votes');
-    let newAttending = attending.create();
-
-    const data = {
-      attending: false,
-      event_id: event_id,
-      user_id: user_id
-    }
-
-    newAttending.set(data);
-    // Post data to API
-    newAttending.save().then((res) => {
-      console.log('save res', res);
-      const newAttendings = this.data.events;
-      console.log('checking push button', res)
-      this.setData({
-        event: newAttendings,
-      })
-       
+    wx.reLaunch({
+      url: '/pages/user/user',
     })
-  },
+  })
+},
 
+noButton: function (event) {
+
+  let event_id = this.data.events.id;
+  let user_id = this.data.currentUser.id
+
+  console.log('event_id', event_id)
+
+  let attending = new wx.BaaS.TableObject('votes');
+  let newAttending = attending.create();
+
+  const data = {
+    attending: false,
+    event_id: event_id,
+    user_id: user_id
+  }
+
+  newAttending.set(data);
+  // Post data to API
+  newAttending.save().then((res) => {
+    console.log('save res', res);
+    const newAttendings = this.data.events;
+    console.log('checking push button', res)
+    this.setData({
+      event: newAttendings,
+    })
+      
+  })
+},
+scroll: function (e) {
+  console.log('scroll view', e)
+  let left = event.detail.scrollLeft
+  this.setData({
+    viewLeft: left
+  })
+
+},
   editClick: function (event){
     const data = event.currentTarget.dataset;
     const id = data.id;
