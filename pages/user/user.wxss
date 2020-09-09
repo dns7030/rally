@@ -1,8 +1,13 @@
 /* pages/user/user.wxss */
 .card {
-  padding: 5px 0 0 0;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  padding: 0 15px 15px 15px;
+  display: row;
+}
+.top-banner {
+  display: flex;
   align-items: center;
 }
 .card-product {
@@ -19,18 +24,21 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  padding: 10px 0 0 0;
   color: black;
+  padding-bottom: 10px;
 }
 .date-card {
   position: relative;
   font-size: 14px;
   font-family: sans-serif;
-  padding: 12px 0 24px 0;
+  padding-top: 15px;
   font-weight: bold;
-  
+  display: flex;
   }
-  
+  .event-info {
+    display: flex;
+    flex-direction: column;
+  }
 .userImage {
   height: 100px;
   width: 100px;
@@ -52,22 +60,20 @@
   width: 100%;
   justify-content: space-evenly;
 }
+.tab {
+  color: black;
+  background-color: white;
+  padding: 10px 0; 
+}
 .active {
-  color: #FF3232;
+  color: white;
+  background-color: black;
+  padding: 10px 0;
 }
-.p {
-  font-family: sans-serif;
-  font-size: 14px;
-}
-.h1 {
-  font-family: 'Playfair Display';
-  font-size: 20px;
-  font-weight: bold;
-}
-.h2 {
-  font-size: 18px;
-  font-weight: bold;
-  font-family: 'Playfair Display';
+.bannerText {
+  text-align: left;
+  width: 100px;
+  padding-left: 100px;
 }
 .past {
   width: 50%;
@@ -85,16 +91,6 @@
   border-radius: 50%;
 }
 
-.card {
-  padding: 15px;
-  display: row;
-}
-.event-info {
-  display: flex;
-  flex-direction: column;
-  padding: 12px 0 0;
-}
-
 .description {
   color: black;
 }
@@ -109,9 +105,7 @@ image.gif {
   align-items: center;
   width: 80%;
   margin: 0 auto;
-
 }
-
 .login-button {
   margin: 5px 0 50px 0;
 }

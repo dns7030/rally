@@ -1,15 +1,18 @@
 // pages/user/user.js
-const util = require("../../utils/util")
+const util = require("../../utils/util");
+
 let app= getApp()
 Page({
 
   data: {
     currentUser: null,
-    events: {},
+    otherEvent: {},
     myEvent: {},
+    joinedEvent: {},
     active: 1,
     futureEvents: [],
     pastEvents: [],
+
   },
 
   showEvents: function(event) {
@@ -27,22 +30,27 @@ Page({
     this.setData({
       currentUser: app.globalData.userInfo
     });
+    let currentUser = this.data.currentUser;
 
     const myEvent = new wx.BaaS.TableObject('events');
-    const events = new wx.BaaS.TableObject('votes')
-    let user_id = new wx.BaaS.TableObject('votes')
-    // let query = new wx.BaaS.Query()
-    
-      //  events that user created
-    myEvent.limit(100).find().then((res) => {
-      console.log('checking my event query',res)
-      //pull event data
+    const otherEvent = new wx.BaaS.TableObject('votes');
+    const venue_id = new wx.BaaS.TableObject('venues')
+    //events user created
+    let query = new wx.BaaS.Query();
+    query.compare('created_by', '=', currentUser.id)
+    myEvent.setQuery(query).expand(["venue_id"]).limit(100).find().then((res) => {
+
+      console.log('checking events', res)
       let events = res.data.objects
+
       const now = new Date().getTime();
       console.log('date now', now);
+      //define event
 
       const pastEvents = events.filter(event => {
+        console.log('other event past Event', event.event_id)
         const eventDate = new Date(event.date[0]).getTime();
+  
         if(eventDate < now) {
           return true;
         }
@@ -50,6 +58,8 @@ Page({
       });
 
       const futureEvents = events.filter(event => {
+        console.log('other event future Event', event.event_id)
+
         const eventDate = new Date(event.date[0]).getTime();
         if(eventDate > now) {
           return true;
@@ -58,27 +68,83 @@ Page({
       });
 
       console.log('past and future', pastEvents, futureEvents);
-      //define event
+
       let formatedEvents = []
       //store event with time
+
       events.forEach((event)=>{
         // console.log('event.date', event)
         event.date = event.date.map(date => {
-          return util.formatTime(new Date(date));
+        
+          return util.formatShortDate(new Date(date));
+        
         });
-        // event.time = event.date.map(time => {
-        //   return util.formatTime(new Date(time));
-        // });
         formatedEvents.push(event)
       })
 
-      this.setData ({
-        myEvent: formatedEvents,
+      this.setData({
+        myEvent: res.data.objects,
         futureEvents,
         pastEvents
       })
+    })
+    //events user joined
+    let queryJoined = new wx.BaaS.Query();
 
-    }); 
+    queryJoined.compare('user_id', '=', currentUser.id);
+    queryJoined.compare('attending', '=', true);
+
+    // otherEvent.setQuery(queryJoined).expand(["event_id"]).find().then((res) => {
+    //   console.log('checking events you joined', res)
+    //   let events = res.data.objects
+
+    //   const now = new Date().getTime();
+    //   console.log('date now', now);
+
+    //   // const pastEvents = events.filter(event => {
+    //   //   console.log('other event past Event', event.event_id)
+    //   //   const eventDate2 = new Date(event.event_id.date).getTime();
+  
+    //   //   if(eventDate2 < now) {
+    //   //     return true;
+    //   //   }
+    //   //   return false;
+    //   // });
+
+    //   // const futureEvents = events.filter(event => {
+    //   //   console.log('other event future Event', event.event_id)
+
+    //   //   const eventDate2 = new Date(event.event_id.date).getTime();
+    //   //   if(eventDate2 > now) {
+    //   //     return true;
+    //   //   }
+    //   //   return false;
+    //   // });
+
+    //   // console.log('past and future', pastEvents, futureEvents);
+
+    //   // define event
+    //   let formatedEvents = []
+    //   // store event with time
+
+    //   // events.forEach((event)=>{
+    //   // // console.log('event.date', event)
+    //   //   event.date = event.date.map(date => {
+    //   //     return util.formatShortDate(new Date(date));
+        
+    //   //   });
+    //   //   formatedEvents.push(event)
+    //   // })
+
+    //   this.setData({
+    //     otherEvent: res.data.objects,
+    //     // futureEvents,
+    //     // pastEvents
+    //   })
+    // })
+      //  events that user created
+    // const db = app.database()
+    // const $ = db.command.aggregate
 
   },
 

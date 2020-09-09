@@ -138,14 +138,20 @@
 .attendees-icons {
   justify-content: center;
   padding: 10px 5px 0 5px;
-
+  display: inline-block;
+  position: relative;
 }
 
 .rsvp {
   display: flex;
   justify-content: center;
   margin: 0 0 50px 0;
-
+}
+.userButton {
+  margin: 10px 0;
+}
+.creatorButton {
+  margin: 10px 0;
 }
 .button-share {
   background-color: white;

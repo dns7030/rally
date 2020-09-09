@@ -8,7 +8,6 @@ Page({
    */
   data: {
     currentUser: null,
-    event: {},
     votes: [],
     longitude: [],
     latitude: [],
@@ -67,13 +66,9 @@ Page({
     events.expand(["venue_id"]).get(options.id).then((res) => {
       console.log('get one event',res)
       let event = res.data
-
-      // event.date = event.date.map(date => {
-      //   return util.formatDate(new Date(date));
-      // });
  
       event.date = event.date.map(date => {
-        return util.formatDate(new Date(date));
+        return util.formatShortDate(new Date(date));
       });
 
       this.setData ({
@@ -82,13 +77,13 @@ Page({
 
   //get one event
     let query = new wx.BaaS.Query();
-    const queryx = new wx.BaaS.Query();
+    let queryx = new wx.BaaS.Query();
     query.compare('event_id', '=', options.id);
 
     //get attendees id
     const attendees = new wx.BaaS.TableObject('votes')
     console.log('attendees checking', options)
-    query.compare('event_id', '=', options.id);
+    // query.compare('event_id', '=', options.id);
     queryx.compare('attending', '=', true);
   
     const andQueryx = new wx.BaaS.Query.and(query, queryx);
@@ -123,15 +118,12 @@ Page({
       })
     })
 
-
-
     votedDate.setQuery(andQuery2).expand(['event_id', 'votedDate']).find().then((res) => {
       console.log('checking attendees', res)
       this.setData ({
         votedForTwo: res.data.objects.length
       })
     })
-
 
     votedDate.setQuery(andQuery3).expand(['event_id', 'votedDate']).find().then((res) => {
       console.log('checking attendees', res)
@@ -143,85 +135,85 @@ Page({
     })
     },
 
-radioChange: function(e) {
-  console.log("radioChange",e.detail.value)
+  radioChange: function(e) {
+    console.log("radioChange",e.detail.value)
 
-  this.setData({
-    votedDate: parseInt(e.detail.value)
-  })
-},
-
-yesButton: function (event) {
-  let event_id = this.data.events.id;
-  let user_id = this.data.currentUser.id
-  console.log('event_id', event_id)
-
-  let attending = new wx.BaaS.TableObject('votes');
-  let newAttending = attending.create();
-  const data = {
-    attending: true,
-    event_id: event_id,
-    user_id: user_id,
-    votedDate:  this.data.votedDate
-  }
-  newAttending.set(data);
-  // Post data to API
-  newAttending.save().then((res) => {
-    console.log('save res', res);
-    const newAttendings = this.data.events;
-    // newAttendings.push(res.data);
     this.setData({
-      event: newAttendings,
+      votedDate: parseInt(e.detail.value)
     })
-    wx.reLaunch({
-      url: '/pages/user/user',
+  },
+
+  yesButton: function (event) {
+    let event_id = this.data.events.id;
+    let user_id = this.data.currentUser.id
+    console.log('event_id', event_id)
+
+    let attending = new wx.BaaS.TableObject('votes');
+    let newAttending = attending.create();
+    const data = {
+      attending: true,
+      event_id: event_id,
+      user_id: user_id,
+      votedDate:  this.data.votedDate
+    }
+    newAttending.set(data);
+    // Post data to API
+    newAttending.save().then((res) => {
+      console.log('save res', res);
+      const newAttendings = this.data.events;
+      // newAttendings.push(res.data);
+      this.setData({
+        event: newAttendings,
+      })
+      wx.reLaunch({
+        url: '/pages/user/user',
+      })
     })
-  })
-},
+  },
 
-noButton: function (event) {
+  noButton: function (event) {
 
-  let event_id = this.data.events.id;
-  let user_id = this.data.currentUser.id
+    let event_id = this.data.events.id;
+    let user_id = this.data.currentUser.id
 
-  console.log('event_id', event_id)
+    console.log('event_id', event_id)
 
-  let attending = new wx.BaaS.TableObject('votes');
-  let newAttending = attending.create();
+    let attending = new wx.BaaS.TableObject('votes');
+    let newAttending = attending.create();
 
-  const data = {
-    attending: false,
-    event_id: event_id,
-    user_id: user_id
-  }
+    const data = {
+      attending: false,
+      event_id: event_id,
+      user_id: user_id
+    }
 
-  newAttending.set(data);
-  // Post data to API
-  newAttending.save().then((res) => {
-    console.log('save res', res);
-    const newAttendings = this.data.events;
-    console.log('checking push button', res)
-    this.setData({
-      event: newAttendings,
+    newAttending.set(data);
+    // Post data to API
+    newAttending.save().then((res) => {
+      console.log('save res', res);
+      const newAttendings = this.data.events;
+      console.log('checking push button', res)
+      this.setData({
+        event: newAttendings,
+      })
+        
     })
-      
-  })
-},
-scroll: function (e) {
-  console.log('scroll view', e)
-  let left = event.detail.scrollLeft
-  this.setData({
-    viewLeft: left
-  })
+  },
 
-},
+// scroll: function (e) {
+//   console.log('scroll view', e)
+//   let left = e.detail.scrollLeft
+//   this.setData({
+//     viewLeft: left
+//   })
+
+// },
+  
   editClick: function (event){
-    const data = event.currentTarget.dataset;
-    const id = data.id;
- 
-    wx.reLaunch({
-      url: `/pages/event/event?id=${id}`
-    });
+      let id = event.currentTarget.dataset.events_id;
+      wx.reLaunch({
+        url: `/pages/event/event?id=${id}`
+      });
   },
 
   deleteClick:function(event){
