@@ -60,7 +60,10 @@ Page({
     })
   },
 
-  onLoad: function (options) {
+  onLoad(options) {
+    this.setData({ events_id: options.id });
+    var that = this;
+    console.log('checking event edit', options)
   },
 
   searchSubmitFn: function (e) {
