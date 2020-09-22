@@ -1,10 +1,18 @@
 <!--/pages/user/user.wxml-->
-
-<view class="weekend-calendar">
-  <image class="gif" mode="aspectFit" src="/pages/images/whatsthisweek.gif"></image>
-  <view class="h1" style="text-align: center">{{currentUser.nickname}}</view>
-  <view class="h1 bannerText">what are we doing this week?</view>
+<view class="userProfile">
+  <image class="userImage"  src="{{currentUser.avatar}}"></image>
+  <view style="padding-left: 120px">
+    <view class="h3"> {{currentUser.nickname}}</view>
+  </view>
 </view>
+<!-- <view class="h1" style="text-align: center">{{currentUser.nickname}}</view> -->
+
+<!-- <view class="weekend-calendar">
+  <image class="gif" mode="aspectFit" src="/pages/images/whatsthisweek.gif"></image>
+  <view class="bannerText">
+    <view class="h1">what are we doing this week?</view>
+  </view>
+</view> -->
 
 
 <view class="tabs">

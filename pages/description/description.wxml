@@ -1,49 +1,56 @@
 <view class="container">
-  <image class="gif" src="/pages/images/celebration.gif"></image>
+  <!-- <image class="gif" src="/pages/images/celebration.gif"></image> -->
+  <view class="banner">
+    <view class="h1 bannerText">what are we doing this week?</view>
+  </view>
   <view class="event-details">
-    <view class="h1">{{events.title}}</view>
-    <view class="p">{{events.description}}</view>
+    <view class="h4">EVENT</view>
+    <view class="h2">{{events.title}}</view>
+    <view class="h4" style="padding-top: 10px">VENUE</view>
+    <view class="h2">{{events.venue_id.name_en}}</view>
+    <view class="p" style="padding-top: 10px">{{events.description}}</view>
     <view class="map-div">
-      <view class="address p">{{events.venue_id.address_en}}</view>
+      <view class="address">
+        <view class="p">{{events.venue_id.address_en}}</view>
+        <view class="p">{{events.venue_id.address_cn}}</view>
+      </view>
       <view class="map-btn" loading="{{loading}}" bindtap="openLocation" hover-class="other-button-hover"> map </view>
     </view>
   </view>
 
  <text class="h2" wx:if="{{currentUser.id !== events.created_by}}">What works best for you?</text>
- <text class="h2" wx:if="{{currentUser.id == events.created_by}}">Here is what your friends chose</text>
-  <view class="event-details">
+ <view style="margin-top: 20px" wx:if="{{currentUser.id == events.created_by}}">
+  <text class="h2">{{attendees.length}} friends are going...</text>
+ </view>
 
-    <radio-group class="radio-group" bindchange="radioChange">
-        <label class="radio {{events.checked==true?'active':''}}">
-          <radio value="0" checked="{{events.checked}}"/>{{events.date[0]}}
-          <text>{{votedForOne}} friends want this.</text>
-        </label>
-        <label class="radio {{events.checked==true?'active':''}}">
-          <radio value="1" checked="{{events.checked}}"/>{{events.date[1]}}
-          <text>{{votedForTwo}} friends want this.</text>
-        </label>
-        <label class="radio {{events.checked==true?'active':''}}">
-          <radio value="2" checked="{{events.checked}}"/>{{events.date[2]}}
-          <text>{{votedForThree}} friends want this.</text>
-        </label>
- 
-    </radio-group>
+ <view class="event-details" style="width: 100%">
+ <!-- <text class="h2" wx:if="{{currentUser.id == events.created_by}}">Here is what your friends chose</text> -->
+  <view class="event-details" style="width: 100%">
+    <view class="radio-group">
+      <label wx:for="{{events.date}}" class="radio {{index==votedDate?'active':''}}" data-item="{{item}}" data-index="{{index}}" bindtap="radioChange">
+        <view class="voteDate" data-item="{{item}}" data-index="{{index}}">
+          {{item.date}} {{item.time}}
+        </view>
+        <text class="votedForOne" data-item="{{item}}" data-index="{{index}}">{{item.attendees}} friends want this.</text>
+      </label> 
+    </view>
   </view>
 
-   <view class="event-details"><text class="h2">{{attendees.length}} friends are going...</text>
-    <scroll-view bindscroll="scroll" class="scroll-view_H" scroll-x="true" style="width: 90%">
+
+    <scroll-view bindscroll="scroll" class="scroll-view_H" scroll-x="true">
       <view class="attendees-icons" wx:for="{{attendees}}" wx:for-item="attendee">   
             <image class="userImage" style="left:{{viewleft}}rpx" src="{{attendee.user_id.avatar}}"></image>
-        </view>
-      </scroll-view>
+      </view>
+    </scroll-view>
   </view>
 
-  <view class="event-details">
-  <view class="userButton"  wx:if="{{currentUser.id !== events.created_by}}">
+  <view class="event-details" style="margin-top: 20px">
+    <!-- wx:if="{{currentUser.id !== events.created_by}}" -->
+  <view class="userButton">
     <text class="h1">Can you make it?</text>
     <view class="rsvp">
-      <view class="rsvp-btn" hover-class="rsvp-btn-hover" data-id="{{events.id}}" bindtap="yesButton" formType="submit">Yaaaassss</view>
-      <view class="no-btn" hover-class="rsvp-btn-hover" bindtap="noButton"> No </view>
+      <button class="buy-btn" hover-class="rsvp-btn-hover" data-id="{{events.id}}" bindtap="yesButton" formType="submit" style="margin-right: 20px">Yaaaassss</button>
+      <button class="buy-btn" hover-class="rsvp-btn-hover" bindtap="noButton"> No </button>
     </view>
   </view>
   <view class="creatorButton" wx:if="{{currentUser.id == events.created_by}}">
