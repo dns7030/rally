@@ -1,6 +1,6 @@
 // pages/event/event.js
 const app = getApp()
-
+const util = require("../../utils/util")
 Page({
 
   /**
@@ -24,6 +24,7 @@ Page({
     longitude: '',
     latitude: '',
 
+    eventsData: null
   },
 
   selectTap() {
@@ -64,6 +65,23 @@ Page({
     this.setData({ events_id: options.id });
     var that = this;
     console.log('checking event edit', options)
+
+    const events = new wx.BaaS.TableObject('events');
+
+    events.expand(["venue_id"]).get(options.id).then((res) => {
+      console.log('get edit event',res)
+      let event = res.data
+ 
+      event.date = event.date.map(date => {
+        return util.formatShortDate(new Date(date));
+      });
+
+      this.setData ({
+        eventsData: event,
+      })
+      
+      console.log('anu', event)
+    })
   },
 
   searchSubmitFn: function (e) {
@@ -209,8 +227,6 @@ Page({
       icon: 'success',
       duration: 4000,
       mask: true,
-
-
     });
   },
 

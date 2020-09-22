@@ -1,40 +1,20 @@
-/* .h1 {
-  font-family: 'Playfair Display';
-  font-weight: bold;
-  font-size: 22px;
-  margin: 60px 0 0 0;
-  } */
+.bannerText {
+  padding-left: none;
 
-  .h2 {
-    font-family: 'Playfair Display';
-    font-weight: bold;
-    font-size: 14px;
-    color: #616161;
-    }
-  
-.p {
-  font-family: sans-serif;
-  font-size: 16px;
 }
 .create-event {
-  width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
   padding-top: 20px;
-  
+  text-align: center;
+  width: 90%;
 }
 .input-card{
   background-color: #f6f6f6;
   margin-bottom: 20px;
   border-radius: 5px;
-  padding: 15px 0;
+  padding: 10px 0;
 }
-.input-text {
-  font-size: 14px;
-  display: block;
-}
-
 .input-date {
   display: flex;
   margin-top: 10px;
@@ -43,11 +23,30 @@
   font-family: sans-serif;
   color: grey;
 }
-
+.mapButton {
+  display: flex;
+  right: auto;
+  margin-bottom: 20px;
+}
+.map-btn {
+  background-color: black;
+  color: white;
+  padding: 4px;
+}
+.smallText {
+  font-size: 12px;
+  color: grey;
+  width: 200px;
+  text-align: right;
+  margin-left: 80px;
+}
 .date-title {
   margin: 20px 0 0 0;
   font-family:'Playfair Display';
   font-size: 16px;
+}
+.middleTitle {
+  padding: 0 40px;
 }
 .date-picker {
   background-color: #f6f6f6;
@@ -72,10 +71,6 @@
 .button {
   margin: 50px 0 50px 0;
 }
-.textarea {
-  height: 3em;
-}
-
 .radio {
   display: flex;
   flex-direction: column;

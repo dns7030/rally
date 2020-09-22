@@ -6,9 +6,24 @@
   padding: 0 15px 15px 15px;
   display: row;
 }
+.userProfile {
+  height: 120px;
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+  margin-left: 30px;
+
+}
 .top-banner {
   display: flex;
   align-items: center;
+}
+.banner {
+  background-repeat: no-repeat;
+}
+.bannerText {
+  padding-left: 100px;
+  padding-top: 0;
 }
 .card-product {
   overflow: hidden;
@@ -35,10 +50,10 @@
   font-weight: bold;
   display: flex;
   }
-  .event-info {
-    display: flex;
-    flex-direction: column;
-  }
+.event-info {
+  display: flex;
+  flex-direction: column;
+}
 .userImage {
   height: 100px;
   width: 100px;
@@ -70,11 +85,6 @@
   background-color: black;
   padding: 10px 0;
 }
-.bannerText {
-  text-align: left;
-  width: 100px;
-  padding-left: 100px;
-}
 .past {
   width: 50%;
   text-align: center;
@@ -100,11 +110,9 @@
   background-color: white;
 }
 
-image.gif {
-  display: flex;
-  align-items: center;
-  width: 80%;
-  margin: 0 auto;
+.gif {
+  background-repeat: no-repeat;
+  padding-top: 100px;
 }
 .login-button {
   margin: 5px 0 50px 0;
