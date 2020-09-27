@@ -20,13 +20,13 @@
     "list": [
       {
         "pagePath": "pages/event/event",
-        "iconPath": "/pages/images/icon-01.png",
-        "selectedIconPath": "/pages/images/icon-03.png"
+        "iconPath": "/pages/images/tabIcon-05.png",
+        "selectedIconPath": "/pages/images/tabIcon-02.png"
       },
       {
         "pagePath": "pages/user/user",
-        "iconPath": "/pages/images/icon-02.png",
-        "selectedIconPath": "/pages/images/icon-04.png"
+        "iconPath": "/pages/images/tabIcon-06.png",
+        "selectedIconPath": "/pages/images/tabIcon-03.png"
       }
     ]
   },

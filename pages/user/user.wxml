@@ -49,7 +49,7 @@
           <!-- here is events user created -->
           <view class="event-info">
             <view class="h3">{{events.title}}</view>
-            <view class="event-add" style="display: flex; align-items: center">
+            <view class="event-add" style="display: flex; align-items: center; margin-top: 5px">
               <image style="width: 15px; height: 25px; padding-right: 10px" src="/pages/images/loc-icon-01.png"></image>
               <view class="p">{{events.venue_id.name_en}}</view>
             </view>
