@@ -1,7 +1,8 @@
 <!--pages/event/event.wxml-->
 <view class="container">
   <view class="banner">
-    <view class="h1 bannerText">Create YOur Own Event...</view>
+    <image class="gif" mode="aspectFit" src="/pages/images/gif-computer.gif"></image>
+    <view class="h1">Create YOur Own Event...</view>
   </view>
   <view class="create-event">
   <form bindsubmit="formSubmit">

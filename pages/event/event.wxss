@@ -1,6 +1,12 @@
 .bannerText {
   padding-left: none;
-
+}
+.banner{
+  text-align: center;
+}
+.gif {
+  background-repeat: no-repeat;
+  padding-top: 30px;
 }
 .create-event {
   display: flex;
