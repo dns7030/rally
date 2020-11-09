@@ -186,6 +186,13 @@ Page({
     console.log(event.detail.value.selectvenueID)
 
     let title = event.detail.value.title;
+    // if (title == '') {
+    //   wx: wx.showToast({
+    //     title: 'Please fill the blank window'
+    //   })
+    //   return false
+    // };
+  
     let description = event.detail.value.description;
     let selectvenueID = this.data.selectvenueID;
     let longitude = this.data.longitude;
@@ -221,15 +228,33 @@ Page({
       console.log('new events', newEvents[0]._id)
     })
 
-
-    wx.showToast({
-      title: "Let's go!",
-      icon: 'success',
-      duration: 4000,
-      mask: true,
-    });
+wx.request({
+  url: util.apiUrl + 'event/formsubmit?program_id=' + app.jtappid,
+  data: FormData,
+  header: { 'Content-Type': 'application/json' },
+  success: function (res){
+    if(res.data.satus == 1){
+      wx.showToast({
+        title: "Let's go!",
+        icon: 'success',
+        duration: 4000,
+        mask: true,
+      });
+      that.setData({
+        title: '',
+        description: '',
+        searchInput:'',
+        date: '',
+        time:''
+      })
+    }
+  }
+})
   },
+  formReset: function (e){
 
+    console.log('reset events')
+  },
   onClickSearchButton: function (event) {
     console.log('checking search', event)
   },
